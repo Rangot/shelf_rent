@@ -1,0 +1,21 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<div>
+    <p>Номер акта: {{ order.act.act_number }}</p>
+    <p>Наименование: {{ order.name_item }}</p>
+    <p>Описание: {{ order.description_item }}</p>
+    <p>Материалы: {{ order.materials }}</p>
+    <p>Количество: {{ order.quality }}</p>
+    <p>Цена: {{ order.price }}</p>
+    <p>Товар на полке: {{ order.is_active }}</p>
+</div>
+
+    <br>
+        <a href="{% url 'tenants:view_act' order.act.act_number %}">Вернуться к акту</a>
+    <br>
+    <br>
+
+
+{% endblock %}

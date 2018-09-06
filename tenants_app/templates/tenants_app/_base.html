@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+html, body, form, fieldset, table, tr, td, img, a, p, ul {
+    margin: 0;
+    padding: 0;
+    font: 20px/30px Arial, sans-serif;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tenants_app/tacit.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'tenants_app/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'tenants_app/css/bootstrap.min.css' %}" />
+</head>
+
+
+<body>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+<nav>
+    {% block nav %}<hr />
+    <span><a href="{% url 'index' %}">На главную</a></span>
+        <br>
+        <a href="{% url 'tenants:sales_ledger' %}">Движение товара</a>
+    <br>
+        <a href="{% url 'tenants:view_cash' %}">Книга продаж</a>
+    <br>
+    {% endblock %}
+</nav>
+
+</body>
+
+</html>

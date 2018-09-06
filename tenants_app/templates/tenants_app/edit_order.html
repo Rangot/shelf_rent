@@ -1,0 +1,57 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<form action="{% url 'tenants:edit_order' instance.orders_id %}" method="POST">
+    {% csrf_token %}
+
+    <hr />
+
+    <h2>Заполните поля:</h2>
+    {{ order_form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ order_form.name_item.errors }}
+    <label for="{{ order_form.name_item.id_for_label }}">Наименование:</label>
+    {{ order_form.name_item }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ order_form.description_item.errors }}
+    <label for="{{ order_form.description_item.id_for_label }}">Описание:</label>
+    {{ order_form.description_item }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ order_form.materials.errors }}
+    <label for="{{ order_form.materials.id_for_label }}">Материалы:</label>
+    {{ order_form.materials }}
+</div>
+     <br>
+<div class="fieldWrapper">
+    {{ order_form.quality.errors }}
+    <label for="{{ order_form.quality.id_for_label }}">Количество:</label>
+    {{ order_form.quality }}
+</div>
+         <br>
+<div class="fieldWrapper">
+    {{ order_form.price.errors }}
+    <label for="{{ order_form.price.id_for_label }}">Цена:</label>
+    {{ order_form.price }}
+</div>
+            <br>
+<div class="fieldWrapper">
+    {{ order_form.is_active.errors }}
+    <label for="{{ order_form.is_active.id_for_label }}">Товар на полке:</label>
+    {{ order_form.is_active }}
+    <br>
+    <p>Примечание: если галочка не стоит, товар не виден на странице полки</p>
+</div>
+<div class="fieldWrapper">
+    {{ order_form.act.as_hidden }}
+</div>
+    <br>
+
+    <input type="submit" value="Сохранить" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+
+    <a href="{% url 'tenants:create_shelf' %}">Создать полку</a>
+    <br>
+    <br>
+
+ {% if shelfs %}
+  <h3>Выберите полку:</h3>
+<ul>
+  {% for shelf in shelfs %}
+          <li><a href="{% url 'tenants:view_shelf' shelf.shelf_id %}">{{ shelf.name }}</a>,
+              стоимость: {{ shelf.price }}
+          (<a href="{% url 'tenants:edit_shelf' shelf.shelf_id %}">изменить</a>)</li>
+  {% endfor %}
+</ul>
+ {% endif %}
+
+
+{% endblock %}

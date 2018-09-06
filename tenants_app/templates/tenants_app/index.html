@@ -1,0 +1,51 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+    <h3>Поиск арендатора:</h3>
+    <form action="{% url 'tenants:search' %}" method="get">
+        <input title="" type="text" name="q">
+        <input type="submit" value="Найти">
+    </form>
+    {% if error %}
+        <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
+    {% endif %}
+
+    <a href="{% url 'tenants:create' %}">Создать нового арендатора</a>
+    <br>
+    <a href="{% url 'tenants:sales_ledger' %}">Движение товара</a>
+    <br>
+    <a href="{% url 'tenants:view_cash' %}">Книга продаж</a>
+    <br>
+    <br>
+
+   <div class="container">
+       <div class="row">
+             <div class="col-lg-6">
+
+  {% if tenants %}
+  <h3>Список арендаторов:</h3>
+<ul>
+  {% for tenant in tenants %}
+      <li><a href="{% url 'tenants:view' tenant.tenants_id %}">{{ tenant.name }}</a>
+      (<a href="{% url 'tenants:edit' tenant.tenants_id %}">изменить</a>)</li>
+  {% endfor %}
+</ul>
+   {% endif %}
+             </div>
+
+             <div class="col-lg-6">
+{% if rents %}
+    <h3>Договора, у которых заканчивается срок:</h3>
+<ul>
+  {% for rent in rents %}
+      <li>{{ rent.tenants }} ({{ rent.term_left.days }} дней осталось)</li>
+  {% endfor %}
+</ul>
+{% endif %}
+             </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block nav %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<form action="{% url 'tenants:create_shelf' %}" method="POST">
+    {% csrf_token %}
+
+    <hr />
+
+    <h2>Заполните поля:</h2>
+    {{ shelf_form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ shelf_form.name.errors }}
+    <label for="{{ shelf_form.name.id_for_label }}">Номер полки:</label>
+    {{ shelf_form.name }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ shelf_form.price.errors }}
+    <label for="{{ shelf_form.price.id_for_label }}">Стоимость:</label>
+    {{ shelf_form.price }}
+</div>
+    <br>
+
+    <input type="submit" value="Создать" />
+</form>
+
+{% endblock %}

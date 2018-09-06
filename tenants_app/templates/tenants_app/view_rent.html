@@ -1,0 +1,47 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<div>
+    <p>Номер договора: {{ rent.rents_id }}</p>
+    <p>Дата заключения: {{ rent.start_date }}</p>
+    <p>Дата истечения: {{ rent.stop_date }}</p>
+    {% if rent.is_active == True %}
+    <p>До истечения договора: {{ rent.term_left.days }} дней</p>
+    {% endif %}
+    {% if rent.is_active == False %}
+    <p>Срок договора истек</p>
+    {% endif %}
+</div>
+
+    <br>
+
+    {% if acts %}
+    <a href="{% url 'tenants:print_rent' rent.rents_id %}">Печать договора</a>
+    <br>
+    {% endif %}
+    <a href="{% url 'tenants:create_act' rent.rents_id %}">Создать акт</a>
+    <br>
+    <a href="{% url 'tenants:view' rent.tenants.tenants_id %}">Вернуться к странице арендатора</a>
+    <br>
+    <br>
+
+{% if acts %}
+    <h3>Акты:</h3>
+<ul>
+  {% for act in acts %}
+      {% if act.is_active == True %}
+          <li><a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a>
+          ({{ act.term_left.days }} дней осталось)
+          (<a href="{% url 'tenants:edit_act' act.act_number %}">изменить</a>)</li>
+      {% endif %}
+      {% if act.is_active == False %}
+          <li><a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a>
+          (срок аренды истек)
+          (<a href="{% url 'tenants:edit_act' act.act_number %}">изменить</a>)</li>
+      {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

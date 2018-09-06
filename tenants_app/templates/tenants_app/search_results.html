@@ -1,0 +1,22 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<p>Вы искали: <strong>{{ query }}</strong></p>
+
+{% if tenants %}
+    <p>Найдены арендаторы:</p>
+    <ul>
+        {% for tenant in tenants %}
+         <li><a href="{% url 'tenants:view' tenant.tenants_id %}">{{ tenant.name }}</a>
+             (<a href="{% url 'tenants:edit' tenant.tenants_id %}">изменить</a>)</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>По вашему запросу ничего не найдено</p>
+    <a href="{% url 'tenants:create' %}">Создать нового арендатора</a>
+    <br>
+    <br>
+{% endif %}
+
+{% endblock %}

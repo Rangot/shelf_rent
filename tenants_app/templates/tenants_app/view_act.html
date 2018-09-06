@@ -1,0 +1,33 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<div>
+    <p>Номер акта: {{ act.act_number }}</p>
+    <p>Номер договора: {{ act.rents }}</p>
+    <p>Номер полки: {{ act.shelf }}</p>
+    <p>Начало аренды: {{ act.start_date }}</p>
+    <p>Конец аренды: {{ act.stop_date }}</p>
+    <p>Оплата: {{ act.payment }}</p>
+</div>
+
+    <br>
+    <a href="{% url 'tenants:print_act' act.act_number %}">Печать акта</a>
+    <br>
+    <a href="{% url 'tenants:create_order' act.act_number %}">Создать товар</a>
+    <br>
+    <a href="{% url 'tenants:view_rent' act.rents.rents_id %}">Вернуться к договорам</a>
+    <br>
+    <br>
+
+ {% if orders %}
+    <h3>Товары:</h3>
+<ul>
+  {% for order in orders %}
+          <li><a href="{% url 'tenants:view_order' order.orders_id %}">{{ order.name_item }}</a>
+          (<a href="{% url 'tenants:edit_order' order.orders_id %}">изменить</a>)</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<form action="{% url 'tenants:create_rent' instance.tenants_id %}" method="POST">
+    {% csrf_token %}
+
+    <hr />
+
+    <h2>Заполните поля:</h2>
+    {{ rents_form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ rents_form.start_date.errors }}
+    <label for="{{ rents_form.start_date.id_for_label }}">Дата заключения:</label>
+    {{ rents_form.start_date }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ rents_form.stop_date.errors }}
+    <label for="{{ rents_form.stop_date.id_for_label }}">Дата истечения:</label>
+    {{ rents_form.stop_date }}
+</div>
+<div class="fieldWrapper">
+    {{ rents_form.tenants.as_hidden }}
+</div>
+    <br>
+
+    <input type="submit" value="Создать" />
+</form>
+
+{% endblock %}

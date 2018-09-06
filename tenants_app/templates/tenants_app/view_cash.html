@@ -1,0 +1,60 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+    <a href="{% url 'tenants:sales_ledger' %}">Вернуться к списку полок</a>
+
+    <h2>Книга продаж</h2>
+    <style>
+    h2 {text-align: center}
+    </style>
+
+    <br>
+    <br>
+<div class="container">
+    <div class="row">
+            <div class="col-lg-3">
+        <p>Наименование товара:</p>
+            <ul>
+            {% for cash in cashes %}
+                <a href="{% url 'tenants:edit_cash' cash.id_cash %}">{{ cash.orders.name_item }}</a>
+                (полка {{ cash.orders.act.shelf.name }})
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+            <div class="col-lg-3">
+        <p>Продано:</p>
+            <ul>
+            {% for cash in cashes %}
+                {{ cash.sell }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+            <div class="col-lg-3">
+        <p>Забрал арендатор:</p>
+            <ul>
+            {% for cash in cashes %}
+                {{ cash.take }}
+                <br>
+            {% endfor %}
+            </ul>
+        </div>
+            <div class="col-lg-3">
+        <p>Дата продажи:</p>
+            <ul>
+            {% for cash in cashes %}
+                {{ cash.cash_date }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+    </div>
+</div>
+
+    <br>
+    <br>
+
+
+{% endblock %}

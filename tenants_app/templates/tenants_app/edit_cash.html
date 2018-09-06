@@ -1,0 +1,48 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<form action="{% url 'tenants:edit_cash' instance.id_cash %}" method="POST">
+    {% csrf_token %}
+
+    <hr />
+
+    <h2>Заполните поля:</h2>
+    {{ cash_form.non_field_errors }}
+<div class="fieldWrapper">
+    {{ cash_form.cash_date.errors }}
+    <label for="{{ cash_form.cash_date.id_for_label }}">Дата продажи:</label>
+    {{ cash_form.cash_date }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ cash_form.sell.errors }}
+    <label for="{{ cash_form.sell.id_for_label }}">Продано:</label>
+    {{ cash_form.sell }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ cash_form.take.errors }}
+    <label for="{{ cash_form.take.id_for_label }}">Забрал арендатор:</label>
+    {{ cash_form.take }}
+</div>
+    <br>
+<div class="fieldWrapper">
+    {{ cash_form.discount.errors }}
+    <label for="{{ cash_form.discount.id_for_label }}">Скидка:</label>
+    {{ cash_form.discount }}
+</div>
+<div class="fieldWrapper">
+    {{ cash_form.orders.as_hidden }}
+</div>
+    <br>
+
+    <input type="submit" value="Сохранить" />
+</form>
+
+<form action="{% url 'tenants:delete_cash' instance.id_cash %}" method="GET">
+    <input type="submit" value="Удалить" />
+</form>
+
+{% endblock %}
+

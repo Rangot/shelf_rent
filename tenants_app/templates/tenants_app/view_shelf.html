@@ -1,0 +1,61 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<div>
+    <p>Полка: {{ shelf.name }}</p>
+    {% if act %}
+    <p>Номер договора: <a href="{% url 'tenants:view_rent' act.rents.rents_id %}">
+        {{ act.rents.rents_id }}</a></p>
+    <p>Номер акта: <a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a></p>
+
+        <br>
+
+
+<div class="container">
+    <div class="row">
+            <div class="col-lg-3">
+        <p>Наименование товара:</p>
+            <ul>
+            {% for order in orders %}
+                <a href="{% url 'tenants:create_cash' order.orders_id %}">{{ order.name_item }}</a>
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+            <div class="col-lg-3">
+        <p>Кол-во на полке:</p>
+            <ul>
+            {% for order in orders %}
+                {{ order.quality }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+            <div class="col-lg-3">
+        <p>Продано:</p>
+            <ul>
+            {% for order in orders %}
+                {{ order.all_sell }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+            <div class="col-lg-3">
+        <p>Забрал арендатор:</p>
+            <ul>
+            {% for order in orders %}
+                {{ order.all_take }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+    </div>
+</div>
+
+    <br>
+    <br>
+
+    {% endif %}
+</div>
+{% endblock %}

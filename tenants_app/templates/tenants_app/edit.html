@@ -1,0 +1,21 @@
+{% extends 'tenants_app/_base.html' %}
+
+{% block content %}
+
+<form action="{% url 'tenants:edit' instance.tenants_id %}" method="POST">
+    {% csrf_token %}
+
+    <hr />
+
+    <h2>Заполните поля:</h2>
+    {{ tenants_form.as_p }}
+    <br>
+
+    <input type="submit" value="Сохранить" />
+</form>
+    <!--
+<form action="" method="GET">
+    <input type="submit" value="Удалить" />
+</form>
+    -->
+{% endblock %}
