@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # convert html to pdf:
     'wkhtmltopdf',
+    'easy_pdf',
     # debug:
     'debug_toolbar',
     # my apps:

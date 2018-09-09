@@ -2,16 +2,25 @@ from django.urls import reverse
 from django.db.models import Q
 from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, FileResponse
 from django.shortcuts import render_to_response
+from django.template.loader import get_template
+# from weasyprint import HTML, CSS
 from django.contrib import messages
 
 # from django.views.generic import View
 # from .utils import render_to_pdf
 # from shelf_rent import settings
 
-# from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
+from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 import pdfkit
+from io import StringIO
+from xhtml2pdf import pisa
+from django.template.loader import get_template
+from django.template import Context
+from django.http import HttpResponse
+from cgi import html
+
 
 from django.template.loader import render_to_string
 
@@ -180,20 +189,51 @@ def edit_rent(request, rents_id):
 
     return HttpResponse(status=405)
 
+# export_to_pdf for windows
 
 def export_to_pdf_rent(request, rents_id):
     rent = Rents.objects.filter(rents_id=rents_id).first()
     acts = Act.objects.filter(rents=rent).filter(is_active=True)
     context = {'rent': rent, 'acts': acts}
-
-    content = render_to_string('tenants_app/contract_pdf_rent.html', context)
+    content = ''
+    if len(acts) == 1:
+        content = render_to_string('tenants_app/contract_pdf_rent.html', context)
+    if len(acts) > 1:
+        content = render_to_string('tenants_app/contract_pdf_rent_many.html', context)
     pdf = pdfkit.PDFKit(content, 'string').to_pdf()
 
     response = HttpResponse(pdf)
     response['Content-Type'] = 'application/pdf'
     # 'attachment' instead 'inline' to print
-    response['Content-disposition'] = 'inline; filename="print.pdf"'
+    response['Content-disposition'] = 'inline; filename="print_rent.pdf"'
     return response
+
+'''
+# export_to_pdf for linux/python any where
+def export_to_pdf_rent(request, rents_id):
+    rent = Rents.objects.filter(rents_id=rents_id).first()
+    acts = Act.objects.filter(rents=rent).filter(is_active=True)
+    context = {'rent': rent, 'acts': acts}
+    template = get_template('tenants_app/contract_pdf_rent.html')
+    html = template.render(context)
+    result = StringIO()
+
+    pdf = pisa.pisaDocument(StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+'''
+
+# ReportLab
+class InvoicePDFView(PDFTemplateView):
+    template_name = "tenants_app/contract_pdf_rent.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        rent = Rents.objects.filter(rents_id=context['rents_id']).first()
+        acts = Act.objects.filter(rents=rent).filter(is_active=True)
+        myinstance = {'rent': rent, 'acts': acts}
+        context['myinstance'] = myinstance
+        return context
 
 
 def create_act(request, rents_id):
@@ -254,6 +294,7 @@ def edit_act(request, act_number):
 
     return HttpResponse(status=405)
 
+# export_to_pdf for windows
 
 def export_to_pdf_act(request, act_number):
     act = Act.objects.filter(act_number=act_number).first()
@@ -266,9 +307,26 @@ def export_to_pdf_act(request, act_number):
     response = HttpResponse(pdf)
     response['Content-Type'] = 'application/pdf'
     # 'attachment' instead 'inline' to print
-    response['Content-disposition'] = 'inline; filename="print.pdf"'
+    response['Content-disposition'] = 'inline; filename="print_act.pdf"'
     return response
 
+'''
+# export_to_pdf for linux/python any where
+def export_to_pdf_act(request, act_number):
+    act = Act.objects.filter(act_number=act_number).first()
+    orders = Orders.objects.filter(act=act)
+    context = {'orders': orders, 'act': act}
+
+    html_string = render_to_string('tenants_app/contract_pdf_act.html', context)
+    html = HTML(string=html_string)
+    main_doc = html.render()
+    result = main_doc.write_pdf()
+
+    response = HttpResponse(result, content_type='application/pdf')
+    # 'attachment' instead 'inline' to print
+    response['Content-disposition'] = 'inline; filename="print.pdf"'
+    return response
+'''
 
 def create_order(request, act_number):
     if request.method == 'GET':

@@ -4,7 +4,7 @@ from django.urls import path
 from tenants_app.views import create, view, edit, search, export_to_pdf_rent, export_to_pdf_act, \
     create_rent, view_rent, create_act, view_act, edit_act, edit_rent, create_order, view_order, \
     edit_order, sales_ledger, create_shelf, edit_shelf, view_shelf, create_cash, \
-    view_cash, edit_cash, delete_cash
+    view_cash, edit_cash, delete_cash, InvoicePDFView
 
 app_name = 'tenants_app'
 

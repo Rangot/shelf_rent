@@ -2,12 +2,15 @@
 
 {% block content %}
 
+    <style>
+    h2 {text-align: center}
+    ul {font: 17px/20px Arial, sans-serif}
+    .a2 {font: 17px/20px Arial, sans-serif}
+    </style>
+
     <a href="{% url 'tenants:sales_ledger' %}">Вернуться к списку полок</a>
 
     <h2>Книга продаж</h2>
-    <style>
-    h2 {text-align: center}
-    </style>
 
     <br>
     <br>
@@ -17,8 +20,8 @@
         <p>Наименование товара:</p>
             <ul>
             {% for cash in cashes %}
-                <a href="{% url 'tenants:edit_cash' cash.id_cash %}">{{ cash.orders.name_item }}</a>
-                (полка {{ cash.orders.act.shelf.name }})
+                <a class="a2" href="{% url 'tenants:edit_cash' cash.id_cash %}">{{ cash.orders.name_item }}</a>
+                ({{ cash.orders.act.shelf.name }})
                 <br>
             {% endfor %}
             </ul>
