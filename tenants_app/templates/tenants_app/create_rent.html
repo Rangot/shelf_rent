@@ -14,12 +14,12 @@
     <label for="{{ rents_form.start_date.id_for_label }}">Дата заключения:</label>
     {{ rents_form.start_date }}
 </div>
-    <br>
-<div class="fieldWrapper">
-    {{ rents_form.stop_date.errors }}
-    <label for="{{ rents_form.stop_date.id_for_label }}">Дата истечения:</label>
-    {{ rents_form.stop_date }}
-</div>
+{#    <br>#}
+{#<div class="fieldWrapper">#}
+{#    {{ rents_form.stop_date.errors }}#}
+{#    <label for="{{ rents_form.stop_date.id_for_label }}">Дата истечения:</label>#}
+{#    {{ rents_form.stop_date }}#}
+{#</div>#}
 <div class="fieldWrapper">
     {{ rents_form.tenants.as_hidden }}
 </div>

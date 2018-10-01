@@ -1,10 +1,7 @@
 from django.urls import path
 # from wkhtmltopdf.views import PDFTemplateView
 
-from tenants_app.views import create, view, edit, search, export_to_pdf_rent, export_to_pdf_act, \
-    create_rent, view_rent, create_act, view_act, edit_act, edit_rent, create_order, view_order, \
-    edit_order, sales_ledger, create_shelf, edit_shelf, view_shelf, create_cash, \
-    view_cash, edit_cash, delete_cash, InvoicePDFView
+from tenants_app.views import *
 
 app_name = 'tenants_app'
 
@@ -23,16 +20,23 @@ urlpatterns = [
     path('view_cash/', view_cash, name='view_cash'),
     path('edit/<int:tenant_id>/', edit, name='edit'),
     path('edit_act/<int:act_number>/', edit_act, name='edit_act'),
+    path('edit_act_date/<int:act_number>/', edit_act_date, name='edit_act_date'),
     path('edit_rent/<int:rents_id>/', edit_rent, name='edit_rent'),
+    path('end_rent/<int:rents_id>/', end_rent, name='end_rent'),
+    path('restart_rent/<int:rents_id>/', restart_rent, name='restart_rent'),
     path('edit_order/<int:orders_id>/', edit_order, name='edit_order'),
     path('edit_shelf/<int:shelf_id>/', edit_shelf, name='edit_shelf'),
-    path('edit_cash/<int:id_cash>/', edit_cash, name='edit_cash'),
+    # path('edit_cash/<int:id_cash>/', edit_cash, name='edit_cash'),
     path('delete_cash/<int:id_cash>/', delete_cash, name='delete_cash'),
     # delete сейчас не используется
     # path('delete/<int:tenant_id>/', delete, name='delete'),
     # path('delete_order/<int:orders_id>/', delete_order, name='delete_order'),
     path('search/', search, name='search'),
-    path('print_rent/<int:rents_id>/', export_to_pdf_rent, name='print_rent'),
+    path('search_order/', search_order, name='search_order'),
+    path('search_cash/<int:pk>/', search_cash, name='search_cash'),
+    # path('print_rent/<int:rents_id>/', export_to_pdf_rent, name='print_rent'),
+    path('print_rent/<int:rents_id>/', InvoicePDFViewRent.as_view(), name='print_rent'),
     path('print_act/<int:act_number>/', export_to_pdf_act, name='print_act'),
+    path('print_act/<int:act_number>/', InvoicePDFViewAct.as_view(), name='print_act'),
     path('sales_ledger/', sales_ledger, name='sales_ledger'),
 ]

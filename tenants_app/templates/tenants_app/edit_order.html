@@ -38,13 +38,8 @@
     <label for="{{ order_form.price.id_for_label }}">Цена:</label>
     {{ order_form.price }}
 </div>
-            <br>
 <div class="fieldWrapper">
-    {{ order_form.is_active.errors }}
-    <label for="{{ order_form.is_active.id_for_label }}">Товар на полке:</label>
-    {{ order_form.is_active }}
-    <br>
-    <p>Примечание: если галочка не стоит, товар не виден на странице полки</p>
+    {{ order_form.is_active.as_hidden }}
 </div>
 <div class="fieldWrapper">
     {{ order_form.act.as_hidden }}

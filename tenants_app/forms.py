@@ -32,6 +32,18 @@ class ActForm(forms.ModelForm):
         model = Act
         fields = ['rents', 'shelf', 'start_date', 'stop_date', 'payment']
 
+    def __init__(self, *args, **kwargs):
+        super(ActForm, self).__init__(*args, **kwargs)
+        shelfs_in_use = Act.objects.filter().values('shelf')
+        shelfs = Shelf.objects.exclude(shelf_id__in=shelfs_in_use)
+        self.fields['shelf'].queryset = shelfs
+
+
+class ActFormEdit(forms.ModelForm):
+    class Meta:
+        model = Act
+        fields = ['rents', 'shelf', 'start_date', 'stop_date', 'payment']
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -48,7 +60,7 @@ class ShelfForm(forms.ModelForm):
 class CashForm(forms.ModelForm):
     class Meta:
         model = Cash
-        fields = ['cash_date', 'orders', 'sell', 'take', 'discount']
+        fields = ['cash_date', 'orders', 'sell', 'discount']
 
 
 '''

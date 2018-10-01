@@ -23,13 +23,27 @@
   {% for rent in rents %}
       {% if rent.is_active == True %}
           <li><a href="{% url 'tenants:view_rent' rent.rents_id %}">№{{ rent.rents_id }}</a>
-          ({{ rent.term_left.days }} дней осталось)
-          (<a href="{% url 'tenants:edit_rent' rent.rents_id %}">изменить</a>)</li>
+              {% if rent.is_break == False %}
+                ({{ rent.term_left.days }} дней осталось)
+              {% endif %}
+          {% if rent.is_break == True %}
+              (договор приостановлен)
+          {% endif %}
+          ( <a href="{% url 'tenants:edit_rent' rent.rents_id %}">продлить</a>
+{#          /#}
+{#              {% if rent.is_break == False %}#}
+{#                  <a href="{% url 'tenants:end_rent' rent.rents_id %}">приостановить</a>#}
+{#              {% endif %}#}
+{#              {% if rent.is_break == True %}#}
+{#                  <a href="{% url 'tenants:restart_rent' rent.rents_id %}">возобновить</a>#}
+{#              {% endif %}#}
+              )
+          </li>
       {% endif %}
       {% if rent.is_active == False %}
           <li><a href="{% url 'tenants:view_rent' rent.rents_id %}">№{{ rent.rents_id }}</a>
           (срок договора истек)
-          (<a href="{% url 'tenants:edit_rent' rent.rents_id %}">изменить</a>)</li>
+          ( <a href="{% url 'tenants:edit_rent' rent.rents_id %}">продлить</a> )</li>
       {% endif %}
   {% endfor %}
 </ul>

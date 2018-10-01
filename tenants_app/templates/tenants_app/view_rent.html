@@ -2,15 +2,28 @@
 
 {% block content %}
 
+<style>
+    p1 {
+        font: 20px/30px Arial, sans-serif;
+        color: red;
+    }
+</style>
+
 <div>
+    <p>Арендатор: {{ rent.tenants.name }}</p>
     <p>Номер договора: {{ rent.rents_id }}</p>
     <p>Дата заключения: {{ rent.start_date }}</p>
     <p>Дата истечения: {{ rent.stop_date }}</p>
     {% if rent.is_active == True %}
-    <p>До истечения договора: {{ rent.term_left.days }} дней</p>
+    <p>До истечения договора: {{ rent.term_left.days }} дней
+        (<a href="{% url 'tenants:edit_rent' rent.rents_id %}">продлить</a>
+        / <a href="{% url 'tenants:end_rent' rent.rents_id %}">приостановить</a>) </p>
     {% endif %}
     {% if rent.is_active == False %}
     <p>Срок договора истек</p>
+    {% endif %}
+    {% if rent.is_break == True %}
+    <p1>Договор приостановлен (<a href="{% url 'tenants:restart_rent' rent.rents_id %}">возобновить</a>)</p1>
     {% endif %}
 </div>
 
@@ -20,7 +33,7 @@
     <a href="{% url 'tenants:print_rent' rent.rents_id %}">Печать договора</a>
     <br>
     {% endif %}
-    <a href="{% url 'tenants:create_act' rent.rents_id %}">Создать акт</a>
+    <a href="{% url 'tenants:create_act' rent.rents_id %}">Новый акт</a>
     <br>
     <a href="{% url 'tenants:view' rent.tenants.tenants_id %}">Вернуться к странице арендатора</a>
     <br>

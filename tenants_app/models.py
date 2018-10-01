@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
-# from datetime import *
+from datetime import timedelta
 
 from django.contrib.auth.models import AbstractUser
 
@@ -42,15 +42,17 @@ class Rents(models.Model):
     rents_id = models.AutoField(primary_key=True)
     number = models.CharField(max_length=45, blank=True, null=True, unique=True, verbose_name='Номер договора')
     start_date = models.DateField(default=timezone.now, verbose_name='Дата заключения')
-    stop_date = models.DateField(verbose_name='Дата истечения')
+    stop_date = models.DateField(blank=True, null=True, verbose_name='Дата истечения')
     updated = models.DateField(auto_now=True)
     term_left = models.DurationField(blank=True, null=True, editable=False)
     is_active = models.BooleanField(default=True, editable=False)
+    is_break = models.BooleanField(default=False, editable=False)
     tenants = models.ForeignKey('Tenants', related_name='tenants', db_column='tenants', verbose_name='Арендатор',
                                 on_delete=models.DO_NOTHING)
 
     def save(self, **kwargs):
         super(Rents, self).save(**kwargs)
+        self.stop_date = self.start_date + timedelta(days=365)
         self.term_left = self.stop_date - self.updated
         if self.term_left.days <= 0:
             self.is_active = False
@@ -79,7 +81,8 @@ class Act(models.Model):
     updated = models.DateField(auto_now=True)
     term = models.DurationField(blank=True, null=True, editable=False)
     term_left = models.DurationField(blank=True, null=True, editable=False)
-    payment = models.CharField(max_length=45, blank=True, null=True, verbose_name='Оплата')
+    payment = models.CharField(max_length=45, verbose_name='Оплата')
+    all_payment = models.CharField(max_length=45, default=None, blank=True, null=True)
     is_active = models.BooleanField(default=True, editable=False)
 
     def save(self, **kwargs):
@@ -90,6 +93,8 @@ class Act(models.Model):
             self.is_active = False
         elif self.term_left.days > 0:
             self.is_active = True
+        if not self.all_payment:
+            self.all_payment = int(self.payment)
         super(Act, self).save(**kwargs)
 
     class Meta:
@@ -102,8 +107,8 @@ class Cash(models.Model):
     orders = models.ForeignKey('Orders', models.DO_NOTHING, null=True, db_column='orders',
                                verbose_name='Наименование товара')
     sell = models.CharField(max_length=45, default=0, verbose_name='Продано')
-    take = models.CharField(max_length=45, default=0, verbose_name='Забрал арендатор')
-    discount = models.CharField(max_length=45, blank=True, null=True, verbose_name='Скидка')
+    discount = models.CharField(max_length=45, default=0, verbose_name='Скидка')
+
 
     class Meta:
         db_table = 'cash'

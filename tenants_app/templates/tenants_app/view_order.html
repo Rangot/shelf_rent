@@ -9,9 +9,12 @@
     <p>Материалы: {{ order.materials }}</p>
     <p>Количество: {{ order.quality }}</p>
     <p>Цена: {{ order.price }}</p>
-    <p>Товар на полке: {{ order.is_active }}</p>
 </div>
 
+    <br>
+        <a href="{% url 'tenants:edit_order' order.orders_id %}">Изменить</a>
+    <br>
+        <a href="{% url 'tenants:create_order' order.act.act_number %}">Добавить товар</a>
     <br>
         <a href="{% url 'tenants:view_act' order.act.act_number %}">Вернуться к акту</a>
     <br>

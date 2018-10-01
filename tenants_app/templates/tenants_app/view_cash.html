@@ -2,15 +2,53 @@
 
 {% block content %}
 
+    <script type="text/javascript">
+        function empty() {
+            var x;
+            x = document.getElementById("datepicker").value;
+            if (x == "") {
+                alert("Введите дату");
+                return false;
+            }
+        }
+    </script>
+
+
     <style>
     h2 {text-align: center}
     ul {font: 17px/20px Arial, sans-serif}
     .a2 {font: 17px/20px Arial, sans-serif}
+    .btn-primary {font: 17px/20px Arial}
     </style>
 
-    <a href="{% url 'tenants:sales_ledger' %}">Вернуться к списку полок</a>
+    <h2>Книга продаж
+        {% if query %}
+        ({{ show_date }})
+        {% endif %}
+        {% if today %}
+        ({{ today }})
+        {% endif %}
+    </h2>
 
-    <h2>Книга продаж</h2>
+    <p>Фильтры поиска:</p>
+    <a href="{% url 'tenants:search_cash' pk=1 %}">
+        <button type="button" class="btn btn-primary">Неделя</button></a>
+    <a href="{% url 'tenants:search_cash' pk=2 %}">
+        <button type="button" class="btn btn-primary">Месяц</button></a>
+    <a href="{% url 'tenants:search_cash' pk=3 %}">
+        <button type="button" class="btn btn-primary">Год</button></a>
+
+    <br>
+    <br>
+
+    <p>Поиск по дате:</p>
+    <form action="{% url 'tenants:search_cash' pk=4 %}" method="get">
+        <input title="" type="date" id="datepicker" autocomplete="off" name="q">
+        <input type="submit" value="Найти" onClick="empty()">
+    </form>
+    {% if error %}
+        <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
+    {% endif %}
 
     <br>
     <br>
@@ -20,14 +58,14 @@
         <p>Наименование товара:</p>
             <ul>
             {% for cash in cashes %}
-                <a class="a2" href="{% url 'tenants:edit_cash' cash.id_cash %}">{{ cash.orders.name_item }}</a>
-                ({{ cash.orders.act.shelf.name }})
+                <a class="a2" href="{% url 'tenants:view_order' cash.orders.orders_id %}">{{ cash.orders.name_item }}</a>
+                (<a class="a2" href="{% url 'tenants:view_shelf' cash.orders.act.shelf.shelf_id %}">{{ cash.orders.act.shelf.name }}</a>)
                 <br>
             {% endfor %}
             </ul>
             </div>
             <div class="col-lg-3">
-        <p>Продано:</p>
+        <p>Количество:</p>
             <ul>
             {% for cash in cashes %}
                 {{ cash.sell }}
@@ -36,10 +74,10 @@
             </ul>
             </div>
             <div class="col-lg-3">
-        <p>Забрал арендатор:</p>
+        <p>Цена:</p>
             <ul>
-            {% for cash in cashes %}
-                {{ cash.take }}
+            {% for price in prices %}
+                {{ price }}
                 <br>
             {% endfor %}
             </ul>

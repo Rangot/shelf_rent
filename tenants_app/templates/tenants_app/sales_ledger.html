@@ -2,21 +2,43 @@
 
 {% block content %}
 
+    <style>
+        .btn {
+            background-color: #5897fb;
+            color: white;
+        }
+        .btn:hover {
+            background-color: #9acfea;
+            color: white;
+        }
+    </style>
 
-    <a href="{% url 'tenants:create_shelf' %}">Создать полку</a>
-    <br>
+    <h3>Поиск товара:</h3>
+    <form action="{% url 'tenants:search_order' %}" method="get">
+        <input title="" type="text" name="q">
+        <input type="submit" value="Найти">
+    </form>
+    {% if error %}
+        <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
+    {% endif %}
+
+    {% block content_2 %}
+    {% endblock %}
+
     <br>
 
- {% if shelfs %}
-  <h3>Выберите полку:</h3>
-<ul>
-  {% for shelf in shelfs %}
-          <li><a href="{% url 'tenants:view_shelf' shelf.shelf_id %}">{{ shelf.name }}</a>,
-              стоимость: {{ shelf.price }}
-          (<a href="{% url 'tenants:edit_shelf' shelf.shelf_id %}">изменить</a>)</li>
-  {% endfor %}
-</ul>
- {% endif %}
+   <div class="dropdown">
+  <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Выберите полку
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      {% for shelf in shelfs %}
+         <a class="dropdown-item" href="{% url 'tenants:view_shelf' shelf.shelf_id %}">{{ shelf.name }}</a>
+      {% endfor %}
+  </div>
+</div>
 
 
 {% endblock %}

@@ -12,7 +12,7 @@
     <p>Полка: {{ shelf.name }}</p>
     {% if act %}
     <p>Номер договора: <a href="{% url 'tenants:view_rent' act.rents.rents_id %}">
-        {{ act.rents.rents_id }}</a></p>
+        {{ act.rents.rents_id }}</a> ({{ act.rents.tenants }})</p>
     <p>Номер акта: <a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a></p>
 
         <br>
@@ -25,6 +25,7 @@
             <ul>
             {% for order in orders %}
                 <a class="a2" href="{% url 'tenants:create_cash' order.orders_id %}">{{ order.name_item }}</a>
+                (цена: {{ order.price }})
                 <br>
             {% endfor %}
             </ul>

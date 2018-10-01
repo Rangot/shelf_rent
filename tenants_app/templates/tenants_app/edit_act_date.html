@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'tenants:edit_act' instance.act_number %}" method="POST">
+<form action="{% url 'tenants:edit_act_date' instance.act_number %}" method="POST">
     {% csrf_token %}
 
     <hr />
@@ -12,22 +12,18 @@
 <div class="fieldWrapper">
     {{ act_form.shelf.as_hidden }}
 </div>
-    <br>
 <div class="fieldWrapper">
-    {{ act_form.start_date.errors }}
-    <label for="{{ act_form.start_date.id_for_label }}">Начало аренды:</label>
-    {{ act_form.start_date }}
+    {{ act_form.start_date.as_hidden }}
 </div>
-   <br>
 <div class="fieldWrapper">
     {{ act_form.stop_date.errors }}
-    <label for="{{ act_form.stop_date.id_for_label }}">Конец аренды:</label>
+    <label for="{{ act_form.stop_date.id_for_label }}">Введите новую дату окончания срока аренды:</label>
     {{ act_form.stop_date }}
 </div>
     <br>
 <div class="fieldWrapper">
     {{ act_form.payment.errors }}
-    <label for="{{ act_form.payment.id_for_label }}">Оплата:</label>
+    <label for="{{ act_form.payment.id_for_label }}">Оплата за продление:</label>
     {{ act_form.payment }}
 </div>
 <div class="fieldWrapper">

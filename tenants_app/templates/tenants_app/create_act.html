@@ -13,6 +13,11 @@
     {{ act_form.shelf.errors }}
     <label for="{{ act_form.shelf.id_for_label }}">Полка:</label>
     {{ act_form.shelf }}
+                {% if act_form.shelf.errors %}
+                    <div class="alert alert-danger">
+                        {{ act_form.shelf.errors }}
+                    </div>
+                {% endif %}
 </div>
     <br>
 <div class="fieldWrapper">

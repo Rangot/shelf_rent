@@ -5,6 +5,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404, FileResponse
 from django.shortcuts import render_to_response
 from django.template.loader import get_template
+from django.utils.timezone import datetime
+from datetime import datetime, timedelta
+import pytz
 # from weasyprint import HTML, CSS
 from django.contrib import messages
 
@@ -24,21 +27,30 @@ from cgi import html
 
 from django.template.loader import render_to_string
 
-from tenants_app.models import Tenants, Rents, Act, Orders, Shelf, Cash
-from tenants_app.forms import TenantsForm, RentsForm, ActForm, OrderForm, ShelfForm, CashForm
+from tenants_app.models import *
+from tenants_app.forms import *
 
 
 def index(request):
-    rents_expire = []
+    acts_expire = []
     if request.method == 'GET':
-        rents = Rents.objects.filter(is_active=True)
+        query_acts = []
+        rents = Rents.objects.filter(is_active=True, is_break=False)
         for rent in rents:
-            rent.save()
-            if 0 < rent.term_left.days < 10:
-                rents_expire.append(rent)
+            act = Act.objects.filter(rents=rent)
+            if act:
+                query_acts.append(act)
+        for acts in query_acts:
+            print(acts)
+            for act in acts:
+                print(act)
+                act.save()
+                if 0 < act.term_left.days < 4:
+                    acts_expire.append(act)
         tenants = Tenants.objects.order_by('name')
+        print(acts_expire)
         return render(request, 'tenants_app/index.html', {'tenants': tenants,
-                                                          'rents': rents_expire})
+                                                          'acts': acts_expire})
     return HttpResponse(status=405)
 
 
@@ -93,20 +105,8 @@ def edit(request, tenant_id):
 
 def view(request, tenant_id):
     if request.method == 'GET':
-        # pizza = get_object_or_404(PizzaOrder, id=pizza_order_id)
-
-        #pizza = PizzaOrder.objects.filter(id=pizza_order_id).first()
-        #pizza = PizzaOrder.objects.select_related().filter(id=pizza_order_id).first()
         tenant = Tenants.objects.filter(tenants_id=tenant_id).first()
         rents = Rents.objects.filter(tenants=tenant).order_by('is_active').reverse()
-        # pizza = PizzaOrder.objects.select_related()\
-        #     .prefetch_related()\
-        #     .filter(id=pizza_order_id)\
-        #     .first()
-        # pizza = PizzaOrder.objects\
-        #     .select_related()\
-        #     .prefetch_related('extra', 'exclude')\
-        #     .filter(id=pizza_order_id).first()
 
         if not tenant:
             raise Http404
@@ -130,6 +130,23 @@ def search(request):
     return render(request, 'tenants_app/index.html', {'error': error, 'tenants': tenants})
 
 
+def search_order(request):
+    error = False
+    orders = Orders.objects.order_by('name_item')
+    shelfs = Shelf.objects.all()
+    template = 'tenants_app/search_order_results.html'
+    if 'q' in request.GET:
+        q = request.GET.get('q')
+        if not q:
+            error = True
+        else:
+            orders = Orders.objects.filter(Q(name_item__icontains=q))
+            return render_to_response(template, {'orders': orders, 'query': q,
+                                                 'shelfs': shelfs})
+    return render(request, 'tenants_app/sales_ledger.html', {'error': error, 'orders': orders,
+                                                             'shelfs': shelfs})
+
+
 def create_rent(request, tenant_id):
     if request.method == 'GET':
         instance = Tenants.objects.get(pk=tenant_id)
@@ -142,7 +159,11 @@ def create_rent(request, tenant_id):
 
         if rents_form.is_valid():
             with transaction.atomic():
-                rent = rents_form.save()
+                count_rents = Rents.objects.filter(tenants=tenant_id).filter(is_active=True).count()
+                if count_rents == 0:
+                    rent = rents_form.save()
+                else:
+                    return HttpResponse('Нельзя создать ещё один действующий договор')
 
             return redirect(reverse('tenants:view_rent', kwargs={
                 'rents_id': rent.pk
@@ -158,8 +179,6 @@ def view_rent(request, rents_id):
     if request.method == 'GET':
         rent = Rents.objects.filter(rents_id=rents_id).first()
         acts = Act.objects.filter(rents=rent).order_by('is_active').reverse()
-        print(rent)
-        print(acts)
         if not rent:
             raise Http404
         return render(request, 'tenants_app/view_rent.html', {'rent': rent, 'acts': acts})
@@ -173,9 +192,14 @@ def edit_rent(request, rents_id):
         rent_form = RentsForm(request.POST, instance=instance)
 
         if rent_form.is_valid():
-            rent = rent_form.save(commit=False)
-            rent.instance = instance
-            rent.save()
+            tenant_id = instance.tenants_id
+            count_rents = Rents.objects.filter(tenants=tenant_id).filter(is_active=True).count()
+            if count_rents == 0:
+                rent = rent_form.save(commit=False)
+                rent.instance = instance
+                rent.save()
+            else:
+                return HttpResponse('Нельзя продлить договор пока есть действующий')
             return redirect(reverse('tenants:view_rent', kwargs={
                 'rents_id': instance.pk
             }))
@@ -188,6 +212,25 @@ def edit_rent(request, rents_id):
                           {'instance': instance, 'rent_form': RentsForm(instance=instance)})
 
     return HttpResponse(status=405)
+
+
+def end_rent(request, rents_id):
+    rent = Rents.objects.filter(rents_id=rents_id).first()
+    rent.is_break = True
+    rent.save()
+    return redirect(reverse('tenants:view_rent', kwargs={
+        'rents_id': rent.pk
+    }))
+
+
+def restart_rent(request, rents_id):
+    rent = Rents.objects.filter(rents_id=rents_id).first()
+    rent.is_break = False
+    rent.save()
+    return redirect(reverse('tenants:view_rent', kwargs={
+        'rents_id': rent.pk
+    }))
+
 
 # export_to_pdf for windows
 
@@ -223,15 +266,32 @@ def export_to_pdf_rent(request, rents_id):
         return HttpResponse(result.getvalue(), content_type='application/pdf')
 '''
 
+
 # ReportLab
-class InvoicePDFView(PDFTemplateView):
-    template_name = "tenants_app/contract_pdf_rent.html"
+class InvoicePDFViewRent(PDFTemplateView):
+    template_name = None
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         rent = Rents.objects.filter(rents_id=context['rents_id']).first()
         acts = Act.objects.filter(rents=rent).filter(is_active=True)
+        if len(acts) == 1:
+            self.template_name = 'tenants_app/contract_pdf_rent.html'
+        if len(acts) > 1:
+            self.template_name = 'tenants_app/contract_pdf_rent_many.html'
         myinstance = {'rent': rent, 'acts': acts}
+        context['myinstance'] = myinstance
+        return context
+
+
+class InvoicePDFViewAct(PDFTemplateView):
+    template_name = 'tenants_app/contract_pdf_act.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        act = Act.objects.filter(act_number=context['act_number']).first()
+        orders = Orders.objects.filter(act=act)
+        myinstance = {'orders': orders, 'act': act}
         context['myinstance'] = myinstance
         return context
 
@@ -250,7 +310,7 @@ def create_act(request, rents_id):
             with transaction.atomic():
                 act = act_form.save()
 
-            return redirect(reverse('tenants:view_act', kwargs={
+            return redirect(reverse('tenants:create_order', kwargs={
                 'act_number': act.pk
             }))
         else:
@@ -275,7 +335,8 @@ def edit_act(request, act_number):
     instance = get_object_or_404(Act, pk=act_number)
 
     if request.method == "POST":
-        act_form = ActForm(request.POST, instance=instance)
+        act_form = ActFormEdit(request.POST, instance=instance)
+        act_form.shelf = instance.shelf
 
         if act_form.is_valid():
             act = act_form.save(commit=False)
@@ -285,12 +346,37 @@ def edit_act(request, act_number):
                 'act_number': instance.pk
             }))
         else:
-            c = {'act_form': ActForm(instance=instance), 'instance': instance}
+            c = {'act_form': ActFormEdit(instance=instance), 'instance': instance}
             return render(request, 'tenants_app/edit_act.html', c)
     else:
         if request.method == 'GET':
             return render(request, 'tenants_app/edit_act.html',
-            {'instance': instance, 'act_form': ActForm(instance=instance)})
+            {'instance': instance, 'act_form': ActFormEdit(instance=instance)})
+
+    return HttpResponse(status=405)
+
+
+def edit_act_date(request, act_number):
+    instance = get_object_or_404(Act, pk=act_number)
+
+    if request.method == "POST":
+        act_form = ActFormEdit(request.POST, instance=instance)
+
+        if act_form.is_valid():
+            act = act_form.save(commit=False)
+            act.instance = instance
+            act.all_payment = int(act.all_payment) + int(act.payment)
+            act.save()
+            return redirect(reverse('tenants:view_act', kwargs={
+                'act_number': instance.pk
+            }))
+        else:
+            c = {'act_form': ActFormEdit(instance=instance), 'instance': instance}
+            return render(request, 'tenants_app/edit_act_date.html', c)
+    else:
+        if request.method == 'GET':
+            return render(request, 'tenants_app/edit_act_date.html',
+            {'instance': instance, 'act_form': ActFormEdit(instance=instance)})
 
     return HttpResponse(status=405)
 
@@ -327,6 +413,7 @@ def export_to_pdf_act(request, act_number):
     response['Content-disposition'] = 'inline; filename="print.pdf"'
     return response
 '''
+
 
 def create_order(request, act_number):
     if request.method == 'GET':
@@ -455,16 +542,6 @@ def view_shelf(request, shelf_id):
         shelf = Shelf.objects.filter(shelf_id=shelf_id).first()
         act = Act.objects.filter(shelf=shelf).first()
         orders = Orders.objects.filter(act=act).filter(is_active=True)
-        for order in orders:
-            all_sell = 0
-            all_take = 0
-            cashes = Cash.objects.filter(orders=order)
-            for cash in cashes:
-                order.quality = int(order.quality) - (int(cash.sell) + int(cash.take))
-                all_sell += int(cash.sell)
-                all_take += int(cash.take)
-            order.all_sell = int(order.all_sell) + all_sell
-            order.all_take = int(order.all_take) + all_take
         if not shelf:
             raise Http404
         return render(request, 'tenants_app/view_shelf.html', {'shelf': shelf,
@@ -473,8 +550,10 @@ def view_shelf(request, shelf_id):
 
 
 def create_cash(request, orders_id):
+    instance = Orders.objects.get(pk=orders_id)
+    act = instance.act
+    shelf = act.shelf
     if request.method == 'GET':
-        instance = Orders.objects.get(pk=orders_id)
         form = CashForm(initial={'orders': instance})
         c = {'instance': instance, 'cash_form': form}
         return render(request, 'tenants_app/create_cash.html', c)
@@ -485,8 +564,13 @@ def create_cash(request, orders_id):
         if cash_form.is_valid():
             with transaction.atomic():
                 cash = cash_form.save()
+                instance.quality = int(instance.quality) - int(cash.sell)
+                instance.all_sell = int(instance.all_sell) + int(cash.sell)
+                instance.save()
 
-            return redirect(reverse('tenants:view_cash'))
+            return redirect(reverse('tenants:view_shelf', kwargs={
+                'shelf_id': shelf.pk
+            }))
         else:
             instance = Orders.objects.get(pk=orders_id)
             return render(request, 'tenants_app/create_cash.html',
@@ -497,31 +581,82 @@ def create_cash(request, orders_id):
 
 def view_cash(request):
     if request.method == 'GET':
-        cashes = Cash.objects.all().order_by('cash_date').reverse()
-        return render(request, 'tenants_app/view_cash.html', {'cashes': cashes})
+        today = datetime.now().replace(tzinfo=pytz.UTC).date()
+        cashes = Cash.objects.filter(cash_date__year=today.year,
+                                     cash_date__month=today.month,
+                                     cash_date__day=today.day).order_by('cash_date').reverse()
+        prices = []
+        for cash in cashes:
+            price = int(cash.sell) * int(cash.orders.price)
+            prices.append(price)
+        return render(request, 'tenants_app/view_cash.html', {'cashes': cashes, 'prices': prices,
+                                                              'today': today})
     return HttpResponse(status=405)
 
 
-def edit_cash(request, id_cash):
-    instance = get_object_or_404(Cash, pk=id_cash)
+def search_cash(request, pk):
+    q_date = None
+    show_date = None
+    cashes = None
+    template = 'tenants_app/view_cash.html'
+    prices = []
+    if pk == 1:
+        now = datetime.now() - timedelta(weeks=1)
+        cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
+    elif pk == 2:
+        now = datetime.now() - timedelta(weeks=4)
+        cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
+    elif pk == 3:
+        now = datetime.now() - timedelta(weeks=52)
+        cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
 
-    if request.method == "POST":
-        cash_form = CashForm(request.POST, instance=instance)
-
-        if cash_form.is_valid():
-            cash = cash_form.save(commit=False)
-            cash.instance = instance
-            cash.save()
-            return redirect(reverse('tenants:view_cash'))
+    elif pk == 4 and 'q' in request.GET:
+        q = request.GET.get('q')
+        if not q:
+            cashes = []
         else:
-            c = {'cash_form': CashForm(instance=instance), 'instance': instance}
-            return render(request, 'tenants_app/edit_cash.html', c)
-    else:
-        if request.method == 'GET':
-            return render(request, 'tenants_app/edit_cash.html',
-                          {'instance': instance, 'cash_form': CashForm(instance=instance)})
+            q_date = datetime.strptime(q, "%Y-%m-%d")
+            cashes = Cash.objects.filter(Q(cash_date__icontains=datetime.date(q_date))).order_by('-cash_date')
+            show_date = datetime.strftime(q_date, "%d-%m-%Y")
 
-    return HttpResponse(status=405)
+    for cash in cashes:
+        price = int(cash.sell) * int(cash.orders.price)
+        prices.append(price)
+
+    return render(request, template, {'cashes': cashes, 'prices': prices, 'query': q_date,
+                                      'show_date': show_date})
+
+# not in use:
+
+# def edit_cash(request, id_cash):
+#     instance = get_object_or_404(Cash, pk=id_cash)
+#     order = instance.orders
+#     act = order.act
+#     shelf = act.shelf
+#
+#     if request.method == "POST":
+#         cash_form = CashForm(request.POST, instance=instance)
+#
+#         if cash_form.is_valid():
+#             cash = cash_form.save(commit=False)
+#             cash.instance = instance
+#             cash.save()
+#             order.quality = int(order.quality) - int(cash.sell)
+#             order.all_sell = int(order.all_sell) + int(cash.sell)
+#             order.save()
+#
+#             return redirect(reverse('tenants:view_shelf', kwargs={
+#                 'shelf_id': shelf.pk
+#             }))
+#         else:
+#             c = {'cash_form': CashForm(instance=instance), 'instance': instance}
+#             return render(request, 'tenants_app/edit_cash.html', c)
+#     else:
+#         if request.method == 'GET':
+#             return render(request, 'tenants_app/edit_cash.html',
+#                           {'instance': instance, 'cash_form': CashForm(instance=instance)})
+#
+#     return HttpResponse(status=405)
 
 
 def delete_cash(request, id_cash):

@@ -2,13 +2,29 @@
 
 {% block content %}
 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style>
+   table {
+    border: 4px double; /* Рамка вокруг таблицы */
+    width: 100%; /* Ширина таблицы */
+    border-spacing: 7px 11px; /* Расстояние между ячейками */
+   }
+   td {
+    padding: 5px; /* Поля вокруг текста */
+    border: 1px solid #a52a2a; /* Граница вокруг ячеек */
+   }
+</style>
+
 <div>
+    <p>Арендатор: {{ act.rents.tenants.name }}</p>
     <p>Номер акта: {{ act.act_number }}</p>
-    <p>Номер договора: {{ act.rents }}</p>
+    <p>Номер договора: {{ act.rents.rents_id }}</p>
     <p>Номер полки: {{ act.shelf }}</p>
     <p>Начало аренды: {{ act.start_date }}</p>
-    <p>Конец аренды: {{ act.stop_date }}</p>
-    <p>Оплата: {{ act.payment }}</p>
+    <p>Конец аренды: {{ act.stop_date }} (<a href="{% url 'tenants:edit_act_date' act.act_number %}">продлить</a>)</p>
+    <p>Оплата за текущий период: {{ act.payment }}</p>
+    <p>Общая сумма оплаты: {{ act.all_payment }}</p>
 </div>
 
     <br>
@@ -22,12 +38,92 @@
 
  {% if orders %}
     <h3>Товары:</h3>
-<ul>
-  {% for order in orders %}
-          <li><a href="{% url 'tenants:view_order' order.orders_id %}">{{ order.name_item }}</a>
-          (<a href="{% url 'tenants:edit_order' order.orders_id %}">изменить</a>)</li>
-  {% endfor %}
-</ul>
+<table width="709" border="1" cellpadding="7" cellspacing="0">
+    <colgroup>
+        <col width="23"/>
+        <col width="118"/>
+        <col width="194"/>
+        <col width="156"/>
+        <col width="62"/>
+        <col width="70"/>
+    </colgroup>
+    <tbody>
+        <tr valign="TOP">
+            <td width="23" height="12">
+                <p>
+                    №
+                </p>
+            </td>
+            <td width="118">
+                <p>
+                    Наименование
+                </p>
+            </td>
+            <td width="194">
+                <p>
+                    Описание
+                </p>
+            </td>
+            <td width="156">
+                <p>
+                    Материалы
+                </p>
+            </td>
+            <td width="62">
+                <p>
+                    Кол-во
+                </p>
+            </td>
+            <td width="70">
+                <p>
+                    Цена
+                </p>
+            </td>
+        </tr>
+        <script>
+                var num = 0;
+        </script>
+        {% if orders %}
+            {% for order in orders %}
+            <tr valign="TOP">
+                <td width="23" height="9">
+                    <p>
+                        <script>
+                            num += 1;
+                            document.write(num);
+                        </script>
+                    </p>
+                </td>
+                <td width="118">
+                    <p>
+                        <a href="{% url 'tenants:edit_order' order.orders_id %}">{{ order.name_item }}</a>
+                    </p>
+                </td>
+                <td width="194">
+                    <p>
+                        {{ order.description_item }}
+                    </p>
+                </td>
+                <td width="156">
+                    <p>
+                        {{ order.materials }}
+                    </p>
+                </td>
+                <td width="62">
+                    <p>
+                        {{ order.quality }}
+                    </p>
+                </td>
+                <td width="70">
+                    <p>
+                        {{ order.price }}
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
 {% endif %}
 
 {% endblock %}

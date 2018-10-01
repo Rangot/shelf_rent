@@ -12,7 +12,7 @@
 
     <a href="{% url 'tenants:create' %}">Создать нового арендатора</a>
     <br>
-    <a href="{% url 'tenants:sales_ledger' %}">Движение товара</a>
+    <a href="{% url 'tenants:sales_ledger' %}">Касса</a>
     <br>
     <a href="{% url 'tenants:view_cash' %}">Книга продаж</a>
     <br>
@@ -34,11 +34,12 @@
              </div>
 
              <div class="col-lg-6">
-{% if rents %}
-    <h3>Договора, у которых заканчивается срок:</h3>
+{% if acts %}
+    <h3>Заканчивается срок аренды:</h3>
 <ul>
-  {% for rent in rents %}
-      <li>{{ rent.tenants }} ({{ rent.term_left.days }} дней осталось)</li>
+  {% for act in acts %}
+      <li> <a href="{% url 'tenants:view_act' act.act_number %}">Акт №{{ act.act_number }}</a>
+          - полка {{ act.shelf }} ({{ act.rents.tenants.name }}, {{ act.term_left.days }} дней осталось)</li>
   {% endfor %}
 </ul>
 {% endif %}
