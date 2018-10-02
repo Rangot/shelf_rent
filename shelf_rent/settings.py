@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +26,7 @@ SECRET_KEY = 'qegvan-=f!f_p@#t(e@jqq)@i6a7_e05$^(6qd_rd69qx@hyf='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.45', '127.0.0.1', '127.0.0.1:80', 'localhost:8080']
+ALLOWED_HOSTS = ['192.168.0.45', '127.0.0.1', '127.0.0.1:80', 'localhost:8080', 'http://rangot.pythonanywhere.com/']
 
 
 # Application definition
@@ -148,3 +149,12 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# for Heroku deployment
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

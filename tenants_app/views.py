@@ -41,14 +41,11 @@ def index(request):
             if act:
                 query_acts.append(act)
         for acts in query_acts:
-            print(acts)
             for act in acts:
-                print(act)
                 act.save()
                 if 0 < act.term_left.days < 4:
                     acts_expire.append(act)
         tenants = Tenants.objects.order_by('name')
-        print(acts_expire)
         return render(request, 'tenants_app/index.html', {'tenants': tenants,
                                                           'acts': acts_expire})
     return HttpResponse(status=405)

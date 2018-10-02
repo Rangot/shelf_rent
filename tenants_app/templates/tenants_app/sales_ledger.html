@@ -6,19 +6,22 @@
         .btn {
             background-color: #5897fb;
             color: white;
+            font: 20px/20px Arial
         }
         .btn:hover {
             background-color: #9acfea;
             color: white;
+            font: 20px/20px Arial
         }
     </style>
 
-    <h3>Поиск товара:</h3>
+    <h4>Поиск товара:</h4>
     <form action="{% url 'tenants:search_order' %}" method="get">
         <input title="" type="text" name="q">
         <input type="submit" value="Найти">
     </form>
     {% if error %}
+        <br>
         <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
     {% endif %}
 

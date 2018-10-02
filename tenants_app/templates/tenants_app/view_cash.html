@@ -15,20 +15,20 @@
 
 
     <style>
-    h2 {text-align: center}
+    h4 {text-align: center}
     ul {font: 17px/20px Arial, sans-serif}
     .a2 {font: 17px/20px Arial, sans-serif}
     .btn-primary {font: 17px/20px Arial}
     </style>
 
-    <h2>Книга продаж
+    <h4>Книга продаж
         {% if query %}
         ({{ show_date }})
         {% endif %}
         {% if today %}
         ({{ today }})
         {% endif %}
-    </h2>
+    </h4>
 
     <p>Фильтры поиска:</p>
     <a href="{% url 'tenants:search_cash' pk=1 %}">

@@ -34,9 +34,9 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('search_order/', search_order, name='search_order'),
     path('search_cash/<int:pk>/', search_cash, name='search_cash'),
-    # path('print_rent/<int:rents_id>/', export_to_pdf_rent, name='print_rent'),
-    path('print_rent/<int:rents_id>/', InvoicePDFViewRent.as_view(), name='print_rent'),
+    path('print_rent/<int:rents_id>/', export_to_pdf_rent, name='print_rent'),
+    # path('print_rent/<int:rents_id>/', InvoicePDFViewRent.as_view(), name='print_rent'),
     path('print_act/<int:act_number>/', export_to_pdf_act, name='print_act'),
-    path('print_act/<int:act_number>/', InvoicePDFViewAct.as_view(), name='print_act'),
+    # path('print_act/<int:act_number>/', InvoicePDFViewAct.as_view(), name='print_act'),
     path('sales_ledger/', sales_ledger, name='sales_ledger'),
 ]

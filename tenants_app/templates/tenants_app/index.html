@@ -1,12 +1,13 @@
 {% extends 'tenants_app/_base.html' %}
 
 {% block content %}
-    <h3>Поиск арендатора:</h3>
+    <h4>Поиск арендатора:</h4>
     <form action="{% url 'tenants:search' %}" method="get">
         <input title="" type="text" name="q">
         <input type="submit" value="Найти">
     </form>
     {% if error %}
+        <br>
         <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
     {% endif %}
 
@@ -23,7 +24,7 @@
              <div class="col-lg-6">
 
   {% if tenants %}
-  <h3>Список арендаторов:</h3>
+  <h4>Список арендаторов:</h4>
 <ul>
   {% for tenant in tenants %}
       <li><a href="{% url 'tenants:view' tenant.tenants_id %}">{{ tenant.name }}</a>
@@ -35,7 +36,7 @@
 
              <div class="col-lg-6">
 {% if acts %}
-    <h3>Заканчивается срок аренды:</h3>
+    <h4>Заканчивается срок аренды:</h4>
 <ul>
   {% for act in acts %}
       <li> <a href="{% url 'tenants:view_act' act.act_number %}">Акт №{{ act.act_number }}</a>
