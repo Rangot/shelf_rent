@@ -236,16 +236,18 @@ def export_to_pdf_rent(request, rents_id):
     context = {'rent': rent, 'acts': acts}
     content = ''
     if len(acts) == 1:
-        content = render_to_string('tenants_app/contract_pdf_rent.html', context)
+        return render_to_response('tenants_app/contract_pdf_rent.html', context)
+        # content = render_to_string('tenants_app/contract_pdf_rent.html', context)
     if len(acts) > 1:
-        content = render_to_string('tenants_app/contract_pdf_rent_many.html', context)
-    pdf = pdfkit.PDFKit(content, 'string').to_pdf()
-
-    response = HttpResponse(pdf)
-    response['Content-Type'] = 'application/pdf'
+        return render_to_response('tenants_app/contract_pdf_rent_many.html', context)
+        # content = render_to_string('tenants_app/contract_pdf_rent_many.html', context)
+    # pdf = pdfkit.PDFKit(content, 'string').to_pdf()
+    #
+    # response = HttpResponse(pdf)
+    # response['Content-Type'] = 'application/pdf'
     # 'attachment' instead 'inline' to print
-    response['Content-disposition'] = 'inline; filename="print_rent.pdf"'
-    return response
+    # response['Content-disposition'] = 'inline; filename="print_rent.pdf"'
+    # return response
 
 '''
 # export_to_pdf for linux/python any where
@@ -382,15 +384,16 @@ def export_to_pdf_act(request, act_number):
     act = Act.objects.filter(act_number=act_number).first()
     orders = Orders.objects.filter(act=act)
     context = {'orders': orders, 'act': act}
+    return render_to_response('tenants_app/contract_pdf_act.html', context)
 
-    content = render_to_string('tenants_app/contract_pdf_act.html', context)
-    pdf = pdfkit.PDFKit(content, 'string').to_pdf()
-
-    response = HttpResponse(pdf)
-    response['Content-Type'] = 'application/pdf'
-    # 'attachment' instead 'inline' to print
-    response['Content-disposition'] = 'inline; filename="print_act.pdf"'
-    return response
+    # content = render_to_string('tenants_app/contract_pdf_act.html', context)
+    # pdf = pdfkit.PDFKit(content, 'string').to_pdf()
+    #
+    # response = HttpResponse(pdf)
+    # response['Content-Type'] = 'application/pdf'
+    # # 'attachment' instead 'inline' to print
+    # response['Content-disposition'] = 'inline; filename="print_act.pdf"'
+    # return response
 
 '''
 # export_to_pdf for linux/python any where
