@@ -130,18 +130,17 @@ def search(request):
 def search_order(request):
     error = False
     orders = Orders.objects.order_by('name_item')
-    shelfs = Shelf.objects.all()
     template = 'tenants_app/search_order_results.html'
     if 'q' in request.GET:
         q = request.GET.get('q')
         if not q:
             error = True
         else:
-            orders = Orders.objects.filter(Q(name_item__icontains=q))
-            return render_to_response(template, {'orders': orders, 'query': q,
+            orders_q = Orders.objects.filter(Q(name_item__icontains=q))
+            shelfs = Shelf.objects.filter(Q(name__icontains=q))
+            return render_to_response(template, {'orders_q': orders_q, 'query': q,
                                                  'shelfs': shelfs})
-    return render(request, 'tenants_app/sales_ledger.html', {'error': error, 'orders': orders,
-                                                             'shelfs': shelfs})
+    return render(request, 'tenants_app/sales_ledger.html', {'error': error, 'orders': orders})
 
 
 def create_rent(request, tenant_id):

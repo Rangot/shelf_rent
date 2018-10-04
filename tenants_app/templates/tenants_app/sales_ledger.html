@@ -15,7 +15,7 @@
         }
     </style>
 
-    <h4>Поиск товара:</h4>
+    <h4>Поиск товара или полки:</h4>
     <form action="{% url 'tenants:search_order' %}" method="get">
         <input title="" type="text" name="q">
         <input type="submit" value="Найти">
@@ -30,18 +30,18 @@
 
     <br>
 
-   <div class="dropdown">
-  <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Выберите полку
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      {% for shelf in shelfs %}
-         <a class="dropdown-item" href="{% url 'tenants:view_shelf' shelf.shelf_id %}">{{ shelf.name }}</a>
-      {% endfor %}
-  </div>
-</div>
+{#<div class="dropdown">#}
+{#  <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink"#}
+{#     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#    Выберите полку#}
+{#  </a>#}
+{##}
+{#  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">#}
+{#      {% for shelf in shelfs %}#}
+{#         <a class="dropdown-item" href="{% url 'tenants:view_shelf' shelf.shelf_id %}">{{ shelf.name }}</a>#}
+{#      {% endfor %}#}
+{#  </div>#}
+{#</div>#}
 
 
 {% endblock %}
