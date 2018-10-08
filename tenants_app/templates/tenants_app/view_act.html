@@ -4,6 +4,16 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+<script type="text/javascript">
+
+    function print() {
+        var URL = "{% url 'tenants:print_act' act.act_number %}";
+        var W = window.open(URL);
+        W.window.print();
+    }
+
+</script>
+
 <style>
    table {
     border: 4px double; /* Рамка вокруг таблицы */
@@ -27,8 +37,8 @@
     <p>Общая сумма оплаты: {{ act.all_payment }}</p>
 </div>
 
+    <button onclick="print()" type="button" class="btn btn-primary">Печать акта</button>
     <br>
-    <a href="{% url 'tenants:print_act' act.act_number %}">Печать акта</a>
     <br>
     <a href="{% url 'tenants:create_order' act.act_number %}">Создать товар</a>
     <br>

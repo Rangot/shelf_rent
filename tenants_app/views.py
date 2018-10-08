@@ -232,7 +232,7 @@ def restart_rent(request, rents_id):
 
 def export_to_pdf_rent(request, rents_id):
     rent = Rents.objects.filter(rents_id=rents_id).first()
-    acts = Act.objects.filter(rents=rent).filter(is_active=True)
+    acts = Act.objects.filter(rents=rent)
     context = {'rent': rent, 'acts': acts}
     content = ''
     if len(acts) == 1:

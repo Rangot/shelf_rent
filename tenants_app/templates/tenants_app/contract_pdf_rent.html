@@ -1,9 +1,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-{#<style>#}
+
+<script>
+    $(document).ready(function () {
+        window.print();
+    });
+
+        window.onafterprint = function () {
+        $('.printpage', window.parent.document).hide();
+    }
+</script>
+
+<style>
 {#p, h2, h3 {#}
 {#  letter-spacing: 1pt;#}
 {#}#}
-{#</style>#}
+
+</style>
 <h2 align="CENTER">
     ДОГОВОР № {{ rent.rents_id }}
 </h2>

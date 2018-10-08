@@ -2,6 +2,29 @@
 
 {% block content %}
 
+    <script type="text/javascript">
+
+
+    function print() {
+        var URL = "{% url 'tenants:print_rent' rent.rents_id %}";
+        var W = window.open(URL);
+        W.window.print();
+    }
+
+{#$('#createPDF').on('click',function() {#}
+{#  var $trigger = $(this);#}
+{##}
+{#  $.get('{% url 'tenants:print_rent' rent.rents_id %}', function(data) {#}
+{#      var newWindow = window.open("","_blank");#}
+{#      $(newWindow.document.body).html(data);#}
+{#      newWindow.print();#}
+{#  });#}
+{##}
+{#  return false;#}
+{#});#}
+
+    </script>
+
 <style>
     p1 {
         font: 20px/30px Arial, sans-serif;
@@ -27,10 +50,10 @@
     {% endif %}
 </div>
 
-    <br>
 
     {% if acts %}
-    <a href="{% url 'tenants:print_rent' rent.rents_id %}">Печать договора</a>
+    <button onclick="print()" type="button" class="btn btn-primary">Печать договора</button>
+    <br>
     <br>
     {% endif %}
     <a href="{% url 'tenants:create_act' rent.rents_id %}">Новый акт</a>

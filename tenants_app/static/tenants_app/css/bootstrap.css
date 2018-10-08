@@ -8960,7 +8960,7 @@ a.text-dark:hover, a.text-dark:focus {
     text-decoration: underline;
   }
   abbr[title]::after {
-    content: " (" attr(title) ")";
+    content: none;
   }
   pre {
     white-space: pre-wrap !important;
