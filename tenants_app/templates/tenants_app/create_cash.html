@@ -1,5 +1,9 @@
 {% extends 'tenants_app/_base.html' %}
 
+{% block title %}
+    Продажа
+{% endblock %}
+
 {% block content %}
 
 <form action="{% url 'tenants:create_cash' instance.orders_id %}" method="POST">

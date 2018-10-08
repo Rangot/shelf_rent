@@ -1,23 +1,11 @@
 {% extends 'tenants_app/_base.html' %}
 
-{% block content %}
-    <h4>Поиск арендатора:</h4>
-    <form action="{% url 'tenants:search' %}" method="get">
-        <input title="" type="text" name="q">
-        <input type="submit" value="Найти">
-    </form>
-    {% if error %}
-        <br>
-        <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
-    {% endif %}
+{% block title %}
+    Главная страница
+{% endblock %}
 
-    <a href="{% url 'tenants:create' %}">Создать нового арендатора</a>
-    <br>
-    <a href="{% url 'tenants:sales_ledger' %}">Касса</a>
-    <br>
-    <a href="{% url 'tenants:view_cash' %}">Книга продаж</a>
-    <br>
-    <br>
+{% block content %}
+
 
    <div class="container">
        <div class="row">
@@ -48,6 +36,4 @@
         </div>
     </div>
 
-{% endblock %}
-{% block nav %}
 {% endblock %}

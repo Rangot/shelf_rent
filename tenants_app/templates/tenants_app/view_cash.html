@@ -1,5 +1,9 @@
 {% extends 'tenants_app/_base.html' %}
 
+{% block title %}
+    Книга продаж
+{% endblock %}
+
 {% block content %}
 
     <script type="text/javascript">
@@ -46,9 +50,6 @@
         <input title="" type="date" id="datepicker" autocomplete="off" name="q">
         <input type="submit" value="Найти" onClick="empty()">
     </form>
-    {% if error %}
-        <p style="color: red;">Пожалуйста, введите запрос в поиск</p>
-    {% endif %}
 
     <br>
     <br>

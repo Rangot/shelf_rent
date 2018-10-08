@@ -1,5 +1,9 @@
 {% extends 'tenants_app/_base.html' %}
 
+{% block title %}
+    Редактировать акт
+{% endblock %}
+
 {% block content %}
 
 <form action="{% url 'tenants:edit_act' instance.act_number %}" method="POST">

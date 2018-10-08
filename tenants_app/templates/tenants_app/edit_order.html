@@ -1,5 +1,9 @@
 {% extends 'tenants_app/_base.html' %}
 
+{% block title %}
+    Редактирование товара
+{% endblock %}
+
 {% block content %}
 
 <form action="{% url 'tenants:edit_order' instance.orders_id %}" method="POST">
