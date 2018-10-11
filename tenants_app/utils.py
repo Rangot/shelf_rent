@@ -1,3 +1,5 @@
+from django.core.paginator import Paginator
+
 # import os
 # from io import BytesIO, StringIO
 # from django.http import HttpResponse
@@ -5,6 +7,31 @@
 # from shelf_rent import settings
 
 # from xhtml2pdf import pisa
+
+
+class PaginatorMixin:
+    def __init__(self, request, model, elements_on_page):
+
+        paginator = Paginator(model, elements_on_page)
+
+        page_number = request.GET.get('page', 1)
+        self.page = paginator.get_page(page_number)
+
+        self.is_paginated = self.page.has_other_pages()
+
+        if self.page.has_previous():
+            self.prev_url = '?page={}'.format(self.page.previous_page_number())
+        else:
+            self.prev_url = ''
+
+        if self.page.has_next():
+            self.next_url = '?page={}'.format(self.page.next_page_number())
+        else:
+            self.next_url = ''
+
+        return
+
+
 
 '''
 def fetch_pdf_resources(uri, rel):

@@ -24,11 +24,12 @@ from django.template import Context
 from django.http import HttpResponse
 from cgi import html
 
-
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator
 
 from tenants_app.models import *
 from tenants_app.forms import *
+from tenants_app.utils import PaginatorMixin
 
 
 def index(request):
@@ -565,6 +566,8 @@ def create_cash(request, orders_id):
                 cash = cash_form.save()
                 instance.quality = int(instance.quality) - int(cash.sell)
                 instance.all_sell = int(instance.all_sell) + int(cash.sell)
+                cash.all_cash = int(cash.sell) * int(instance.price)
+                cash.save()
                 instance.save()
 
             return redirect(reverse('tenants:view_shelf', kwargs={
@@ -579,26 +582,34 @@ def create_cash(request, orders_id):
 
 
 def view_cash(request):
+    paginator_active = True
     if request.method == 'GET':
         today = datetime.now().replace(tzinfo=pytz.UTC).date()
         cashes = Cash.objects.filter(cash_date__year=today.year,
                                      cash_date__month=today.month,
                                      cash_date__day=today.day).order_by('cash_date').reverse()
-        prices = []
-        for cash in cashes:
-            price = int(cash.sell) * int(cash.orders.price)
-            prices.append(price)
-        return render(request, 'tenants_app/view_cash.html', {'cashes': cashes, 'prices': prices,
-                                                              'today': today})
+
+        pagin = PaginatorMixin(request, model=cashes, elements_on_page=10)
+
+        context = {
+            'today': today,
+            'page_object': pagin.page,
+            'is_paginated': pagin.is_paginated,
+            'paginator_active': paginator_active,
+            'next_url': pagin.next_url,
+            'prev_url': pagin.prev_url
+        }
+
+        return render(request, 'tenants_app/view_cash.html', context)
     return HttpResponse(status=405)
 
 
 def search_cash(request, pk):
     q_date = None
     show_date = None
-    cashes = None
+    cashes = []
+    paginator_active = True
     template = 'tenants_app/view_cash.html'
-    prices = []
     if pk == 1:
         now = datetime.now() - timedelta(weeks=1)
         cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
@@ -616,14 +627,54 @@ def search_cash(request, pk):
         else:
             q_date = datetime.strptime(q, "%Y-%m-%d")
             cashes = Cash.objects.filter(Q(cash_date__icontains=datetime.date(q_date))).order_by('-cash_date')
+            paginator_active = False
             show_date = datetime.strftime(q_date, "%d-%m-%Y")
 
-    for cash in cashes:
-        price = int(cash.sell) * int(cash.orders.price)
-        prices.append(price)
+    pagin = PaginatorMixin(request, model=cashes, elements_on_page=10)
 
-    return render(request, template, {'cashes': cashes, 'prices': prices, 'query': q_date,
-                                      'show_date': show_date})
+    if q_date:
+        paginator_active = False
+
+    context = {
+        'cashes': cashes,
+        'query': q_date,
+        'show_date': show_date,
+        'page_object': pagin.page,
+        'is_paginated': pagin.is_paginated,
+        'paginator_active': paginator_active,
+        'next_url': pagin.next_url,
+        'prev_url': pagin.prev_url
+    }
+
+    return render(request, template, context)
+
+
+def delete_cash(request, id_cash):
+    instance = get_object_or_404(Cash, pk=id_cash)
+    if request.method == 'GET':
+        instance.delete()
+        return redirect(reverse('tenants:view_cash'))
+    return HttpResponse(status=405)
+
+
+'''
+# print PDF with wkhtmltopdf
+class MyPDF(View):
+    filename = None
+    template_name = None
+
+    def get(self, request, tenant_id):
+        tenant = Tenants.objects.filter(tenants_id=tenant_id).first()
+        context = {'tenant': tenant}
+
+        response = PDFTemplateResponse(request=request,
+                                       template=self.template_name,
+                                       filename=self.filename,
+                                       context=context,
+                                       show_content_in_browser=True)
+        return response
+
+'''
 
 # not in use:
 
@@ -656,31 +707,3 @@ def search_cash(request, pk):
 #                           {'instance': instance, 'cash_form': CashForm(instance=instance)})
 #
 #     return HttpResponse(status=405)
-
-
-def delete_cash(request, id_cash):
-    instance = get_object_or_404(Cash, pk=id_cash)
-    if request.method == 'GET':
-        instance.delete()
-        return redirect(reverse('tenants:view_cash'))
-    return HttpResponse(status=405)
-
-
-'''
-# print PDF with wkhtmltopdf
-class MyPDF(View):
-    filename = None
-    template_name = None
-
-    def get(self, request, tenant_id):
-        tenant = Tenants.objects.filter(tenants_id=tenant_id).first()
-        context = {'tenant': tenant}
-
-        response = PDFTemplateResponse(request=request,
-                                       template=self.template_name,
-                                       filename=self.filename,
-                                       context=context,
-                                       show_content_in_browser=True)
-        return response
-
-'''

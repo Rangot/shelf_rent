@@ -107,6 +107,7 @@ class Cash(models.Model):
     orders = models.ForeignKey('Orders', models.DO_NOTHING, null=True, db_column='orders',
                                verbose_name='Наименование товара')
     sell = models.CharField(max_length=45, default=0, verbose_name='Продано')
+    all_cash = models.CharField(max_length=45, default=0, verbose_name='Сумма продажи')
     discount = models.CharField(max_length=45, default=0, verbose_name='Скидка')
 
 

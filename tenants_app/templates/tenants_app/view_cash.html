@@ -35,6 +35,8 @@
     </h4>
 
     <p>Фильтры поиска:</p>
+    <a href="{% url 'tenants:view_cash' %}">
+        <button type="button" class="btn btn-primary">Сегодня</button></a>
     <a href="{% url 'tenants:search_cash' pk=1 %}">
         <button type="button" class="btn btn-primary">Неделя</button></a>
     <a href="{% url 'tenants:search_cash' pk=2 %}">
@@ -55,7 +57,50 @@
     <br>
 <div class="container">
     <div class="row">
+
+        {% if paginator_active %}
+
+        <div class="col-lg-3">
+        <p>Наименование товара:</p>
+            <ul>
+            {% for cash in page_object.object_list %}
+                <a class="a2" href="{% url 'tenants:view_order' cash.orders.orders_id %}">{{ cash.orders.name_item }}</a>
+                (<a class="a2" href="{% url 'tenants:view_shelf' cash.orders.act.shelf.shelf_id %}">{{ cash.orders.act.shelf.name }}</a>)
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
             <div class="col-lg-3">
+        <p>Количество:</p>
+            <ul>
+            {% for cash in page_object.object_list %}
+                {{ cash.sell }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+            <div class="col-lg-3">
+        <p>Цена:</p>
+            <ul>
+            {% for cash in page_object.object_list %}
+                {{ cash.all_cash }}
+                <br>
+            {% endfor %}
+            </ul>
+        </div>
+            <div class="col-lg-3">
+        <p>Дата продажи:</p>
+            <ul>
+            {% for cash in page_object.object_list %}
+                {{ cash.cash_date }}
+                <br>
+            {% endfor %}
+            </ul>
+            </div>
+
+        {% else %}
+
+        <div class="col-lg-3">
         <p>Наименование товара:</p>
             <ul>
             {% for cash in cashes %}
@@ -77,8 +122,8 @@
             <div class="col-lg-3">
         <p>Цена:</p>
             <ul>
-            {% for price in prices %}
-                {{ price }}
+            {% for cash in cashes %}
+                {{ cash.all_cash }}
                 <br>
             {% endfor %}
             </ul>
@@ -92,6 +137,8 @@
             {% endfor %}
             </ul>
             </div>
+
+        {% endif %}
     </div>
 </div>
 
