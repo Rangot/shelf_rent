@@ -23,6 +23,17 @@
     ul {font: 17px/20px Arial, sans-serif}
     .a2 {font: 17px/20px Arial, sans-serif}
     .btn-primary {font: 17px/20px Arial}
+
+    table {
+    border: 4px double; /* Рамка вокруг таблицы */
+    width: 100%; /* Ширина таблицы */
+    border-spacing: 7px 11px; /* Расстояние между ячейками */
+   }
+   td {
+    padding: 5px; /* Поля вокруг текста */
+    border: 1px solid #1a1919; /* Граница вокруг ячеек */
+   }
+
     </style>
 
     <h4>Книга продаж
@@ -34,116 +45,117 @@
         {% endif %}
     </h4>
 
+    <form method="get">
     <p>Фильтры поиска:</p>
-    <a href="{% url 'tenants:view_cash' %}">
-        <button type="button" class="btn btn-primary">Сегодня</button></a>
-    <a href="{% url 'tenants:search_cash' pk=1 %}">
-        <button type="button" class="btn btn-primary">Неделя</button></a>
-    <a href="{% url 'tenants:search_cash' pk=2 %}">
-        <button type="button" class="btn btn-primary">Месяц</button></a>
-    <a href="{% url 'tenants:search_cash' pk=3 %}">
-        <button type="button" class="btn btn-primary">Год</button></a>
+
+    <button type="submit" class="btn btn-primary"
+            formaction="{% url 'tenants:search_cash' pk=1 %}">Сегодня</button>
+    <button type="submit" class="btn btn-primary"
+            formaction="{% url 'tenants:search_cash' pk=2 %}">Неделя</button>
+    <button type="submit" class="btn btn-primary"
+            formaction="{% url 'tenants:search_cash' pk=3 %}">Месяц</button>
+    <button type="submit" class="btn btn-primary"
+            formaction="{% url 'tenants:search_cash' pk=4 %}">Год</button>
 
     <br>
+    <br>
+
+    <p><input title="" type="checkbox" name="nal" {% if nal %}checked{% endif %} > Расчет за наличные</p>
+    <p><input title="" type="checkbox" name="notnal" {% if notnal %}checked{% endif %} > Безналичный расчет</p>
+
     <br>
 
     <p>Поиск по дате:</p>
-    <form action="{% url 'tenants:search_cash' pk=4 %}" method="get">
         <input title="" type="date" id="datepicker" autocomplete="off" name="q">
-        <input type="submit" value="Найти" onClick="empty()">
+        <input type="submit" value="Найти" formaction="{% url 'tenants:search_cash' pk=5 %}" onClick="empty()">
     </form>
 
     <br>
-    <br>
-<div class="container">
-    <div class="row">
 
-        {% if paginator_active %}
-
-        <div class="col-lg-3">
-        <p>Наименование товара:</p>
-            <ul>
-            {% for cash in page_object.object_list %}
+    {% if page_object %}
+<table width="709" border="1" cellpadding="7" cellspacing="0">
+    <colgroup>
+        <col width="118"/>
+        <col width="70"/>
+        <col width="156"/>
+        <col width="62"/>
+        <col width="200"/>
+    </colgroup>
+    <tbody>
+        <tr valign="TOP">
+            <td width="118">
+                <p>
+                    <b>Наименование товара</b>
+                </p>
+            </td>
+            <td width="194">
+                <p>
+                    <b>Количество</b>
+                </p>
+            </td>
+            <td width="70">
+                <p>
+                    <b>Цена</b>
+                </p>
+            </td>
+            <td width="62">
+                <p>
+                    <b>Нал</b>
+                </p>
+            </td>
+            <td width="200">
+                <p>
+                    <b>Дата продажи</b>
+                </p>
+            </td>
+        </tr>
+        {% for cash in page_object.object_list %}
+            <tr valign="TOP">
+                <td width="118">
+                    <p>
                 <a class="a2" href="{% url 'tenants:view_order' cash.orders.orders_id %}">{{ cash.orders.name_item }}</a>
+                {% if cash.orders.act.shelf %}
                 (<a class="a2" href="{% url 'tenants:view_shelf' cash.orders.act.shelf.shelf_id %}">{{ cash.orders.act.shelf.name }}</a>)
                 <br>
+                {% endif %}
+                    </p>
+                </td>
+                <td width="194">
+                    <p>
+                        {{ cash.sell }}
+                    </p>
+                </td>
+                <td width="70">
+                    <p>
+                        {{ cash.all_cash }}
+                    </p>
+                </td>
+                <td width="62">
+                    <p>
+                        {{ cash.nal|yesno:"Да,Нет" }}
+                    </p>
+                </td>
+                <td width="200">
+                    <p>
+                        {{ cash.cash_date }}
+                    </p>
+                </td>
+            </tr>
             {% endfor %}
-            </ul>
-            </div>
-            <div class="col-lg-3">
-        <p>Количество:</p>
-            <ul>
-            {% for cash in page_object.object_list %}
-                {{ cash.sell }}
-                <br>
-            {% endfor %}
-            </ul>
-            </div>
-            <div class="col-lg-3">
-        <p>Цена:</p>
-            <ul>
-            {% for cash in page_object.object_list %}
-                {{ cash.all_cash }}
-                <br>
-            {% endfor %}
-            </ul>
-        </div>
-            <div class="col-lg-3">
-        <p>Дата продажи:</p>
-            <ul>
-            {% for cash in page_object.object_list %}
-                {{ cash.cash_date }}
-                <br>
-            {% endfor %}
-            </ul>
-            </div>
+    </tbody>
+</table>
 
-        {% else %}
+        <br>
 
-        <div class="col-lg-3">
-        <p>Наименование товара:</p>
-            <ul>
-            {% for cash in cashes %}
-                <a class="a2" href="{% url 'tenants:view_order' cash.orders.orders_id %}">{{ cash.orders.name_item }}</a>
-                (<a class="a2" href="{% url 'tenants:view_shelf' cash.orders.act.shelf.shelf_id %}">{{ cash.orders.act.shelf.name }}</a>)
-                <br>
-            {% endfor %}
-            </ul>
-            </div>
-            <div class="col-lg-3">
-        <p>Количество:</p>
-            <ul>
-            {% for cash in cashes %}
-                {{ cash.sell }}
-                <br>
-            {% endfor %}
-            </ul>
-            </div>
-            <div class="col-lg-3">
-        <p>Цена:</p>
-            <ul>
-            {% for cash in cashes %}
-                {{ cash.all_cash }}
-                <br>
-            {% endfor %}
-            </ul>
-        </div>
-            <div class="col-lg-3">
-        <p>Дата продажи:</p>
-            <ul>
-            {% for cash in cashes %}
-                {{ cash.cash_date }}
-                <br>
-            {% endfor %}
-            </ul>
-            </div>
-
+        <p><b>Итого:</b> {{ sum_all_cash }} руб.</p>
+        {% if nal_cash %}
+            <p>Нал: {{ nal_cash }} руб.</p>
         {% endif %}
-    </div>
-</div>
+        {% if not_nal_cash %}
+            <p>Безнал: {{ not_nal_cash }} руб.</p>
+        {% endif %}
+{% endif %}
 
     <br>
-    <br>
-
 
 {% endblock %}

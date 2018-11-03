@@ -6,15 +6,14 @@
 
 {% block content %}
 
-
    <div class="container">
        <div class="row">
              <div class="col-lg-6">
 
-  {% if tenants %}
+  {% if page_object.object_list %}
   <h4>Список арендаторов:</h4>
 <ul>
-  {% for tenant in tenants %}
+  {% for tenant in page_object.object_list %}
       <li><a href="{% url 'tenants:view' tenant.tenants_id %}">{{ tenant.name }}</a>
       (<a href="{% url 'tenants:edit' tenant.tenants_id %}">изменить</a>)</li>
   {% endfor %}

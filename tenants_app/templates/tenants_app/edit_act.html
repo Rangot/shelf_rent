@@ -13,9 +13,11 @@
 
     <h2>Заполните поля:</h2>
     {{ act_form.non_field_errors }}
-<div class="fieldWrapper">
-    {{ act_form.shelf.as_hidden }}
-</div>
+{#<div class="fieldWrapper">#}
+{#    {{ act_form.shelf.errors }}#}
+{#    <label for="{{ act_form.shelf.id_for_label }}">Выберите полку:</label>#}
+{#    {{ act_form.shelf }}#}
+{#</div>#}
     <br>
 <div class="fieldWrapper">
     {{ act_form.start_date.errors }}
@@ -39,7 +41,7 @@
 </div>
     <br>
 
-    <input type="submit" value="Сохранить" />
+    <input type="submit" value="Сохранить" onclick="this.disabled=true,this.form.submit();" />
 </form>
 
 {% endblock %}

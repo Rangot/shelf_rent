@@ -8,24 +8,14 @@
 
     <script type="text/javascript">
 
+            $('document').ready(function () {
+        $(".btnPrint").printPage({
+  url: "{% url 'tenants:print_rent' rent.rents_id %}",
+  attr: "href",
+  message:"Печать документа"
+})
 
-    function print() {
-        var URL = "{% url 'tenants:print_rent' rent.rents_id %}";
-        var W = window.open(URL);
-        W.window.print();
-    }
-
-{#$('#createPDF').on('click',function() {#}
-{#  var $trigger = $(this);#}
-{##}
-{#  $.get('{% url 'tenants:print_rent' rent.rents_id %}', function(data) {#}
-{#      var newWindow = window.open("","_blank");#}
-{#      $(newWindow.document.body).html(data);#}
-{#      newWindow.print();#}
-{#  });#}
-{##}
-{#  return false;#}
-{#});#}
+    });
 
     </script>
 
@@ -56,7 +46,7 @@
 
 
     {% if acts %}
-    <button onclick="print()" type="button" class="btn btn-primary">Печать договора</button>
+    <button class="btnPrint" type="button">Печать договора</button>
     <br>
     <br>
     {% endif %}

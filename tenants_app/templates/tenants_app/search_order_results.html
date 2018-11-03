@@ -20,11 +20,11 @@
              <a href="{% url 'tenants:edit_order' order.orders_id %}">изменить</a></li>
         {% endfor %}
     </ul>
-    {% elif shelfs %}
+    {% elif page_object.object_list %}
         <br>
     <p>Найдены полки:</p>
     <ul>
-        {% for shelf in shelfs %}
+        {% for shelf in page_object.object_list %}
              <li><a href="{% url 'tenants:view_shelf' shelf.shelf_id %}">{{ shelf.name }}</a>
                  (цена: {{ shelf.price }})
         {% endfor %}

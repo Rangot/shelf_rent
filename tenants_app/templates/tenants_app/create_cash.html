@@ -26,6 +26,12 @@
 </div>
     <br>
 <div class="fieldWrapper">
+    {{ cash_form.nal.errors }}
+    <label for="{{ cash_form.nal.id_for_label }}">Наличный расчет:</label>
+    {{ cash_form.nal }}
+</div>
+    <br>
+<div class="fieldWrapper">
     {{ cash_form.discount.errors }}
     <label for="{{ cash_form.discount.id_for_label }}">Скидка:</label>
     {{ cash_form.discount }}
@@ -35,7 +41,7 @@
 </div>
     <br>
 
-    <input type="submit" value="Продать" />
+    <input type="submit" value="Продать" onclick="this.disabled=true,this.form.submit();" />
 </form>
 
 {% endblock %}

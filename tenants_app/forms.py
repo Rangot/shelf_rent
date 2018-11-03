@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
+from django.contrib import messages
+from django.db import IntegrityError
+from django.shortcuts import render_to_response, HttpResponse
 from django.core.exceptions import ValidationError
+from ajax_select.fields import AutoCompleteSelectField, AutoCompleteSelectMultipleField
 
 from tenants_app.models import Tenants, Rents, Act, Orders, Shelf, Cash
 
@@ -26,23 +30,57 @@ class RentsForm(forms.ModelForm):
         model = Rents
         fields = ['start_date', 'stop_date', 'tenants']
 
-
-class ActForm(forms.ModelForm):
-    class Meta:
-        model = Act
-        fields = ['rents', 'shelf', 'start_date', 'stop_date', 'payment']
-
-    def __init__(self, *args, **kwargs):
-        super(ActForm, self).__init__(*args, **kwargs)
-        shelfs_in_use = Act.objects.filter().values('shelf')
-        shelfs = Shelf.objects.exclude(shelf_id__in=shelfs_in_use)
-        self.fields['shelf'].queryset = shelfs
+# создание акта с выпадающим меню полок с исключением занятых
+# class ActForm(forms.ModelForm):
+#     class Meta:
+#         model = Act
+#         fields = ['rents', 'shelf', 'start_date', 'stop_date', 'payment']
+#
+#     def __init__(self, *args, **kwargs):
+#         super(ActForm, self).__init__(*args, **kwargs)
+#         shelfs_in_use = Act.objects.filter().values('shelf')
+#         shelfs = Shelf.objects.exclude(shelf_id__in=shelfs_in_use)
+#         self.fields['shelf'].queryset = shelfs
 
 
 class ActFormEdit(forms.ModelForm):
     class Meta:
         model = Act
-        fields = ['rents', 'shelf', 'start_date', 'stop_date', 'payment']
+        fields = ['rents', 'start_date', 'stop_date', 'payment']
+
+
+class ActForm(forms.ModelForm):
+    shelf = forms.CharField(max_length=100)
+
+    def save(self, commit=True):
+        shelf_name = self.cleaned_data['shelf']
+        if Act.objects.filter(shelf__name__icontains=shelf_name).exists():
+            raise forms.ValidationError('Полка уже занята')
+        shelf = Shelf.objects.filter(name=shelf_name).first()
+        if not shelf:
+            raise forms.ValidationError('Такой полки не существует')
+        else:
+            self.instance.shelf = shelf
+            return super(ActForm, self).save(commit)
+
+    class Meta:
+        model = Act
+        fields = ['rents', 'start_date', 'stop_date', 'payment']
+        exclude = ('shelf', )
+
+        # shelfs_in_use = Act.objects.filter().values('shelf')
+        # print(shelfs_in_use)
+        # for shelf in shelfs_in_use:
+        #     if shelf == shelf_name:
+        #         return forms.ValidationError('Эта полка уже используется')
+        # try:
+        #     shelf_name = self.cleaned_data['shelf']
+        #     shelf = Shelf.objects.filter(name=shelf_name)[
+        #         0]  # returns (instance, <created?-boolean>)
+        #     self.instance.shelf = shelf
+        #     return super(ActFormEdit, self).save(commit)
+        # except IntegrityError:
+        #     return HttpResponse('Эта полка уже используется')
 
 
 class OrderForm(forms.ModelForm):
@@ -60,7 +98,7 @@ class ShelfForm(forms.ModelForm):
 class CashForm(forms.ModelForm):
     class Meta:
         model = Cash
-        fields = ['cash_date', 'orders', 'sell', 'discount']
+        fields = ['cash_date', 'orders', 'sell', 'nal', 'discount']
 
 
 '''

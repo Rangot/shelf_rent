@@ -27,19 +27,19 @@ CREATE TABLE `act` (
   `start_date` date NOT NULL,
   `stop_date` date NOT NULL,
   `term` bigint(20) DEFAULT NULL,
-  `payment` varchar(45) NOT NULL,
+  `payment` double NOT NULL,
   `rents` int(11) DEFAULT NULL,
   `shelf` int(11) DEFAULT NULL,
   `timestamp` date NOT NULL,
   `updated` date NOT NULL,
   `term_left` bigint(20) DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL,
-  `all_payment` varchar(45) DEFAULT NULL,
+  `all_payment` double DEFAULT NULL,
   PRIMARY KEY (`act_number`),
   UNIQUE KEY `act_shelf_051b0a75_uniq` (`shelf`),
   KEY `act_rents_4c9b24b7_fk_rents_rents_id` (`rents`),
   CONSTRAINT `act_rents_4c9b24b7_fk_rents_rents_id` FOREIGN KEY (`rents`) REFERENCES `rents` (`rents_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,13 +166,15 @@ DROP TABLE IF EXISTS `cash`;
 CREATE TABLE `cash` (
   `id_cash` int(11) NOT NULL AUTO_INCREMENT,
   `cash_date` datetime NOT NULL,
-  `sell` varchar(45) NOT NULL,
-  `discount` varchar(45) NOT NULL,
+  `sell` int(11) NOT NULL,
+  `discount` double NOT NULL,
   `orders` int(11) DEFAULT NULL,
+  `all_cash` double NOT NULL,
+  `nal` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_cash`),
   KEY `cash_orders_52fb5be9_fk_orders_orders_id` (`orders`),
   CONSTRAINT `cash_orders_52fb5be9_fk_orders_orders_id` FOREIGN KEY (`orders`) REFERENCES `orders` (`orders_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +230,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,19 +258,19 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `orders_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name_item` varchar(45) DEFAULT NULL,
+  `name_item` varchar(45) NOT NULL,
   `description_item` varchar(100) DEFAULT NULL,
-  `quality` varchar(45) NOT NULL,
-  `price` varchar(45) DEFAULT NULL,
+  `quality` int(11) NOT NULL,
+  `price` double NOT NULL,
   `act` int(11) NOT NULL,
   `materials` varchar(45) DEFAULT NULL,
-  `all_sell` varchar(45) NOT NULL,
-  `all_take` varchar(45) NOT NULL,
+  `all_sell` int(11) NOT NULL,
+  `all_take` int(11) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   PRIMARY KEY (`orders_id`),
   KEY `orders_act_7df5dfcd` (`act`),
   CONSTRAINT `orders_act_7df5dfcd_fk_act_act_number` FOREIGN KEY (`act`) REFERENCES `act` (`act_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +310,7 @@ CREATE TABLE `shelf` (
   `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`shelf_id`),
   UNIQUE KEY `shelf_name_515c4b5e_uniq` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,4 +342,4 @@ CREATE TABLE `tenants` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-02 18:10:17
+-- Dump completed on 2018-11-03 22:12:36

@@ -81,8 +81,8 @@ class Act(models.Model):
     updated = models.DateField(auto_now=True)
     term = models.DurationField(blank=True, null=True, editable=False)
     term_left = models.DurationField(blank=True, null=True, editable=False)
-    payment = models.CharField(max_length=45, verbose_name='Оплата')
-    all_payment = models.CharField(max_length=45, default=None, blank=True, null=True)
+    payment = models.FloatField(max_length=45, verbose_name='Оплата')
+    all_payment = models.FloatField(max_length=45, default=None, blank=True, null=True)
     is_active = models.BooleanField(default=True, editable=False)
 
     def save(self, **kwargs):
@@ -106,9 +106,10 @@ class Cash(models.Model):
     cash_date = models.DateTimeField(default=timezone.now, verbose_name='Дата продажи')
     orders = models.ForeignKey('Orders', models.DO_NOTHING, null=True, db_column='orders',
                                verbose_name='Наименование товара')
-    sell = models.CharField(max_length=45, default=0, verbose_name='Продано')
-    all_cash = models.CharField(max_length=45, default=0, verbose_name='Сумма продажи')
-    discount = models.CharField(max_length=45, default=0, verbose_name='Скидка')
+    sell = models.IntegerField(default=0, verbose_name='Продано')
+    all_cash = models.FloatField(max_length=45, default=0, verbose_name='Сумма продажи')
+    discount = models.FloatField(max_length=45, default=0, verbose_name='Скидка')
+    nal = models.BooleanField(default=True)
 
 
     class Meta:
@@ -123,13 +124,13 @@ class Cash(models.Model):
 class Orders(models.Model):
     orders_id = models.AutoField(primary_key=True)
     act = models.ForeignKey(Act, models.DO_NOTHING, db_column='act', verbose_name='Номер акта')
-    name_item = models.CharField(max_length=45, blank=True, null=True, verbose_name='Наименование')
+    name_item = models.CharField(max_length=45, verbose_name='Наименование')
     description_item = models.CharField(max_length=100, blank=True, null=True, verbose_name='Описание')
     materials = models.CharField(max_length=45, blank=True, null=True, verbose_name='Материалы')
-    quality = models.CharField(max_length=45, default=0, verbose_name='Количество')
-    all_sell = models.CharField(max_length=45, default=0, verbose_name='Всего продано')
-    all_take = models.CharField(max_length=45, default=0, verbose_name='Всего забрал арендатор')
-    price = models.CharField(max_length=45, blank=True, null=True, verbose_name='Цена')
+    quality = models.IntegerField(default=0, verbose_name='Количество')
+    all_sell = models.IntegerField(default=0, verbose_name='Всего продано')
+    all_take = models.IntegerField(default=0, verbose_name='Всего забрал арендатор')
+    price = models.FloatField(max_length=45, default=0, verbose_name='Цена')
     is_active = models.BooleanField(default=True, editable=True)
 
     class Meta:

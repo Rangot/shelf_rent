@@ -10,11 +10,13 @@
 
 <script type="text/javascript">
 
-    function print() {
-        var URL = "{% url 'tenants:print_act' act.act_number %}";
-        var W = window.open(URL);
-        W.window.print();
-    }
+    $('document').ready(function () {
+        $(".btnPrint").printPage({
+  url: "{% url 'tenants:print_act' act.act_number %}",
+  attr: "href",
+  message:"Печать документа"
+})
+});
 
 </script>
 
@@ -26,22 +28,43 @@
    }
    td {
     padding: 5px; /* Поля вокруг текста */
-    border: 1px solid #a52a2a; /* Граница вокруг ячеек */
+    border: 1px solid #1a1919; /* Граница вокруг ячеек */
    }
 </style>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 <div>
     <p>Арендатор: {{ act.rents.tenants.name }}</p>
     <p>Номер акта: {{ act.act_number }}</p>
     <p>Номер договора: {{ act.rents.rents_id }}</p>
-    <p>Номер полки: {{ act.shelf }}</p>
+    <p>Номер полки: {{ act.shelf|default_if_none:'нет привязанной полки' }}
+        {% if act.shelf %}
+            (<a href="{% url 'tenants:delete_act_shelf' act.act_number %}">отвязать полку</a>)</p>
+        {% endif %}
+        <form action="{% url 'tenants:view_act' instance.act_number %}" method="POST">
+            {% csrf_token %}
+            Изменить полку: {{ act_form.shelf }}
+            {{ act_form.start_date.as_hidden }}
+            {{ act_form.stop_date.as_hidden }}
+            {{ act_form.payment.as_hidden }}
+            {{ act_form.rents.as_hidden }}
+            <input type="submit" value="Сохранить" onclick="this.disabled=true,this.form.submit();" />
+        </form>
+    <br>
     <p>Начало аренды: {{ act.start_date }}</p>
     <p>Конец аренды: {{ act.stop_date }} (<a href="{% url 'tenants:edit_act_date' act.act_number %}">продлить</a>)</p>
     <p>Оплата за текущий период: {{ act.payment }}</p>
     <p>Общая сумма оплаты: {{ act.all_payment }}</p>
 </div>
 
-    <button onclick="print()" type="button" class="btn btn-primary">Печать акта</button>
+    <button class="btnPrint" type="button">Печать акта</button>
     <br>
     <br>
     <a href="{% url 'tenants:create_order' act.act_number %}">Создать товар</a>
@@ -73,11 +96,11 @@
                     Наименование
                 </p>
             </td>
-            <td width="194">
-                <p>
-                    Описание
-                </p>
-            </td>
+{#            <td width="194">#}
+{#                <p>#}
+{#                    Описание#}
+{#                </p>#}
+{#            </td>#}
             <td width="156">
                 <p>
                     Материалы
@@ -113,14 +136,14 @@
                         <a href="{% url 'tenants:edit_order' order.orders_id %}">{{ order.name_item }}</a>
                     </p>
                 </td>
-                <td width="194">
-                    <p>
-                        {{ order.description_item }}
-                    </p>
-                </td>
+{#                <td width="194">#}
+{#                    <p>#}
+{#                        {{ order.description_item|default_if_none:'-' }}#}
+{#                    </p>#}
+{#                </td>#}
                 <td width="156">
                     <p>
-                        {{ order.materials }}
+                        {{ order.materials|default_if_none:'-' }}
                     </p>
                 </td>
                 <td width="62">

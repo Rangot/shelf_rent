@@ -20,12 +20,12 @@ class PaginatorMixin:
         self.is_paginated = self.page.has_other_pages()
 
         if self.page.has_previous():
-            self.prev_url = '?page={}'.format(self.page.previous_page_number())
+            self.prev_url = 'page={}'.format(self.page.previous_page_number())
         else:
             self.prev_url = ''
 
         if self.page.has_next():
-            self.next_url = '?page={}'.format(self.page.next_page_number())
+            self.next_url = 'page={}'.format(self.page.next_page_number())
         else:
             self.next_url = ''
 

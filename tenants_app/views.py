@@ -15,7 +15,6 @@ from django.contrib import messages
 # from .utils import render_to_pdf
 # from shelf_rent import settings
 
-from wkhtmltopdf.views import PDFTemplateView, PDFTemplateResponse
 import pdfkit
 from io import StringIO
 from xhtml2pdf import pisa
@@ -47,8 +46,18 @@ def index(request):
                 if 0 < act.term_left.days < 4:
                     acts_expire.append(act)
         tenants = Tenants.objects.order_by('name')
-        return render(request, 'tenants_app/index.html', {'tenants': tenants,
-                                                          'acts': acts_expire})
+
+        pagin = PaginatorMixin(request, model=tenants, elements_on_page=10)
+
+        context = {
+            'page_object': pagin.page,
+            'is_paginated': pagin.is_paginated,
+            'next_url': pagin.next_url,
+            'prev_url': pagin.prev_url,
+            'acts': acts_expire
+        }
+
+        return render(request, 'tenants_app/index.html', context)
     return HttpResponse(status=405)
 
 
@@ -96,7 +105,7 @@ def edit(request, tenant_id):
     else:
         if request.method == 'GET':
             return render(request, 'tenants_app/edit.html',
-            {'instance': instance, 'tenants_form': TenantsForm(instance=instance)})
+                          {'instance': instance, 'tenants_form': TenantsForm(instance=instance)})
 
     return HttpResponse(status=405)
 
@@ -124,24 +133,19 @@ def search(request):
         else:
             tenants = Tenants.objects.filter(
                 Q(name__icontains=q) | Q(telephone__icontains=q) | Q(email__icontains=q))
-            return render_to_response(template, {'tenants': tenants, 'query': q})
+
+            pagin = PaginatorMixin(request, model=tenants, elements_on_page=10)
+
+            context = {
+                'page_object': pagin.page,
+                'is_paginated': pagin.is_paginated,
+                'next_url': pagin.next_url,
+                'prev_url': pagin.prev_url,
+                'query': q
+            }
+
+            return render_to_response(template, context)
     return render(request, 'tenants_app/index.html', {'error': error, 'tenants': tenants})
-
-
-def search_order(request):
-    error = False
-    orders = Orders.objects.order_by('name_item')
-    template = 'tenants_app/search_order_results.html'
-    if 'q' in request.GET:
-        q = request.GET.get('q')
-        if not q:
-            error = True
-        else:
-            orders_q = Orders.objects.filter(Q(name_item__icontains=q))
-            shelfs = Shelf.objects.filter(Q(name__icontains=q))
-            return render_to_response(template, {'orders_q': orders_q, 'query': q,
-                                                 'shelfs': shelfs})
-    return render(request, 'tenants_app/sales_ledger.html', {'error': error, 'orders': orders})
 
 
 def create_rent(request, tenant_id):
@@ -266,35 +270,6 @@ def export_to_pdf_rent(request, rents_id):
 '''
 
 
-# ReportLab
-class InvoicePDFViewRent(PDFTemplateView):
-    template_name = None
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        rent = Rents.objects.filter(rents_id=context['rents_id']).first()
-        acts = Act.objects.filter(rents=rent).filter(is_active=True)
-        if len(acts) == 1:
-            self.template_name = 'tenants_app/contract_pdf_rent.html'
-        if len(acts) > 1:
-            self.template_name = 'tenants_app/contract_pdf_rent_many.html'
-        myinstance = {'rent': rent, 'acts': acts}
-        context['myinstance'] = myinstance
-        return context
-
-
-class InvoicePDFViewAct(PDFTemplateView):
-    template_name = 'tenants_app/contract_pdf_act.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        act = Act.objects.filter(act_number=context['act_number']).first()
-        orders = Orders.objects.filter(act=act)
-        myinstance = {'orders': orders, 'act': act}
-        context['myinstance'] = myinstance
-        return context
-
-
 def create_act(request, rents_id):
     if request.method == 'GET':
         instance = Rents.objects.get(pk=rents_id)
@@ -321,12 +296,35 @@ def create_act(request, rents_id):
 
 
 def view_act(request, act_number):
-    if request.method == 'GET':
-        act = Act.objects.filter(act_number=act_number).first()
-        orders = Orders.objects.filter(act=act)
-        if not act:
-            raise Http404
-        return render(request, 'tenants_app/view_act.html', {'act': act, 'orders': orders})
+    instance = get_object_or_404(Act, pk=act_number)
+
+    if request.method == "POST":
+        act_form = ActForm(request.POST, instance=instance)
+
+        if act_form.is_valid():
+            act = act_form.save(commit=False)
+            act.instance = instance
+            act.save()
+            return redirect(reverse('tenants:view_act', kwargs={
+                'act_number': instance.pk
+            }))
+        else:
+            return redirect(reverse('tenants:view_act', kwargs={
+                'act_number': instance.pk
+            }))
+    else:
+        if request.method == 'GET':
+            act = Act.objects.filter(act_number=act_number).first()
+            orders = Orders.objects.filter(act=act)
+            if not act:
+                raise Http404
+            return render(request, 'tenants_app/view_act.html',
+                          {'act': act,
+                           'orders': orders,
+                           'instance': instance,
+                           'act_form': ActForm(instance=instance)
+                           })
+
     return HttpResponse(status=405)
 
 
@@ -364,7 +362,7 @@ def edit_act_date(request, act_number):
         if act_form.is_valid():
             act = act_form.save(commit=False)
             act.instance = instance
-            act.all_payment = int(act.all_payment) + int(act.payment)
+            act.all_payment = float(act.all_payment) + float(act.payment)
             act.save()
             return redirect(reverse('tenants:view_act', kwargs={
                 'act_number': instance.pk
@@ -378,6 +376,15 @@ def edit_act_date(request, act_number):
             {'instance': instance, 'act_form': ActFormEdit(instance=instance)})
 
     return HttpResponse(status=405)
+
+
+def delete_act_shelf(request, act_number):
+    act = Act.objects.filter(act_number=act_number).first()
+    act.shelf = None
+    act.save()
+    return redirect(reverse('tenants:view_act', kwargs={
+        'act_number': act.pk
+    }))
 
 # export_to_pdf for windows
 
@@ -492,6 +499,34 @@ def sales_ledger(request):
     return HttpResponse(status=405)
 
 
+def search_order(request):
+    error = False
+    orders = Orders.objects.order_by('name_item')
+    template = 'tenants_app/search_order_results.html'
+    if 'q' in request.GET:
+        q = request.GET.get('q')
+        if not q:
+            error = True
+        else:
+            orders_q = Orders.objects.filter(Q(name_item__icontains=q))
+            shelfs = Shelf.objects.filter(Q(name__icontains=q))
+
+            pagin = PaginatorMixin(request, model=shelfs, elements_on_page=10)
+
+            context = {
+                'orders_q': orders_q,
+                'query': q,
+                'page_object': pagin.page,
+                'is_paginated': pagin.is_paginated,
+                'next_url': pagin.next_url,
+                'prev_url': pagin.prev_url
+            }
+
+            return render_to_response(template, context)
+
+    return render(request, 'tenants_app/sales_ledger.html', {'error': error, 'orders': orders})
+
+
 def create_shelf(request):
     if request.method == 'GET':
         c = {
@@ -566,7 +601,7 @@ def create_cash(request, orders_id):
                 cash = cash_form.save()
                 instance.quality = int(instance.quality) - int(cash.sell)
                 instance.all_sell = int(instance.all_sell) + int(cash.sell)
-                cash.all_cash = int(cash.sell) * int(instance.price)
+                cash.all_cash = int(cash.sell) * float(instance.price)
                 cash.save()
                 instance.save()
 
@@ -582,7 +617,6 @@ def create_cash(request, orders_id):
 
 
 def view_cash(request):
-    paginator_active = True
     if request.method == 'GET':
         today = datetime.now().replace(tzinfo=pytz.UTC).date()
         cashes = Cash.objects.filter(cash_date__year=today.year,
@@ -595,7 +629,6 @@ def view_cash(request):
             'today': today,
             'page_object': pagin.page,
             'is_paginated': pagin.is_paginated,
-            'paginator_active': paginator_active,
             'next_url': pagin.next_url,
             'prev_url': pagin.prev_url
         }
@@ -605,45 +638,81 @@ def view_cash(request):
 
 
 def search_cash(request, pk):
-    q_date = None
+    q = None
+    today = None
     show_date = None
-    cashes = []
-    paginator_active = True
+    cashes = None
+    nal_true = request.GET.get('nal')
+    nal_false = request.GET.get('notnal')
+    sum_all_cash = 0
+    nal_cash = 0
+    not_nal_cash = 0
     template = 'tenants_app/view_cash.html'
-    if pk == 1:
+    if pk == 0:
+        nal_true = "on"
+        nal_false = "on"
+        today = datetime.now().replace(tzinfo=pytz.UTC).date()
+        cashes = Cash.objects.filter(cash_date__gte=today).order_by('-cash_date')
+    elif pk == 1:
+        today = datetime.now().replace(tzinfo=pytz.UTC).date()
+        cashes = Cash.objects.filter(cash_date__gte=today).order_by('-cash_date')
+    elif pk == 2:
         now = datetime.now() - timedelta(weeks=1)
         cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
-    elif pk == 2:
+    elif pk == 3:
         now = datetime.now() - timedelta(weeks=4)
         cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
-    elif pk == 3:
+    elif pk == 4:
         now = datetime.now() - timedelta(weeks=52)
         cashes = Cash.objects.filter(cash_date__gte=now).order_by('-cash_date')
 
-    elif pk == 4 and 'q' in request.GET:
+    elif pk == 5 and 'q' in request.GET:
         q = request.GET.get('q')
         if not q:
-            cashes = []
+            cashes = None
         else:
             q_date = datetime.strptime(q, "%Y-%m-%d")
             cashes = Cash.objects.filter(Q(cash_date__icontains=datetime.date(q_date))).order_by('-cash_date')
-            paginator_active = False
             show_date = datetime.strftime(q_date, "%d-%m-%Y")
 
+    if cashes:
+        nal_true = request.GET.get('nal')
+        if not nal_true:
+            cashes = cashes.exclude(nal=True)
+        nal_false = request.GET.get('notnal')
+        if not nal_false:
+            cashes = cashes.exclude(nal=False)
+
+        for cash in cashes:
+            sum_all_cash += cash.all_cash
+            sum_all_cash = float("{0:.2f}".format(sum_all_cash))
+            if cash.nal:
+                nal_cash += cash.all_cash
+                nal_cash = float("{0:.2f}".format(nal_cash))
+            else:
+                not_nal_cash += cash.all_cash
+                not_nal_cash = float("{0:.2f}".format(not_nal_cash))
+    else:
+        cashes = []
+
+    print(nal_true)
+    print(nal_false)
     pagin = PaginatorMixin(request, model=cashes, elements_on_page=10)
 
-    if q_date:
-        paginator_active = False
-
     context = {
+        'today': today,
         'cashes': cashes,
-        'query': q_date,
+        'query': q,
         'show_date': show_date,
         'page_object': pagin.page,
         'is_paginated': pagin.is_paginated,
-        'paginator_active': paginator_active,
         'next_url': pagin.next_url,
-        'prev_url': pagin.prev_url
+        'prev_url': pagin.prev_url,
+        'sum_all_cash': sum_all_cash,
+        'nal_cash': nal_cash,
+        'not_nal_cash': not_nal_cash,
+        'nal': nal_true,
+        'notnal': nal_false
     }
 
     return render(request, template, context)

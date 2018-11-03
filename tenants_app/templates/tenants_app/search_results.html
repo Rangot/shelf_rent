@@ -8,10 +8,10 @@
 
 <p>Вы искали: <strong>{{ query }}</strong></p>
 
-{% if tenants %}
+{% if page_object.object_list %}
     <p>Найдены арендаторы:</p>
     <ul>
-        {% for tenant in tenants %}
+        {% for tenant in page_object.object_list %}
          <li><a href="{% url 'tenants:view' tenant.tenants_id %}">{{ tenant.name }}</a>
              (<a href="{% url 'tenants:edit' tenant.tenants_id %}">изменить</a>)</li>
         {% endfor %}

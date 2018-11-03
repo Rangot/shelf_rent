@@ -6,6 +6,16 @@
 
 {% block content %}
 
+    <script type="text/javascript">
+        $('#edit_form').submit( function(event) {
+    // disable to avoid double submission
+    $('#submit_button').attr('disabled', true);
+});
+
+
+    </script>
+
+
 <form action="{% url 'tenants:create' %}" method="POST">
     {% csrf_token %}
 
@@ -14,7 +24,7 @@
     <h4>Заполните поля:</h4>
     {{ tenants_form.as_p }}
 
-    <input type="submit" value="Создать" />
+    <input type="submit" value="Создать" onclick="this.disabled=true,this.form.submit();" />
 </form>
 
 {% endblock %}

@@ -21,6 +21,7 @@ urlpatterns = [
     path('edit/<int:tenant_id>/', edit, name='edit'),
     path('edit_act/<int:act_number>/', edit_act, name='edit_act'),
     path('edit_act_date/<int:act_number>/', edit_act_date, name='edit_act_date'),
+    path('delete_act_shelf/<int:act_number>/', delete_act_shelf, name='delete_act_shelf'),
     path('edit_rent/<int:rents_id>/', edit_rent, name='edit_rent'),
     path('end_rent/<int:rents_id>/', end_rent, name='end_rent'),
     path('restart_rent/<int:rents_id>/', restart_rent, name='restart_rent'),

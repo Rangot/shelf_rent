@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'easy_pdf',
     # debug:
     'debug_toolbar',
+    'ajax_select',
     # my apps:
     'tenants_app',
 
