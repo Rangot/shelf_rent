@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'ajax_select',
     # my apps:
     'tenants_app',
-
+    'shelf_rent_auth',
 
 ]
 
@@ -124,9 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Authorization
 # https://docs.djangoproject.com/es/2.0/topics/auth/
 
-# AUTH_USER_MODEL = 'tenants_app.User'
-# LOGIN_URL = '/auth/login'
-# LOGIN_REDIRECT_URL = '/pizza/create'
+# AUTH_USER_MODEL = 'shelf_rent_auth.TenantUser'
+LOGIN_URL = '/auth/login'
+LOGIN_REDIRECT_URL = 'index'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -161,4 +161,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 django_heroku.settings(locals())
 
 # for solving problem with 'ssl'
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']

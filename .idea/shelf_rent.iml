@@ -24,7 +24,7 @@
         <option value="$MODULE_DIR$/tenants_app/templates" />
         <option value="$MODULE_DIR$/tenants_app/static" />
         <option value="$MODULE_DIR$/tenants_app/static/tenants_app" />
-        <option value="$MODULE_DIR$/tenants_app/static/fonts" />
+        <option value="$MODULE_DIR$/shelf_rent_auth/templates" />
       </list>
     </option>
   </component>

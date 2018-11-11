@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404, FileResponse
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from django.utils.timezone import datetime
@@ -15,22 +16,23 @@ from django.contrib import messages
 # from .utils import render_to_pdf
 # from shelf_rent import settings
 
-import pdfkit
-from io import StringIO
-from xhtml2pdf import pisa
-from django.template.loader import get_template
-from django.template import Context
-from django.http import HttpResponse
-from cgi import html
+# import pdfkit
+# from io import StringIO
+# from xhtml2pdf import pisa
+# from django.template.loader import get_template
+# from django.template import Context
+# from django.http import HttpResponse
+# from cgi import html
 
-from django.template.loader import render_to_string
-from django.core.paginator import Paginator
+# from django.template.loader import render_to_string
+# from django.core.paginator import Paginator
 
 from tenants_app.models import *
 from tenants_app.forms import *
 from tenants_app.utils import PaginatorMixin
 
 
+@login_required
 def index(request):
     acts_expire = []
     if request.method == 'GET':
@@ -61,6 +63,8 @@ def index(request):
     return HttpResponse(status=405)
 
 
+@login_required
+@permission_required('Can add tenants', raise_exception=True)
 def create(request):
     if request.method == 'GET':
         c = {
@@ -122,6 +126,7 @@ def view(request, tenant_id):
     return HttpResponse(status=405)
 
 
+@login_required
 def search(request):
     error = False
     tenants = Tenants.objects.order_by('name')
@@ -492,6 +497,7 @@ def delete_order(request, orders_id):
 '''
 
 
+@login_required
 def sales_ledger(request):
     if request.method == 'GET':
         shelfs = Shelf.objects.all()
@@ -499,6 +505,7 @@ def sales_ledger(request):
     return HttpResponse(status=405)
 
 
+@login_required
 def search_order(request):
     error = False
     orders = Orders.objects.order_by('name_item')
@@ -637,6 +644,7 @@ def view_cash(request):
     return HttpResponse(status=405)
 
 
+@login_required
 def search_cash(request, pk):
     q = None
     today = None

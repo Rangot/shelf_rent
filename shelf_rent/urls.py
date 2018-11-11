@@ -18,12 +18,14 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
+from shelf_rent_auth import urls as auth_urls
 from tenants_app import urls as tenants_urls
 from tenants_app.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('auth/', include(auth_urls, namespace='auth_app')),
     path('tenants/', include(tenants_urls, namespace='tenants')),
 
     path('', index, name='index'),
