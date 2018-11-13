@@ -18,14 +18,5 @@
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/static" />
-        <option value="$MODULE_DIR$/tenants_app/templates" />
-        <option value="$MODULE_DIR$/tenants_app/static" />
-        <option value="$MODULE_DIR$/tenants_app/static/tenants_app" />
-        <option value="$MODULE_DIR$/shelf_rent_auth/templates" />
-      </list>
-    </option>
   </component>
 </module>

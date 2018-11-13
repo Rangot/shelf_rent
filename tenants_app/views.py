@@ -115,6 +115,8 @@ def edit(request, tenant_id):
 
 
 def view(request, tenant_id):
+    pk = request.user.pk
+    print(pk)
     if request.method == 'GET':
         tenant = Tenants.objects.filter(tenants_id=tenant_id).first()
         rents = Rents.objects.filter(tenants=tenant).order_by('is_active').reverse()

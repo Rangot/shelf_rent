@@ -124,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Authorization
 # https://docs.djangoproject.com/es/2.0/topics/auth/
 
-# AUTH_USER_MODEL = 'shelf_rent_auth.TenantUser'
+AUTH_USER_MODEL = 'shelf_rent_auth.Tenant'
 LOGIN_URL = '/auth/login'
 LOGIN_REDIRECT_URL = 'index'
 
