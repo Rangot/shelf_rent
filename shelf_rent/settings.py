@@ -32,6 +32,9 @@ ALLOWED_HOSTS = ['192.168.0.45', '127.0.0.1', '127.0.0.1:80', 'localhost:8080', 
 # Application definition
 
 INSTALLED_APPS = [
+    # autocomplete:
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +50,6 @@ INSTALLED_APPS = [
     # my apps:
     'tenants_app',
     'shelf_rent_auth',
-
 ]
 
 INTERNAL_IPS = [
@@ -79,7 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -126,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'shelf_rent_auth.Tenant'
 LOGIN_URL = '/auth/login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/tenants/view'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -134,7 +136,7 @@ AUTHENTICATION_BACKENDS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
 

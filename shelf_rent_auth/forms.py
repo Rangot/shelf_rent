@@ -9,4 +9,5 @@ from shelf_rent_auth.models import Tenant
 class CustomCreationForm(UserCreationForm):
     class Meta:
         model = Tenant
-        fields = ('username', 'tenant')
+        fields = ('username', 'name', 'telephone', 'email', 'pass_serial', 'pass_number',
+                  'pass_given', 'address')

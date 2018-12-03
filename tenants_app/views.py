@@ -2,15 +2,18 @@ from django.urls import reverse
 from django.db.models import Q
 from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, Http404, FileResponse
+from django.http import Http404
 from django.contrib.auth.decorators import login_required, permission_required
-from django.shortcuts import render_to_response
-from django.template.loader import get_template
-from django.utils.timezone import datetime
+# from dal import autocomplete
+# from django.contrib.auth import update_session_auth_hash
+# from django.shortcuts import render_to_response
+# from django.template.loader import get_template
+# from django.utils.timezone import datetime
 from datetime import datetime, timedelta
 import pytz
+
 # from weasyprint import HTML, CSS
-from django.contrib import messages
+# from django.contrib import messages
 
 # from django.views.generic import View
 # from .utils import render_to_pdf
@@ -29,6 +32,7 @@ from django.contrib import messages
 
 from tenants_app.models import *
 from tenants_app.forms import *
+from shelf_rent_auth.forms import *
 from tenants_app.utils import PaginatorMixin
 
 
@@ -47,7 +51,7 @@ def index(request):
                 act.save()
                 if 0 < act.term_left.days < 4:
                     acts_expire.append(act)
-        tenants = Tenants.objects.order_by('name')
+        tenants = Tenant.objects.order_by('username').exclude(is_staff=True)
 
         pagin = PaginatorMixin(request, model=tenants, elements_on_page=10)
 
@@ -64,61 +68,102 @@ def index(request):
 
 
 @login_required
-@permission_required('Can add tenants', raise_exception=True)
+@permission_required('Can add Tenant', raise_exception=True)
 def create(request):
     if request.method == 'GET':
         c = {
-            'tenants_form': TenantsForm(),
+            'tenants_form': CustomCreationForm(),
         }
         return render(request, 'tenants_app/create.html', c)
 
     elif request.method == 'POST':
-        tenants_form = TenantsForm(request.POST)
+        tenants_form = CustomCreationForm(request.POST)
 
         if tenants_form.is_valid():
             with transaction.atomic():
                 tenant = tenants_form.save()
 
-            return redirect(reverse('tenants:view', kwargs={
-                'tenant_id': tenant.pk
+            return redirect(reverse('tenants:view_tenant', kwargs={
+                'username': tenant.username
             }))
         else:
             c = {
-                'tenants_form': TenantsForm(),
+                'tenants_form': CustomCreationForm(),
             }
             return render(request, 'tenants_app/create.html', c)
     return HttpResponse(status=405)
 
 
-def edit(request, tenant_id):
-    instance = get_object_or_404(Tenants, pk=tenant_id)
+@login_required
+def edit(request):
+    instance = get_object_or_404(Tenant, username=request.user.username)
 
     if request.method == "POST":
-        tenants_form = TenantsForm(request.POST, instance=instance)
+        tenants_form = CustomCreationForm(request.POST, instance=instance)
+
+        if tenants_form.is_valid():
+            tenant = tenants_form.save(commit=False)
+            tenant.instance = instance
+            tenant.save()
+            return redirect(reverse('tenants:view'))
+        else:
+            c = {'tenants_form': CustomCreationForm(instance=instance), 'instance': instance}
+            return render(request, 'tenants_app/edit.html', c)
+    else:
+        if request.method == 'GET':
+            return render(request, 'tenants_app/edit.html',
+                          {'instance': instance, 'tenants_form': CustomCreationForm(instance=instance)})
+
+    return HttpResponse(status=405)
+
+
+@login_required
+@permission_required('Can change Tenant', raise_exception=True)
+def edit_tenant(request, username):
+    instance = get_object_or_404(Tenant, username=username)
+
+    if request.method == "POST":
+        tenants_form = CustomCreationForm(request.POST, instance=instance)
 
         if tenants_form.is_valid():
             tenant = tenants_form.save(commit=False)
             tenant.instance = instance
             tenant.save()
             return redirect(reverse('tenants:view', kwargs={
-                'tenant_id': instance.pk
+                'username': tenant.username
             }))
         else:
-            c = {'tenants_form': TenantsForm(instance=instance), 'instance': instance}
+            c = {'tenants_form': CustomCreationForm(instance=instance), 'instance': instance}
             return render(request, 'tenants_app/edit.html', c)
     else:
         if request.method == 'GET':
             return render(request, 'tenants_app/edit.html',
-                          {'instance': instance, 'tenants_form': TenantsForm(instance=instance)})
+                          {'instance': instance, 'tenants_form': CustomCreationForm(instance=instance)})
 
     return HttpResponse(status=405)
 
 
-def view(request, tenant_id):
-    pk = request.user.pk
-    print(pk)
+@login_required
+def view(request):
+    if not request.user.is_staff:
+        tenant = get_object_or_404(Tenant, username=request.user.username)
+        rents = Rents.objects.filter(tenants=tenant).order_by('is_active').reverse()
+
+        if not tenant:
+            raise Http404
+
+        return render(request, 'tenants_app/view.html', {'tenant': tenant, 'rents': rents})
+    elif request.user.is_superuser:
+        return redirect(reverse('admin:index'))
+    else:
+        return redirect(reverse('index'))
+
+
+@login_required
+@permission_required('Can view Tenant', raise_exception=True)
+def view_tenant(request, username):
     if request.method == 'GET':
-        tenant = Tenants.objects.filter(tenants_id=tenant_id).first()
+        tenant = get_object_or_404(Tenant, username=username)
         rents = Rents.objects.filter(tenants=tenant).order_by('is_active').reverse()
 
         if not tenant:
@@ -131,15 +176,15 @@ def view(request, tenant_id):
 @login_required
 def search(request):
     error = False
-    tenants = Tenants.objects.order_by('name')
+    tenants = Tenant.objects.order_by('name').exclude(is_staff=True)
     template = 'tenants_app/search_results.html'
     if 'q' in request.GET:
         q = request.GET.get('q')
         if not q:
             error = True
         else:
-            tenants = Tenants.objects.filter(
-                Q(name__icontains=q) | Q(telephone__icontains=q) | Q(email__icontains=q))
+            tenants = Tenant.objects.filter(
+                Q(name__icontains=q) | Q(telephone__icontains=q) | Q(email__icontains=q)).exclude(is_staff=True)
 
             pagin = PaginatorMixin(request, model=tenants, elements_on_page=10)
 
@@ -157,7 +202,7 @@ def search(request):
 
 def create_rent(request, tenant_id):
     if request.method == 'GET':
-        instance = Tenants.objects.get(pk=tenant_id)
+        instance = Tenant.objects.get(pk=tenant_id)
         form = RentsForm(initial={'tenants': instance})
         c = {'instance': instance, 'rents_form': form}
         return render(request, 'tenants_app/create_rent.html', c)
@@ -177,7 +222,7 @@ def create_rent(request, tenant_id):
                 'rents_id': rent.pk
             }))
         else:
-            instance = Tenants.objects.get(pk=tenant_id)
+            instance = Tenant.objects.get(pk=tenant_id)
             return render(request, 'tenants_app/create_rent.html',
                           {'instance': instance,
                            'rents_form': RentsForm(initial={'tenants': instance})})
@@ -614,14 +659,41 @@ def create_cash(request, orders_id):
                 cash.save()
                 instance.save()
 
-            return redirect(reverse('tenants:view_shelf', kwargs={
-                'shelf_id': shelf.pk
+            return redirect(reverse('tenants:create_cash_nal_beznal', kwargs={
+                'id_cash': cash.pk
             }))
         else:
             instance = Orders.objects.get(pk=orders_id)
             return render(request, 'tenants_app/create_cash.html',
                           {'instance': instance,
                            'cash_form': CashForm(initial={'orders': instance})})
+    return HttpResponse(status=405)
+
+
+def create_cash_nal_beznal(request, id_cash):
+    instance = get_object_or_404(Cash, pk=id_cash)
+    shelf = instance.orders.act.shelf
+    # act = order.act
+    # shelf = act.shelf
+
+    if request.method == 'POST':
+        cash_form = CashForm(request.POST, instance=instance)
+
+        if cash_form.is_valid():
+            cash = cash_form.save(commit=False)
+            cash.instance = instance
+            cash.save()
+            return redirect(reverse('tenants:view_shelf', kwargs={
+                'shelf_id': shelf.pk
+            }))
+        else:
+            c = {'cash_form': CashForm(instance=instance), 'instance': instance}
+            return render(request, 'tenants_app/create_cash_nal_beznal.html', c)
+    else:
+        if request.method == 'GET':
+            return render(request, 'tenants_app/create_cash_nal_beznal.html',
+                          {'instance': instance, 'cash_form': CashForm(instance=instance)})
+
     return HttpResponse(status=405)
 
 
@@ -703,11 +775,22 @@ def search_cash(request, pk):
                 not_nal_cash += cash.all_cash
                 not_nal_cash = float("{0:.2f}".format(not_nal_cash))
     else:
-        cashes = []
+        cashes = None
+
+    if not request.user.is_staff:
+        if cashes:
+            # фильтр продаж по авторизованному пользователю
+            tenant = Tenant.objects.filter(username=request.user.username)
+            cashes_tenant = Cash.objects.filter(orders__act__rents__tenants__in=tenant)
+            cashes = cashes.filter(id_cash__in=cashes_tenant)
 
     print(nal_true)
     print(nal_false)
-    pagin = PaginatorMixin(request, model=cashes, elements_on_page=10)
+    if not cashes:
+        cashes = []
+        pagin = PaginatorMixin(request, model=cashes, elements_on_page=10)
+    else:
+        pagin = PaginatorMixin(request, model=cashes, elements_on_page=10)
 
     context = {
         'today': today,
@@ -735,25 +818,6 @@ def delete_cash(request, id_cash):
         return redirect(reverse('tenants:view_cash'))
     return HttpResponse(status=405)
 
-
-'''
-# print PDF with wkhtmltopdf
-class MyPDF(View):
-    filename = None
-    template_name = None
-
-    def get(self, request, tenant_id):
-        tenant = Tenants.objects.filter(tenants_id=tenant_id).first()
-        context = {'tenant': tenant}
-
-        response = PDFTemplateResponse(request=request,
-                                       template=self.template_name,
-                                       filename=self.filename,
-                                       context=context,
-                                       show_content_in_browser=True)
-        return response
-
-'''
 
 # not in use:
 

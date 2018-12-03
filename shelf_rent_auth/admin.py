@@ -6,26 +6,17 @@ from shelf_rent_auth.models import Tenant
 
 
 class CustomAdminModel(UserAdmin):
-    fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('tenant',)}),
-    )
+    # fieldsets = UserAdmin.fieldsets\
+    #     ((None, {'fields': ('name', 'telephone', 'email', 'pass_serial', 'pass_number', 'pass_given', 'address')}),
+    # )
     list_display = (
         'username',
         'first_name',
         'last_name',
-        'tenant',
     )
-    list_editable = (
-        'tenant',
-    )
-    list_filter = (
-        'tenant__name',
-    )
-    list_select_related = ('tenant', )
     search_fields = (
         'first_name',
         'last_name',
-        'tenant__name',
     )
 
 admin.site.register(Tenant, CustomAdminModel)
