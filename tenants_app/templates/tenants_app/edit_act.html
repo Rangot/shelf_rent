@@ -36,6 +36,12 @@
     <label for="{{ act_form.payment.id_for_label }}">Оплата:</label>
     {{ act_form.payment }}
 </div>
+    <br>
+<div class="fieldWrapper">
+    {{ act_form.category.errors }}
+    <label for="{{ act_form.category.id_for_label }}">Категория условий аренды:</label>
+    {{ act_form.category }}
+</div>
 <div class="fieldWrapper">
     {{ act_form.rents.as_hidden }}
 </div>

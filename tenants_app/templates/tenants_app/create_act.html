@@ -1,4 +1,5 @@
 {% extends 'tenants_app/_base.html' %}
+{% load static %}
 
 {% block title %}
     Создать акт
@@ -17,11 +18,12 @@
     {{ act_form.shelf.errors }}
     <label for="{{ act_form.shelf.id_for_label }}">Полка:</label>
     {{ act_form.shelf }}
-                {% if act_form.shelf.errors %}
-                    <div class="alert alert-danger">
-                        {{ act_form.shelf.errors }}
-                    </div>
-                {% endif %}
+</div>
+    <br>
+    <div class="fieldWrapper">
+    {{ act_form.category.errors }}
+    <label for="{{ act_form.category.id_for_label }}">Категория условий аренды:</label>
+    {{ act_form.category }}
 </div>
     <br>
 <div class="fieldWrapper">
@@ -45,9 +47,9 @@
     {{ act_form.rents.as_hidden }}
 </div>
     <br>
+    {{ act_form.media }}
 
     <input type="submit" value="Создать" onclick="this.disabled=true,this.form.submit();" />
 </form>
 
 {% endblock %}
-

@@ -10,14 +10,16 @@
     <p>ФИО: {{ tenant.name }}</p>
     <p>Телефон: {{ tenant.telephone }}</p>
     <p>E-mail: {{ tenant.email }}</p>
-    <p>Серия паспорта: {{ tenant.pass_serial }}</p>
-    <p>Номер паспорта: {{ tenant.pass_number }}</p>
-    <p>Выдан: {{ tenant.pass_given }}</p>
-    <p>Адрес: {{ tenant.address }}</p>
+    <p>Серия паспорта: {{ tenant.pass_serial|default_if_none:'' }}</p>
+    <p>Номер паспорта: {{ tenant.pass_number|default_if_none:'' }}</p>
+    <p>Выдан: {{ tenant.pass_given|default_if_none:'' }}</p>
+    <p>Адрес: {{ tenant.address|default_if_none:'' }}</p>
 </div>
 
     <br>
     <a href="{% url 'tenants:create_rent' tenant.tenants_id %}">Cоздать договор</a>
+    <br>
+    <a href="{% url 'tenants:payment_to_tenant' tenant.username %}">Расчет с арендатором</a>
     <br>
     <br>
 

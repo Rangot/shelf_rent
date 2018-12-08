@@ -12,8 +12,8 @@
     <p>Найдены арендаторы:</p>
     <ul>
         {% for tenant in page_object.object_list %}
-         <li><a href="{% url 'tenants:view' tenant.tenants_id %}">{{ tenant.name }}</a>
-             (<a href="{% url 'tenants:edit' tenant.tenants_id %}">изменить</a>)</li>
+         <li><a href="{% url 'tenants:view_tenant' tenant.username %}">{{ tenant.name }}</a>
+             (<a href="{% url 'tenants:edit_tenant' tenant.username %}">изменить</a>)</li>
         {% endfor %}
     </ul>
 {% else %}

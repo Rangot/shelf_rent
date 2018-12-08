@@ -3,27 +3,9 @@ from django.db import models
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from datetime import timedelta
+from .utils import CustomBooleanField
 
-from django.contrib.auth.models import AbstractUser
-
-
-class Tenants(models.Model):
-    tenants_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=45, blank=True, null=True, verbose_name='ФИО')
-    telephone = models.CharField(max_length=45, blank=True, null=True, verbose_name='Телефон')
-    email = models.EmailField(max_length=45, blank=True, null=True, verbose_name='E-mail')
-    pass_serial = models.CharField(max_length=4, blank=True, null=True, verbose_name='Серия паспорта')
-    pass_number = models.CharField(max_length=6, blank=True, null=True, verbose_name='Номер паспорта')
-    pass_given = models.TextField(max_length=1000, blank=True, null=True, verbose_name='Выдан')
-    address = models.CharField(max_length=255, blank=True, null=True, verbose_name='Адрес')
-
-    class Meta:
-        db_table = 'tenants'
-        verbose_name = 'Tenant'
-        verbose_name_plural = 'Tenants'
-
-    def __str__(self):
-        return str(self.name)
+from shelf_rent_auth.models import Tenant
 
 
 class Shelf(models.Model):
@@ -47,7 +29,7 @@ class Rents(models.Model):
     term_left = models.DurationField(blank=True, null=True, editable=False)
     is_active = models.BooleanField(default=True, editable=False)
     is_break = models.BooleanField(default=False, editable=False)
-    tenants = models.ForeignKey('Tenants', related_name='tenants', db_column='tenants', verbose_name='Арендатор',
+    tenants = models.ForeignKey(Tenant, related_name='tenant', db_column='tenant', verbose_name='Арендатор',
                                 on_delete=models.DO_NOTHING)
 
     def save(self, **kwargs):
@@ -66,7 +48,7 @@ class Rents(models.Model):
         verbose_name_plural = 'Rents'
 
     def __str__(self):
-        return str(self.rents_id) + ' (' + str(self.tenants.name) + ')'
+        return str(self.rents_id) + ' (' + str(self.tenants.username) + ')'
 
 
 class Act(models.Model):
@@ -75,6 +57,8 @@ class Act(models.Model):
                               verbose_name='Договор')
     shelf = models.OneToOneField('Shelf', models.DO_NOTHING, db_column='shelf', null=True,
                                  verbose_name='Полка')
+    category = models.ForeignKey('Category', models.DO_NOTHING, db_column='category',
+                                 verbose_name='Категория условий аренды')
     start_date = models.DateField(default=timezone.now, verbose_name='Дата заключения')
     stop_date = models.DateField(verbose_name='Дата истечения')
     timestamp = models.DateField(auto_now_add=True)
@@ -101,6 +85,25 @@ class Act(models.Model):
         db_table = 'act'
 
 
+class Category(models.Model):
+    category_id = models.AutoField(primary_key=True, verbose_name='Номер категории')
+    percent_from_sales = models.FloatField(max_length=5, default=0, verbose_name='Процент с продаж')
+    rent_of_shelf = CustomBooleanField(default=True, verbose_name='Плата за аренду полки')
+
+    class Meta:
+        db_table = 'category'
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return 'процент с продаж - ' + str(self.percent_from_sales) + '%,' + \
+               ' плата за аренду - ' + str(self.rent_of_shelf)
+
+#
+# class Payment(models.Model):
+#     payment_id = models.AutoField(primary_key=True)
+
+
 class Cash(models.Model):
     id_cash = models.AutoField(primary_key=True)
     cash_date = models.DateTimeField(default=timezone.now, verbose_name='Дата продажи')
@@ -108,9 +111,15 @@ class Cash(models.Model):
                                verbose_name='Наименование товара')
     sell = models.IntegerField(default=0, verbose_name='Продано')
     all_cash = models.FloatField(max_length=45, default=0, verbose_name='Сумма продажи')
+    cash_nal = models.FloatField(max_length=45, default=0, verbose_name='Наличный расчет')
+    cash_beznal = models.FloatField(max_length=45, default=0, verbose_name='Безналичный расчет')
     discount = models.FloatField(max_length=45, default=0, verbose_name='Скидка')
     nal = models.BooleanField(default=True)
 
+    # def save(self, **kwargs):
+    #     super(Cash, self).save(**kwargs)
+    #     self.sell = self.cash_nal + self.cash_beznal
+    #     super(Cash, self).save(**kwargs)
 
     class Meta:
         db_table = 'cash'
@@ -139,5 +148,3 @@ class Orders(models.Model):
         verbose_name_plural = 'Orders'
 
 
-# class User(AbstractUser):
-#     pass

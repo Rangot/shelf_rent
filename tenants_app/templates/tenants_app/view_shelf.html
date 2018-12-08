@@ -16,7 +16,8 @@
     <p>Полка: {{ shelf.name }}</p>
     {% if act %}
     <p>Номер договора: <a href="{% url 'tenants:view_rent' act.rents.rents_id %}">
-        {{ act.rents.rents_id }}</a> ({{ act.rents.tenants }})</p>
+        №{{ act.rents.rents_id }}</a>
+        (<a href="{% url 'tenants:view_tenant' act.rents.tenants.username %}">{{ act.rents.tenants.name }}</a>)</p>
     <p>Номер акта: <a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a></p>
 
         <br>

@@ -52,7 +52,7 @@
     {% endif %}
     <a href="{% url 'tenants:create_act' rent.rents_id %}">Новый акт</a>
     <br>
-    <a href="{% url 'tenants:view' rent.tenants.tenants_id %}">Вернуться к странице арендатора</a>
+    <a href="{% url 'tenants:view_tenant' rent.tenants.username %}">Вернуться к странице арендатора</a>
     <br>
     <br>
 
@@ -61,7 +61,8 @@
 <ul>
   {% for act in acts %}
       {% if act.is_active == True %}
-          <li><a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a>
+          <li><a href="{% url 'tenants:view_act' act.act_number %}">№{{ act.act_number }}</a>,
+              полка - {{ act.shelf }}
           ({{ act.term_left.days }} дней осталось)
           (<a href="{% url 'tenants:edit_act' act.act_number %}">изменить</a>)</li>
       {% endif %}

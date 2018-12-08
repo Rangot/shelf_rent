@@ -9,7 +9,7 @@ app_name = 'shelf_rent_auth'
 
 urlpatterns = [
     path('login/', LoginView.as_view(
-        template_name='auth_app/login.html'
+        template_name='auth_app/login.html',
     ), name='login'),
 
     path('logout/', logout_then_login, name='logout'),

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from dal import autocomplete
 from django import forms
 from django.contrib import messages
 from django.db import IntegrityError
@@ -7,22 +8,16 @@ from django.shortcuts import render_to_response, HttpResponse
 from django.core.exceptions import ValidationError
 from ajax_select.fields import AutoCompleteSelectField, AutoCompleteSelectMultipleField
 
-from tenants_app.models import Tenants, Rents, Act, Orders, Shelf, Cash
+from tenants_app.models import Rents, Act, Orders, Shelf, Cash
+from shelf_rent_auth.models import Tenant
 
-
-class TenantsForm(forms.ModelForm):
-    class Meta:
-        model = Tenants
-        fields = ['name', 'telephone', 'email', 'pass_serial', 'pass_number',
-                  'pass_given', 'address']
-
-    # def clean_email(self):
-    #     email = self.cleaned_data.get('email')
-    #     email_base, provider = email.split('@')
-    #     domain, extension = provider.split('.')
-    #     if not extension == 'com':
-    #         raise forms.ValidationError('Введите правильный адрес почты')
-    #     return email
+# def clean_email(self):
+#     email = self.cleaned_data.get('email')
+#     email_base, provider = email.split('@')
+#     domain, extension = provider.split('.')
+#     if not extension == 'com':
+#         raise forms.ValidationError('Введите правильный адрес почты')
+#     return email
 
 
 class RentsForm(forms.ModelForm):
@@ -46,11 +41,22 @@ class RentsForm(forms.ModelForm):
 class ActFormEdit(forms.ModelForm):
     class Meta:
         model = Act
-        fields = ['rents', 'start_date', 'stop_date', 'payment']
+        fields = ['rents', 'start_date', 'stop_date', 'payment', 'category']
 
 
 class ActForm(forms.ModelForm):
-    shelf = forms.CharField(max_length=100)
+    shelf = forms.ModelChoiceField(
+        queryset=Shelf.objects.all(),
+        widget=autocomplete.ModelSelect2(
+            url='shelf_autocomplete',
+            attrs={
+                # 'data-theme': 'classic',
+                'data-placeholder': 'Начните ввод...',
+                'data-minimum-input-length': 2,
+                # 'data-width': 'style',
+                # 'data-language': 'ru'
+            })
+        )
 
     def save(self, commit=True):
         shelf_name = self.cleaned_data['shelf']
@@ -65,8 +71,7 @@ class ActForm(forms.ModelForm):
 
     class Meta:
         model = Act
-        fields = ['rents', 'start_date', 'stop_date', 'payment']
-        exclude = ('shelf', )
+        fields = ['rents', 'start_date', 'stop_date', 'payment', 'category']
 
         # shelfs_in_use = Act.objects.filter().values('shelf')
         # print(shelfs_in_use)
@@ -98,7 +103,7 @@ class ShelfForm(forms.ModelForm):
 class CashForm(forms.ModelForm):
     class Meta:
         model = Cash
-        fields = ['cash_date', 'orders', 'sell', 'nal', 'discount']
+        fields = ['cash_date', 'orders', 'sell', 'cash_nal', 'cash_beznal', 'discount']
 
 
 '''

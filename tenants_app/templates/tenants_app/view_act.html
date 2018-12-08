@@ -55,6 +55,8 @@
             {{ act_form.stop_date.as_hidden }}
             {{ act_form.payment.as_hidden }}
             {{ act_form.rents.as_hidden }}
+            {{ act_form.category.as_hidden }}
+            {{ act_form.media }}
             <input type="submit" value="Сохранить" onclick="this.disabled=true,this.form.submit();" />
         </form>
     <br>
@@ -62,6 +64,7 @@
     <p>Конец аренды: {{ act.stop_date }} (<a href="{% url 'tenants:edit_act_date' act.act_number %}">продлить</a>)</p>
     <p>Оплата за текущий период: {{ act.payment }}</p>
     <p>Общая сумма оплаты: {{ act.all_payment }}</p>
+    <p>Категория условий аренды: {{ act.category }}</p>
 </div>
 
     <button class="btnPrint" type="button">Печать акта</button>

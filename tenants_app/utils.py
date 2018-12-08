@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.db import models
 
 # import os
 # from io import BytesIO, StringIO
@@ -7,6 +8,16 @@ from django.core.paginator import Paginator
 # from shelf_rent import settings
 
 # from xhtml2pdf import pisa
+
+
+class CustomBooleanField(models.BooleanField):
+
+    def from_db_value(self, value, expression, connection, context):
+        if value is True:
+            return 'да'
+        if value is False:
+            return 'нет'
+        return int(value) # return 0/1
 
 
 class PaginatorMixin:

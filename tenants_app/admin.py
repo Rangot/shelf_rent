@@ -1,16 +1,6 @@
 from django.contrib import admin
 # from django.contrib.auth.admin import UserAdmin
-from .models import Tenants, Shelf, Rents, Act
-
-
-class TenantsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'telephone', 'email', 'pass_serial', 'pass_number',
-                    'pass_given', 'address']
-
-    class Meta:
-        model = Tenants
-
-admin.site.register(Tenants, TenantsAdmin)
+from .models import Shelf, Rents, Act
 
 
 class ShelfAdmin(admin.ModelAdmin):
@@ -35,6 +25,7 @@ admin.site.register(Rents, RentsAdmin)
 
 class ActAdmin(admin.ModelAdmin):
     list_display = ['rents', 'start_date', 'stop_date', 'term', 'term_left', 'payment']
+    raw_id_fields = ('shelf', )
 
     exclude = ['timestamp', 'updated']
 

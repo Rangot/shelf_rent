@@ -7,7 +7,8 @@
 <form action="{% url 'auth_app:login' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <input type="submit" value="Войти" onclick="this.disabled=true,this.form.submit();" />
+    <input type="hidden" name="next" value="{{ next }}">
 </form>
 
 

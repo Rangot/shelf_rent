@@ -811,12 +811,46 @@ def search_cash(request, pk):
     return render(request, template, context)
 
 
+def payment_to_tenant(request, username):
+    tenant = Tenant.objects.filter(username=username)
+    all_cashes = {}
+    all_tenant_take = 0
+    # расчет суммы по каждому акту
+    all_acts = Act.objects.filter(rents__tenants__in=tenant)
+    for act in all_acts:
+        cashes = Cash.objects.filter(orders__act=act)
+        sum_all_cash = 0
+        values = []
+        for cash in cashes:
+            sum_all_cash += cash.all_cash
+        values.append(sum_all_cash)
+
+        # сколько забирает арендатель
+        percent = sum_all_cash * act.category.percent_from_sales / 100
+        values.append(percent)
+        tenant_take = sum_all_cash - percent
+        if act.category.rent_of_shelf == 'да':
+            tenant_take -= act.shelf.price
+        all_tenant_take += tenant_take
+        values.append(tenant_take)
+        all_cashes[act] = values
+
+    context = {
+        'tenant': tenant,
+        'all_cashes': all_cashes,
+        'all_tenant_take': all_tenant_take,
+    }
+
+    return render(request, 'tenants_app/payment_to_tenant.html', context)
+
+
 def delete_cash(request, id_cash):
     instance = get_object_or_404(Cash, pk=id_cash)
     if request.method == 'GET':
         instance.delete()
         return redirect(reverse('tenants:view_cash'))
     return HttpResponse(status=405)
+
 
 
 # not in use:

@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form action="{% url 'tenants:edit' instance.tenants_id %}" method="POST">
+<form action="{% url 'tenants:edit' %}" method="POST">
     {% csrf_token %}
 
     <hr />
