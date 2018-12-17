@@ -639,60 +639,51 @@ def view_shelf(request, shelf_id):
 
 
 def create_cash(request, orders_id):
-    instance = Orders.objects.get(pk=orders_id)
-    act = instance.act
-    shelf = act.shelf
     if request.method == 'GET':
-        form = CashForm(initial={'orders': instance})
-        c = {'instance': instance, 'cash_form': form}
-        return render(request, 'tenants_app/create_cash.html', c)
+        return render(request, 'tenants_app/create_cash.html')
 
     elif request.method == 'POST':
+        sell = request.POST['sell']
+        discount = request.POST['discount']
+        if not discount:
+            discount = 0
+
+        return redirect(reverse('tenants:create_cash_nal_beznal', kwargs={
+            'orders_id': orders_id, 'sell': sell, 'discount': discount
+        }))
+
+    return HttpResponse(status=405)
+
+
+def create_cash_nal_beznal(request, orders_id, sell, discount):
+    instance = get_object_or_404(Orders, pk=orders_id)
+    shelf = instance.act.shelf
+
+    instance.quality = int(instance.quality) - int(sell)
+    instance.all_sell = int(instance.all_sell) + int(sell)
+    all_cash = int(sell) * float(instance.price)
+
+    if request.method == 'POST':
         cash_form = CashForm(request.POST)
 
         if cash_form.is_valid():
             with transaction.atomic():
-                cash = cash_form.save()
-                instance.quality = int(instance.quality) - int(cash.sell)
-                instance.all_sell = int(instance.all_sell) + int(cash.sell)
+                cash = cash_form.save(commit=False)
                 cash.all_cash = int(cash.sell) * float(instance.price)
                 cash.save()
                 instance.save()
-
-            return redirect(reverse('tenants:create_cash_nal_beznal', kwargs={
-                'id_cash': cash.pk
-            }))
+                return redirect(reverse('tenants:view_shelf', kwargs={
+                    'shelf_id': shelf.pk
+                }))
         else:
-            instance = Orders.objects.get(pk=orders_id)
-            return render(request, 'tenants_app/create_cash.html',
-                          {'instance': instance,
-                           'cash_form': CashForm(initial={'orders': instance})})
-    return HttpResponse(status=405)
-
-
-def create_cash_nal_beznal(request, id_cash):
-    instance = get_object_or_404(Cash, pk=id_cash)
-    shelf = instance.orders.act.shelf
-    # act = order.act
-    # shelf = act.shelf
-
-    if request.method == 'POST':
-        cash_form = CashForm(request.POST, instance=instance)
-
-        if cash_form.is_valid():
-            cash = cash_form.save(commit=False)
-            cash.instance = instance
-            cash.save()
-            return redirect(reverse('tenants:view_shelf', kwargs={
-                'shelf_id': shelf.pk
-            }))
-        else:
-            c = {'cash_form': CashForm(instance=instance), 'instance': instance}
+            c = {'cash_form': CashForm(), 'instance': instance}
             return render(request, 'tenants_app/create_cash_nal_beznal.html', c)
     else:
         if request.method == 'GET':
+            cash_form = CashForm(initial={'sell': sell, 'discount': discount, 'orders': instance})
             return render(request, 'tenants_app/create_cash_nal_beznal.html',
-                          {'instance': instance, 'cash_form': CashForm(instance=instance)})
+                          {'instance': instance, 'cash_form': cash_form,
+                           'all_cash': str(all_cash)})
 
     return HttpResponse(status=405)
 
@@ -834,6 +825,9 @@ def payment_to_tenant(request, username):
         all_tenant_take += tenant_take
         values.append(tenant_take)
         all_cashes[act] = values
+
+    # сколько нала в кассе
+
 
     context = {
         'tenant': tenant,

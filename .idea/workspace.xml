@@ -1,383 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d7ef1e2-d9cf-4dcc-9332-0ab5bed73ffb" name="Default" comment="Shelf_rent_auth and autocomplete added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/Roboto-Bold-webfont.2ad99072841e.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/Roboto-Bold-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/Roboto-Light-webfont.b446c2399bb6.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/Roboto-Light-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/Roboto-Regular-webfont.ec39515ae8c6.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/Roboto-Regular-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/images/loading-indicator.03ce3dcc84af.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/images/loading-indicator.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/ajax-loader.d96a4c3765e9.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/back.1a85a8afa24e.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/back.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/back_hover.d1e655d74852.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/back_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/close.c592da3c89b6.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/close_hover.2592d7057d2c.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/close_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/djdt_vertical.204979d634f7.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/djdt_vertical.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/indicator.5eb28882cc03.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/img/indicator.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/shelf_rent/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/shelf_rent_auth/migrations/0002_tenant_name.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/tenants_app/js/jquery-1.4.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/tenants_app/js/jquery.printPage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/autocomplete.781713f30664.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/autocomplete.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/base.7c5fa36168a7.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/base.7ea12481fb59.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/changelists.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/changelists.f6dc691f8d62.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/dashboard.7ac78187c567.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/dashboard.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/fonts.494e4ec545c9.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/fonts.cc6140298ba7.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/fonts.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/forms.4d944dc1c5f9.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/forms.a895c775b4d9.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/forms.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/login.a846c0e2ef65.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/login.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/responsive.d1e3572cb104.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/responsive_rtl.2a6652327ccd.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/responsive_rtl.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/rtl.306dbf6d5df6.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/rtl.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.7cf1de939f3b.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/vendor/select2/select2.3805311d5fc1.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/vendor/select2/select2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/vendor/select2/select2.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/vendor/select2/select2.min.d44571114a90.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/widgets.5e372b41c483.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/widgets.a7251c097987.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/css/widgets.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/LICENSE.d273d63619c9.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/README.2c3d0bcdede2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/fonts/README.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/LICENSE.2c54f4e1ca1c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/README.837277fa1908.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/README.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/calendar-icons.39b290681a8b.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/calendar-icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/gis/move_vertex_off.7a23bf31ef8a.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/gis/move_vertex_off.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/gis/move_vertex_on.0047eba25b67.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/gis/move_vertex_on.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-addlink.d519b3bab011.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-addlink.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-alert.034cc7d8a67f.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-alert.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-calendar.ac7aea671bea.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-calendar.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-changelink.18d2fd706348.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-changelink.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-clock.e1d4dfac3f2b.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-clock.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-deletelink.564ef9dc3854.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-deletelink.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-no.439e821418cd.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-no.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-unknown-alt.81536e128bb6.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-unknown-alt.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-unknown.a18cb4398978.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-unknown.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-viewlink.41eb31f7826e.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-viewlink.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-yes.d2f9f035226a.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/icon-yes.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/inline-delete.fec1b761f254.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/inline-delete.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/search.7cf54ff789c6.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/search.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/selector-icons.b4555096cea2.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/selector-icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/sorting-icons.3a097b59f104.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/sorting-icons.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/tooltag-add.e59d620a9742.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/tooltag-add.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/tooltag-arrowright.bbfb788a849e.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/img/tooltag-arrowright.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/SelectBox.b49f008d186b.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/SelectBox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/SelectFilter2.bf63c55b78f6.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/SelectFilter2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/actions.2fb8e8349c22.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/actions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/actions.min.5fa8cb0403f1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/actions.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/admin/DateTimeShortcuts.e3407a6ea666.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/admin/DateTimeShortcuts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/admin/RelatedObjectLookups.ea0683bea064.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/admin/RelatedObjectLookups.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/autocomplete.cfd2c4dc8981.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/autocomplete.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/calendar.aae57adab5f6.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/calendar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/cancel.d6b4b556c3aa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/cancel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/change_form.9e85003a1a38.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/change_form.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/collapse.acba97a53595.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/collapse.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/collapse.min.2ee8a0086864.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/collapse.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/core.953326603873.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/inlines.ff88b5c8f54a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/inlines.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/inlines.min.4d23f8660b21.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/inlines.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/jquery.init.95b62fa19378.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/jquery.init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/popup_response.6ce3197f8fc8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/popup_response.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/prepopulate.2f90da7170ec.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/prepopulate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/prepopulate.min.85fd5e0fb706.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/prepopulate.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/prepopulate_init.0d3b53c37074.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/prepopulate_init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/timeparse.51258861a46a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/timeparse.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/urlify.4087f3e18796.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/urlify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/jquery/LICENSE.a158210a2737.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/jquery/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/jquery/jquery.6a07da9fae93.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/jquery/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/jquery/jquery.min.a09e13ee94d5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/jquery/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/LICENSE.7cf1de939f3b.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/LICENSE.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ar.a8bb27ec698c.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/az.498dc667b34e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/az.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/bg.89cba4df3c86.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ca.2eaad4eb1950.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/cs.a68bcd293adc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/da.cbf897a0ae53.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/de.366d0aacb55f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/el.5629ce65500f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/el.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/en.05649b26c086.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/en.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/es.dc9dbf9d65df.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/et.c3953fb90b6b.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/et.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/eu.11b925456433.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/eu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/fa.98e52839b583.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/fa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/fi.659847deefdc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/fr.b06a3340de45.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/gl.78a87f7c0a51.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/gl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/he.222d90ee0344.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/hi.116a90b7111b.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/hi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/hr.e1d2c70b4df5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/hu.db45641f10b2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/id.6ee6c9c64b94.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/is.808c7d47acb5.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/is.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/it.bae1661dbb77.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ja.19cf1ce8a03d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/km.6074a9c5575c.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/km.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ko.74b17541834f.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ko.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/lt.a0783b1bd159.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/lv.07fe2a580d17.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/mk.4986d7fc3ff3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/mk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ms.23e7b4369579.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/nb.137e184004aa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/nb.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/nl.c363ace8aa05.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/pl.76465b54a6b0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/pt-BR.9efbbac4fda8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/pt-BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/pt.5d6ccc53b347.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/pt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ro.1ddc2b9980dc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ru.d83609abf2e0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sk.a0f1a818d092.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.2f3047aad49e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sr.157bc6eb978e.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sv.2b21bb3f6110.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/th.2a4ece4c4355.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/th.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/tr.c1925d8817db.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/uk.3d56f311192d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/uk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/vi.3520aa7bdea8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/vi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/zh-CN.419002d3c6c1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/zh-CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/zh-TW.c021537edf2c.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/i18n/zh-TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/select2.full.a95323cb4760.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/select2.full.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/select2.full.min.da607360bcc6.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/select2/select2.full.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/xregexp/LICENSE.d64cecf4f157.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/xregexp/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/xregexp/xregexp.1865b1cf5085.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/xregexp/xregexp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/xregexp/xregexp.min.c95393b8ca4d.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/admin/js/vendor/xregexp/xregexp.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/css/ajax_select.acedc5edc213.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/css/ajax_select.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/css/ajax_select.e505916c87ca.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/js/ajax_select.141023653f34.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/js/ajax_select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/js/bootstrap.613025584347.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/ajax_select/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/autocomplete_light/autocomplete.init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/autocomplete_light/forward.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/autocomplete_light/jquery.init.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/autocomplete_light/jquery.post-setup.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/autocomplete_light/select2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/autocomplete_light/select2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/css/print.85b39f60bfe8.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/css/print.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/css/toolbar.b35523ea26ab.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/css/toolbar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/jquery_existing.80428b75d467.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/jquery_existing.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/jquery_post.8c9db3d1cebc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/jquery_post.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/jquery_pre.a593235debe9.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/jquery_pre.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.287d11e95feb.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.profiling.13e030bebb35.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.profiling.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.sql.e9e00e697675.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.sql.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.template.ef8e759fa78a.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.template.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.timer.85df3882ee48.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/debug_toolbar/js/toolbar.timer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.css.cd1464ebf113.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.ff2874cf2b81.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.min.71671e5000bc.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.min.css.2f4414bde719.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-grid.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.2009a327a433.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.css.7aab631482ae.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.min.5469e5527b70.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.min.css.be2a1bb81bd5.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-reboot.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.b9b46bcc4dad.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.css.d6cc0a3c7532.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.min.ab6b02efeaf1.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.min.css.5f587b800215.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap-theme.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.css.0ab7c5a3c60c.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.ec6d1078cd38.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.min.04aca1f4cd3e.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.min.css.13864e70f3d7.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/bootstrap.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/css/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap-autocomplete.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.bundle.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.bundle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.bundle.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/bootstrap.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/jquery-1.4.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/jquery-3.3.1.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/jquery.printPage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/js/jquery.printPage_new.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/staticfiles/tenants_app/tacit.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/migrations/0002_auto_20181123_2242.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/migrations/0003_auto_20181203_1602.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/static/tenants_app/css/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/static/tenants_app/js/bootstrap-autocomplete.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/static/tenants_app/js/jquery-1.4.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/static/tenants_app/js/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/static/tenants_app/js/jquery.printPage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html" />
+    <list default="true" id="1d7ef1e2-d9cf-4dcc-9332-0ab5bed73ffb" name="Default" comment="Categories added">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/migrations/0004_auto_20181208_2350.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" afterPath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/shelf_rent.iml" afterPath="$PROJECT_DIR$/.idea/shelf_rent.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent/urls.py" afterPath="$PROJECT_DIR$/shelf_rent/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent_auth/templates/auth_app/login.html" afterPath="$PROJECT_DIR$/shelf_rent_auth/templates/auth_app/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent_auth/templates/auth_app/register.html" afterPath="$PROJECT_DIR$/shelf_rent_auth/templates/auth_app/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent_auth/urls.py" afterPath="$PROJECT_DIR$/shelf_rent_auth/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/admin.py" afterPath="$PROJECT_DIR$/tenants_app/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/forms.py" afterPath="$PROJECT_DIR$/tenants_app/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/models.py" afterPath="$PROJECT_DIR$/tenants_app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent_many.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent_many.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/search_results.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/search_results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_act.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_act.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_rent.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_rent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_shelf.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_shelf.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/urls.py" afterPath="$PROJECT_DIR$/tenants_app/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/utils.py" afterPath="$PROJECT_DIR$/tenants_app/utils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/views.py" afterPath="$PROJECT_DIR$/tenants_app/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -414,36 +48,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
+      <file leaf-file-name="create_cash_nal_beznal.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15162">
-              <caret line="833" column="38" lean-forward="false" selection-start-line="833" selection-start-column="38" selection-end-line="833" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
+      <file leaf-file-name="create_cash.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1843">
-              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-                <marker date="1544128885632" expanded="true" signature="5068:5240" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_act.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view_act.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+            <state relative-caret-position="855">
+              <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -452,38 +71,43 @@
       <file leaf-file-name="sales_ledger.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/sales_ledger.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1064">
-              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="266">
+              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="722">
+              <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+                <marker date="1544301928827" expanded="true" signature="5068:5240" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" column="88" lean-forward="false" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
-              <folding />
+            <state relative-caret-position="627">
+              <caret line="703" column="37" lean-forward="false" selection-start-line="703" selection-start-column="37" selection-end-line="703" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="payment_to_tenant.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tenants_app/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+            <state relative-caret-position="646">
+              <caret line="43" column="74" lean-forward="false" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -507,8 +131,6 @@
         <option value="$PROJECT_DIR$/shelf_rent_auth/urls.py" />
         <option value="$PROJECT_DIR$/shelf_rent_auth/templates/auth_app/login.html" />
         <option value="$PROJECT_DIR$/shelf_rent_auth/admin.py" />
-        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" />
-        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/search_results.html" />
         <option value="$PROJECT_DIR$/tenants_app/admin.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent.html" />
@@ -527,11 +149,14 @@
         <option value="$PROJECT_DIR$/tenants_app/utils.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_shelf.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_rent.html" />
-        <option value="$PROJECT_DIR$/tenants_app/urls.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html" />
-        <option value="$PROJECT_DIR$/tenants_app/models.py" />
-        <option value="$PROJECT_DIR$/tenants_app/views.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html" />
+        <option value="$PROJECT_DIR$/tenants_app/models.py" />
+        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html" />
+        <option value="$PROJECT_DIR$/tenants_app/urls.py" />
+        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" />
+        <option value="$PROJECT_DIR$/tenants_app/views.py" />
+        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" />
       </list>
     </option>
   </component>
@@ -547,6 +172,7 @@
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -562,7 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -606,6 +231,28 @@
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tenants_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shelf_rent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shelf_rent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tenants_app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -621,31 +268,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shelf_rent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shelf_rent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shelf_rent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blogengine" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -889,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543832846888</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Categories added">
+      <created>1544297709448</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1544297709448</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -905,25 +547,25 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2987897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3267776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5400982" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@shelf_rent" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5400982" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@shelf_rent" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5400982" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -952,90 +594,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Shelf_rent_auth and autocomplete added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shelf_rent_auth and autocomplete added" />
+    <MESSAGE value="Categories added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Categories added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/shelf_rent_auth/forms.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tenants_app/static/tenants_app/js/bootstrap-autocomplete.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2142">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/static/tenants_app/css/jquery-ui.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent_many.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shelf_rent_auth/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/search_order_results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/search_results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shelf_rent/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shelf_rent/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/forms/widgets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-319">
@@ -1063,6 +638,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-376">
           <caret line="460" column="8" lean-forward="false" selection-start-line="460" selection-start-column="8" selection-end-line="460" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,13 +681,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/migrations/0003_auto_20181203_1552.py" />
-    <entry file="file://$PROJECT_DIR$/shelf_rent/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="138" column="19" lean-forward="false" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/forms/fields.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -1127,38 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1786">
-          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
-          <folding>
-            <marker date="1543831228411" expanded="true" signature="3355:3542" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="43" column="74" lean-forward="false" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
-          <folding>
-            <element signature="e#25#53#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,16 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1159">
           <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="45" column="38" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,59 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="88" lean-forward="false" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/sales_ledger.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view_act.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1843">
-          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <marker date="1544128885632" expanded="true" signature="5068:5240" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15162">
-          <caret line="833" column="38" lean-forward="false" selection-start-line="833" selection-start-column="38" selection-end-line="833" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.category">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1344,11 +822,187 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/migrations/0004_auto_20181208_2350.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-115">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+        <state relative-caret-position="522">
+          <caret line="95" column="8" lean-forward="false" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c75cba6f-1165-42e1-9d78-19bcdb8a86da/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/c75cba6f-1165-42e1-9d78-19bcdb8a86da/blog_post">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/c75cba6f-1165-42e1-9d78-19bcdb8a86da/blog_tag">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blogengine/blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="42" column="55" lean-forward="true" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.tenants_app_paybox">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shelf_rent_auth/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#48#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view_act.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shelf_rent/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="21" column="88" lean-forward="false" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-424">
+          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="878">
+          <caret line="51" column="89" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1544301928827" expanded="true" signature="5068:5240" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/sales_ledger.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="43" column="74" lean-forward="false" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="703" column="37" lean-forward="false" selection-start-line="703" selection-start-column="37" selection-end-line="703" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

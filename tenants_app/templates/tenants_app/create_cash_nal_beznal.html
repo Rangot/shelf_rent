@@ -6,24 +6,43 @@
 
 {% block content %}
 
-<form action="{% url 'tenants:create_cash_nal_beznal' instance.id_cash %}" method="POST">
+<script type="text/javascript">
+    function submit_form() {
+        var a;
+        var b;
+        var c = '{{ all_cash }}';
+        a = document.getElementById("id_cash_nal").value;
+        b = document.getElementById("id_cash_beznal").value;
+        if ((Number(a) + Number(b)) != Number(c)) {
+            alert("Сумма покупки должна быть равна сумме наличного и безналичного расчетов");
+            event.preventDefault();
+            return false;
+        } else if ((Number(a) + Number(b)) == Number({{ all_cash }})) {
+            alert("Продажа создана");
+            return true;
+        }
+        event.preventDefault();
+    }
+</script>
+
+<form onsubmit="submit_form();" method="POST">
     {% csrf_token %}
 
     <hr />
 
-    <h3>Сумма покупки: {{ instance.all_cash }} руб.</h3>
+    <h3>Сумма покупки: {{ all_cash }} руб.</h3>
     <br>
     {{ cash_form.non_field_errors }}
 <div class="fieldWrapper">
     {{ cash_form.cash_nal.errors }}
     <label for="{{ cash_form.cash_nal.id_for_label }}">Наличный расчет:</label>
-    {{ cash_form.cash_nal }}
+    <input title="" type="number" name="cash_nal" value="0" step="any" id="id_cash_nal">
 </div>
     <br>
 <div class="fieldWrapper">
     {{ cash_form.cash_beznal.errors }}
     <label for="{{ cash_form.cash_beznal.id_for_label }}">Безналичный расчет:</label>
-    {{ cash_form.cash_beznal }}
+    <input title="" type="number" name="cash_beznal" value="0" step="any" id="id_cash_beznal">
 </div>
     {{ cash_form.cash_date.as_hidden }}
     {{ cash_form.sell.as_hidden }}
@@ -31,7 +50,7 @@
     {{ cash_form.orders.as_hidden }}
     <br>
 
-    <input type="submit" value="Продать" onclick="this.disabled=true,this.form.submit();" />
+    <input type="submit" value="Продать"/>
 </form>
 
 {% endblock %}

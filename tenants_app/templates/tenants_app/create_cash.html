@@ -6,35 +6,54 @@
 
 {% block content %}
 
-<form action="{% url 'tenants:create_cash' instance.orders_id %}" method="POST">
-    {% csrf_token %}
-
-    <hr />
+<script type="text/javascript">
+    function submit_form() {
+        var x;
+        x = document.getElementById("form").value;
+        if (x == "") {
+            alert("Укажите кол-во проданного товара");
+            event.preventDefault();
+        } else if (x == 0) {
+            alert("Нельзя ввести 0");
+            event.preventDefault();
+        } else if (x != parseInt(x) ) {
+            alert("Введите целое число");
+            event.preventDefault();
+        }
+    }
+</script>
 
     <h2>Заполните поля:</h2>
     {{ cash_form.non_field_errors }}
-<div class="fieldWrapper">
+{#<div class="fieldWrapper">#}
 {#    {{ cash_form.cash_date.errors }}#}
 {#    <label for="{{ cash_form.cash_date.id_for_label }}">Дата продажи:</label>#}
-    {{ cash_form.cash_date.as_hidden }}
-</div>
-    <br>
-<div class="fieldWrapper">
-    {{ cash_form.sell.errors }}
-    <label for="{{ cash_form.sell.id_for_label }}">Продано:</label>
-    {{ cash_form.sell }}
-</div>
-    <br>
-{#<div class="fieldWrapper">#}
-{#    {{ cash_form.nal.errors }}#}
-{#    <label for="{{ cash_form.nal.id_for_label }}">Наличный расчет:</label>#}
-{#    {{ cash_form.nal }}#}
+{#    {{ cash_form.cash_date.as_hidden }}#}
 {#</div>#}
-<div class="fieldWrapper">
-    {{ cash_form.discount.errors }}
-    <label for="{{ cash_form.discount.id_for_label }}">Скидка:</label>
-    {{ cash_form.discount }}
-</div>
+{#    <br>#}
+{#<div class="fieldWrapper">#}
+{#    {{ cash_form.sell.errors }}#}
+{#    <label for="{{ cash_form.sell.id_for_label }}">Продано:</label>#}
+{#    {{ cash_form.sell }}#}
+{#</div>#}
+{#    <br>#}
+
+<form class="form" method="POST">
+    {% csrf_token %}
+      <input type="number" id="form" name="sell" placeholder="Продано товара">
+    <br>
+    <br>
+      <input type="number" name="discount" placeholder="Скидка">
+    <br>
+    <br>
+    <button class="btn btn-outline-primary" type="submit" onclick="submit_form()">Далее</button>
+</form>
+
+{#<div class="fieldWrapper">#}
+{#    {{ cash_form.discount.errors }}#}
+{#    <label for="{{ cash_form.discount.id_for_label }}">Скидка:</label>#}
+{#    {{ cash_form.discount }}#}
+{#</div>#}
 <div class="fieldWrapper">
     {{ cash_form.orders.as_hidden }}
 </div>
@@ -42,8 +61,6 @@
     {{ cash_form.cash_nal.as_hidden }}
     {{ cash_form.cash_beznal.as_hidden }}
 
-    <input type="submit" value="Далее" onclick="this.disabled=true,this.form.submit();" />
-</form>
 
 {% endblock %}
 

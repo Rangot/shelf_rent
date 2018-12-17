@@ -148,3 +148,15 @@ class Orders(models.Model):
         verbose_name_plural = 'Orders'
 
 
+class Paybox(models.Model):
+    slug = models.SlugField
+    cash_in_paybox = models.FloatField(max_length=45, default=0, verbose_name='Положили в кассу')
+    cash_taken = models.FloatField(max_length=45, default=0, verbose_name='Забрали из кассы')
+    cash_remain = models.FloatField(max_length=45, default=0, verbose_name='Денег в кассе')
+
+    def save(self, **kwargs):
+        self.cash_remain = self.cash_in_paybox - self.cash_taken
+        super(Paybox, self).save(**kwargs)
+
+    class Meta:
+        verbose_name = 'Paybox'
