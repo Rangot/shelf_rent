@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d7ef1e2-d9cf-4dcc-9332-0ab5bed73ffb" name="Default" comment="Categories added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tenants_app/migrations/0004_auto_20181208_2350.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" afterPath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/shelf_rent.iml" afterPath="$PROJECT_DIR$/.idea/shelf_rent.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/models.py" afterPath="$PROJECT_DIR$/tenants_app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/urls.py" afterPath="$PROJECT_DIR$/tenants_app/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/views.py" afterPath="$PROJECT_DIR$/tenants_app/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
+            <state relative-caret-position="19">
               <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -91,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="627">
-              <caret line="703" column="37" lean-forward="false" selection-start-line="703" selection-start-column="37" selection-end-line="703" selection-end-column="37" />
+              <caret line="685" column="27" lean-forward="true" selection-start-line="685" selection-start-column="27" selection-end-line="685" selection-end-column="27" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -207,28 +199,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="shelf_rent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tenants_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shelf_rent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shelf_rent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tenants_app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -531,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544297709448</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Nal and beznal calc">
+      <created>1545068886432</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545068886432</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -595,7 +572,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Shelf_rent_auth and autocomplete added" />
     <MESSAGE value="Categories added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Categories added" />
+    <MESSAGE value="Nal and beznal calc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nal and beznal calc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -929,6 +907,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -936,6 +915,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -950,17 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="878">
           <caret line="51" column="89" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <marker date="1544301928827" expanded="true" signature="5068:5240" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,9 +968,20 @@
     <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
-          <caret line="703" column="37" lean-forward="false" selection-start-line="703" selection-start-column="37" selection-end-line="703" selection-end-column="37" />
+          <caret line="685" column="27" lean-forward="true" selection-start-line="685" selection-start-column="27" selection-end-line="685" selection-end-column="27" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1544301928827" expanded="true" signature="5068:5240" ph="..." />
           </folding>
         </state>
       </provider>
