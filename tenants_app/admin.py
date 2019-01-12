@@ -1,6 +1,8 @@
 from django.contrib import admin
+from django.db import models
 # from django.contrib.auth.admin import UserAdmin
-from .models import Shelf, Rents, Act
+from django.contrib.admin.templatetags.admin_list import _boolean_icon
+from .models import *
 
 
 class ShelfAdmin(admin.ModelAdmin):
@@ -33,3 +35,12 @@ class ActAdmin(admin.ModelAdmin):
         model = Act
 
 admin.site.register(Act, ActAdmin)
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['category_id', 'percent_from_sales', 'rent_of_shelf']
+
+    class Meta:
+        model = Category
+
+admin.site.register(Category, CategoryAdmin)

@@ -14,9 +14,9 @@ class CustomBooleanField(models.BooleanField):
 
     def from_db_value(self, value, expression, connection, context):
         if value is True:
-            return 'да'
+            return True
         if value is False:
-            return 'нет'
+            return False
         return int(value) # return 0/1
 
 

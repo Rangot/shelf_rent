@@ -18,6 +18,18 @@
         }
     </style>
 
+    <script type="text/javascript">
+    function submit_form() {
+        if (confirm("Деньги будут выданы из кассы, по всем связанным продажам" +
+            " будет произведен расчет. Продолжить?")) {
+            alert('Деньги выданы')
+        }
+        else {
+            event.preventDefault();
+        }
+    }
+    </script>
+
     <p>Арендатор: {{ tenant.0.name }}</p>
 
 {% if all_cashes.items %}
@@ -70,7 +82,7 @@
                     </p>
                 </td>
                 <td width="194">
-                    {% if act.category.rent_of_shelf == 'да' %}
+                    {% if act.category.rent_of_shelf %}
                         <p>
                             {{ act.shelf.price }}
                         </p>
@@ -98,5 +110,12 @@
 
     <br>
     <p>Общая выплата арендателю: {{ all_tenant_take }}</p>
+    <p>Наличных в кассе: {{ paybox.cash_remain }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="submit" value="Выдать деньги арендателю" onclick="submit_form()"/>
+</form>
 
 {% endblock %}

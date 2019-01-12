@@ -43,6 +43,7 @@ def index(request):
         query_acts = []
         rents = Rents.objects.filter(is_active=True, is_break=False)
         for rent in rents:
+
             act = Act.objects.filter(rents=rent)
             if act:
                 query_acts.append(act)
@@ -659,6 +660,9 @@ def create_cash_nal_beznal(request, orders_id, sell, discount):
     instance = get_object_or_404(Orders, pk=orders_id)
     shelf = instance.act.shelf
 
+    # касса, в которую кладется сумма. Пока только одна
+    paybox = Paybox.objects.filter(pk=1).first()
+
     instance.quality = int(instance.quality) - int(sell)
     instance.all_sell = int(instance.all_sell) + int(sell)
     all_cash = int(sell) * float(instance.price)
@@ -670,8 +674,10 @@ def create_cash_nal_beznal(request, orders_id, sell, discount):
             with transaction.atomic():
                 cash = cash_form.save(commit=False)
                 cash.all_cash = int(cash.sell) * float(instance.price)
+                paybox.cash_in_paybox += cash.cash_nal
                 cash.save()
                 instance.save()
+                paybox.save()
                 return redirect(reverse('tenants:view_shelf', kwargs={
                     'shelf_id': shelf.pk
                 }))
@@ -809,33 +815,51 @@ def payment_to_tenant(request, username):
     # расчет суммы по каждому акту
     all_acts = Act.objects.filter(rents__tenants__in=tenant)
     for act in all_acts:
-        cashes = Cash.objects.filter(orders__act=act)
+        cashes = Cash.objects.filter(orders__act=act).filter(payment_to_tenant=False)
         sum_all_cash = 0
         values = []
         for cash in cashes:
             sum_all_cash += cash.all_cash
-        values.append(sum_all_cash)
+        if sum_all_cash > 0:
+            values.append(sum_all_cash)
 
-        # сколько забирает арендатель
-        percent = sum_all_cash * act.category.percent_from_sales / 100
-        values.append(percent)
-        tenant_take = sum_all_cash - percent
-        if act.category.rent_of_shelf == 'да':
-            tenant_take -= act.shelf.price
-        all_tenant_take += tenant_take
-        values.append(tenant_take)
-        all_cashes[act] = values
+            # сколько забирает арендатель
+            percent = sum_all_cash * act.category.percent_from_sales / 100
+            percent = round(percent, 1)
+            values.append(percent)
+            tenant_take = sum_all_cash - percent
+            if act.category.rent_of_shelf:
+                tenant_take -= act.shelf.price
+            all_tenant_take += tenant_take
+            values.append(tenant_take)
+            all_cashes[act] = values
+
+    print(all_cashes)
 
     # сколько нала в кассе
-
+    paybox = Paybox.objects.filter(pk=1).first()
 
     context = {
         'tenant': tenant,
         'all_cashes': all_cashes,
         'all_tenant_take': all_tenant_take,
+        'paybox': paybox
     }
 
-    return render(request, 'tenants_app/payment_to_tenant.html', context)
+    if request.method == 'POST':
+        with transaction.atomic():
+            paybox.cash_taken += all_tenant_take
+            paybox.save()
+            for act in all_acts:
+                cashes = Cash.objects.filter(orders__act=act).filter(payment_to_tenant=False)
+                for cash in cashes:
+                    cash.payment_to_tenant = True
+                    cash.save()
+
+        return redirect(reverse('tenants:sales_ledger'))
+
+    else:
+        return render(request, 'tenants_app/payment_to_tenant.html', context)
 
 
 def delete_cash(request, id_cash):

@@ -14,8 +14,8 @@ class Tenant(AbstractUser):
 
     class Meta:
         db_table = 'tenants'
-        verbose_name = 'Tenant'
-        verbose_name_plural = 'Tenant'
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 
     def __str__(self):
         return str(self.username)

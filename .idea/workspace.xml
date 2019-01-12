@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d7ef1e2-d9cf-4dcc-9332-0ab5bed73ffb" name="Default" comment="Categories added">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" afterPath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" />
+    <list default="true" id="1d7ef1e2-d9cf-4dcc-9332-0ab5bed73ffb" name="Default" comment="Requirements changed">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../blogengine/db.sqlite3" afterPath="$PROJECT_DIR$/../blogengine/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent.sql" afterPath="$PROJECT_DIR$/shelf_rent.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent/settings.py" afterPath="$PROJECT_DIR$/shelf_rent/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shelf_rent_auth/models.py" afterPath="$PROJECT_DIR$/shelf_rent_auth/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/admin.py" afterPath="$PROJECT_DIR$/tenants_app/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/models.py" afterPath="$PROJECT_DIR$/tenants_app/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html" afterPath="$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/utils.py" afterPath="$PROJECT_DIR$/tenants_app/utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tenants_app/views.py" afterPath="$PROJECT_DIR$/tenants_app/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,54 +47,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="create_cash_nal_beznal.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_cash.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sales_ledger.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/sales_ledger.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-                <marker date="1544301928827" expanded="true" signature="5068:5240" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="685" column="27" lean-forward="true" selection-start-line="685" selection-start-column="27" selection-end-line="685" selection-end-column="27" />
+            <state relative-caret-position="19">
+              <caret line="818" column="24" lean-forward="false" selection-start-line="818" selection-start-column="24" selection-end-line="818" selection-end-column="24" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -95,11 +59,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tenants_app/forms.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shelf_rent/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="43" column="74" lean-forward="false" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
+            <state relative-caret-position="246">
+              <caret line="154" column="41" lean-forward="false" selection-start-line="154" selection-start-column="41" selection-end-line="154" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="payment_to_tenant.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -115,6 +89,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -124,7 +99,6 @@
         <option value="$PROJECT_DIR$/shelf_rent_auth/templates/auth_app/login.html" />
         <option value="$PROJECT_DIR$/shelf_rent_auth/admin.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/search_results.html" />
-        <option value="$PROJECT_DIR$/tenants_app/admin.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/contract_pdf_rent_many.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html" />
@@ -132,23 +106,26 @@
         <option value="$PROJECT_DIR$/shelf_rent/views.py" />
         <option value="$PROJECT_DIR$/static/tenants_app/js/ru.js" />
         <option value="$PROJECT_DIR$/tenants_app/static/tenants_app/js/ru.js" />
-        <option value="$PROJECT_DIR$/shelf_rent/settings.py" />
-        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html" />
         <option value="$PROJECT_DIR$/tenants_app/forms.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_act.html" />
-        <option value="$PROJECT_DIR$/tenants_app/utils.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_shelf.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view_rent.html" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html" />
-        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html" />
-        <option value="$PROJECT_DIR$/tenants_app/models.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/edit_act_date.html" />
         <option value="$PROJECT_DIR$/tenants_app/urls.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html" />
-        <option value="$PROJECT_DIR$/tenants_app/views.py" />
         <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html" />
+        <option value="$PROJECT_DIR$/shelf_rent_auth/models.py" />
+        <option value="$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/contrib/admin/templatetags/admin_list.py" />
+        <option value="$PROJECT_DIR$/tenants_app/utils.py" />
+        <option value="$PROJECT_DIR$/tenants_app/admin.py" />
+        <option value="$PROJECT_DIR$/tenants_app/models.py" />
+        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html" />
+        <option value="$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html" />
+        <option value="$PROJECT_DIR$/tenants_app/views.py" />
+        <option value="$PROJECT_DIR$/shelf_rent/settings.py" />
       </list>
     </option>
   </component>
@@ -220,7 +197,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -234,14 +211,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shelf_rent_auth" />
+              <option name="myItemId" value="shelf_rent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,6 +228,7 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
+    <property name="SearchEverywhereHistoryKey" value="from_&#9;null&#9;null&#10;_ищщдуф&#9;null&#9;null&#10;_bool&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -479,6 +457,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1d7ef1e2-d9cf-4dcc-9332-0ab5bed73ffb" name="Default" comment="" />
@@ -508,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545068886432</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Requirements changed">
+      <created>1545129605782</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1545129605782</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -522,14 +510,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3267776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36384267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5400982" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5045386" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19667171" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.49546143" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -538,9 +526,10 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@shelf_rent" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5400982" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@shelf_rent" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5400982" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@blogengine" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43698853" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
@@ -573,7 +562,8 @@
     <MESSAGE value="Shelf_rent_auth and autocomplete added" />
     <MESSAGE value="Categories added" />
     <MESSAGE value="Nal and beznal calc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nal and beznal calc" />
+    <MESSAGE value="Requirements changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Requirements changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -584,42 +574,11 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/forms/widgets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-319">
-          <caret line="41" column="23" lean-forward="false" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="6359" column="10" lean-forward="false" selection-start-line="6359" selection-start-column="10" selection-end-line="6359" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/admin/js/vendor/select2/select2.full.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1576">
-          <caret line="6384" column="0" lean-forward="true" selection-start-line="6384" selection-start-column="0" selection-end-line="6384" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/static/tenants_app/js/ru.js" />
-    <entry file="file://$PROJECT_DIR$/static/tenants_app/js/ru.js" />
-    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-376">
-          <caret line="460" column="8" lean-forward="false" selection-start-line="460" selection-start-column="8" selection-end-line="460" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/admin/js/vendor/select2/i18n/ru.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -663,21 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="763" column="26" lean-forward="false" selection-start-line="763" selection-start-column="26" selection-end-line="763" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/db/models/fields/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="996" column="31" lean-forward="true" selection-start-line="996" selection-start-column="31" selection-end-line="996" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -735,18 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.cash">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.shelf">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -766,58 +698,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shelf_rent_auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.act">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.category">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/migrations/0004_auto_20181208_2350.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-115">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="95" column="8" lean-forward="false" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -859,18 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.tenants_app_paybox">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shelf_rent_auth/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -888,14 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shelf_rent/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -907,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,27 +778,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-424">
-          <caret line="94" column="35" lean-forward="false" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="878">
-          <caret line="51" column="89" lean-forward="false" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
+        <state relative-caret-position="28">
           <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding />
         </state>
@@ -943,46 +791,203 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/sales_ledger.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="19">
           <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shelf_rent_auth/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shelf_rent_auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html">
+    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/templatetags/static.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="161" column="4" lean-forward="false" selection-start-line="161" selection-start-column="4" selection-end-line="161" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shelf_rent_auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/db/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="1065" column="0" lean-forward="true" selection-start-line="1065" selection-start-column="0" selection-end-line="1065" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/shelf_rent/Lib/site-packages/django/contrib/admin/templatetags/admin_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3610">
+          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="43" column="74" lean-forward="false" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
+        <state relative-caret-position="19">
+          <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding>
+            <element signature="e#25#53#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="36" column="34" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_act.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-386">
+          <caret line="121" column="58" lean-forward="true" selection-start-line="121" selection-start-column="58" selection-end-line="121" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+            <marker date="1547324506431" expanded="true" signature="5264:5436" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/create_cash_nal_beznal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.orders">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.act">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.cash">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.category">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tenants_app/templates/tenants_app/payment_to_tenant.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/eb95ac33/7d91cea5-46c9-418b-8fd5-63a5c9c91e94/shelf_rent.tenants_app_paybox">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tenants_app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="685" column="27" lean-forward="true" selection-start-line="685" selection-start-column="27" selection-end-line="685" selection-end-column="27" />
+        <state relative-caret-position="19">
+          <caret line="818" column="24" lean-forward="false" selection-start-line="818" selection-start-column="24" selection-end-line="818" selection-end-column="24" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tenants_app/models.py">
+    <entry file="file://$PROJECT_DIR$/shelf_rent/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <marker date="1544301928827" expanded="true" signature="5068:5240" ph="..." />
-          </folding>
+        <state relative-caret-position="246">
+          <caret line="154" column="41" lean-forward="false" selection-start-line="154" selection-start-column="41" selection-end-line="154" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

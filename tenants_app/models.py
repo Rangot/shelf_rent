@@ -15,6 +15,8 @@ class Shelf(models.Model):
 
     class Meta:
         db_table = 'shelf'
+        verbose_name = 'Полка'
+        verbose_name_plural = 'Полки'
 
     def __str__(self):
         return str(self.name)
@@ -44,11 +46,11 @@ class Rents(models.Model):
 
     class Meta:
         db_table = 'rents'
-        verbose_name = 'Rent'
-        verbose_name_plural = 'Rents'
+        verbose_name = 'Договор'
+        verbose_name_plural = 'Договора'
 
     def __str__(self):
-        return str(self.rents_id) + ' (' + str(self.tenants.username) + ')'
+        return str(self.rents_id) + ' (' + str(self.tenants.name) + ')'
 
 
 class Act(models.Model):
@@ -83,6 +85,8 @@ class Act(models.Model):
 
     class Meta:
         db_table = 'act'
+        verbose_name = "Акт"
+        verbose_name_plural = "Акты"
 
 
 class Category(models.Model):
@@ -92,8 +96,8 @@ class Category(models.Model):
 
     class Meta:
         db_table = 'category'
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return 'процент с продаж - ' + str(self.percent_from_sales) + '%,' + \
@@ -115,6 +119,7 @@ class Cash(models.Model):
     cash_beznal = models.FloatField(max_length=45, default=0, verbose_name='Безналичный расчет')
     discount = models.FloatField(max_length=45, default=0, verbose_name='Скидка')
     nal = models.BooleanField(default=True)
+    payment_to_tenant = models.BooleanField(default=False)
 
     # def save(self, **kwargs):
     #     super(Cash, self).save(**kwargs)
@@ -123,6 +128,8 @@ class Cash(models.Model):
 
     class Meta:
         db_table = 'cash'
+        verbose_name = 'Продажа'
+        verbose_name_plural = 'Продажи'
 
 '''
     def full_clean(self, exclude=None, validate_unique=True):
@@ -144,8 +151,8 @@ class Orders(models.Model):
 
     class Meta:
         db_table = 'orders'
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
 
 
 class Paybox(models.Model):
@@ -159,4 +166,4 @@ class Paybox(models.Model):
         super(Paybox, self).save(**kwargs)
 
     class Meta:
-        verbose_name = 'Paybox'
+        verbose_name = 'Касса'

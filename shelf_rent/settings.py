@@ -163,4 +163,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 django_heroku.settings(locals())
 
 # for solving problem with 'ssl'
-# del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['OPTIONS']['sslmode']
