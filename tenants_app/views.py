@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 # from django.shortcuts import render_to_response
 # from django.template.loader import get_template
 # from django.utils.timezone import datetime
-from datetime import datetime, timedelta
+from datetime import datetime
 import pytz
 
 # from weasyprint import HTML, CSS
@@ -36,6 +36,7 @@ from shelf_rent_auth.forms import *
 from tenants_app.utils import PaginatorMixin
 
 
+# Home page
 @login_required
 def index(request):
     acts_expire = []
@@ -68,6 +69,7 @@ def index(request):
     return HttpResponse(status=405)
 
 
+# Create new tenant
 @login_required
 @permission_required('Can add Tenant', raise_exception=True)
 def create(request):
@@ -95,6 +97,7 @@ def create(request):
     return HttpResponse(status=405)
 
 
+# Edit tenant by himself
 @login_required
 def edit(request):
     instance = get_object_or_404(Tenant, username=request.user.username)
@@ -118,6 +121,7 @@ def edit(request):
     return HttpResponse(status=405)
 
 
+# Edit tenant by staff
 @login_required
 @permission_required('Can change Tenant', raise_exception=True)
 def edit_tenant(request, username):
@@ -144,6 +148,7 @@ def edit_tenant(request, username):
     return HttpResponse(status=405)
 
 
+# View tenant by himself
 @login_required
 def view(request):
     if not request.user.is_staff:
@@ -155,7 +160,7 @@ def view(request):
 
         return render(request, 'tenants_app/view.html', {'tenant': tenant, 'rents': rents})
     elif request.user.is_superuser:
-        return redirect(reverse('admin:index'))
+        return redirect(reverse('index'))
     else:
         return redirect(reverse('index'))
 
@@ -174,6 +179,7 @@ def view_tenant(request, username):
     return HttpResponse(status=405)
 
 
+# Tenants search
 @login_required
 def search(request):
     error = False

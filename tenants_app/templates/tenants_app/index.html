@@ -11,26 +11,26 @@
        <div class="row">
              <div class="col-lg-6">
 
-  {% if page_object.object_list %}
-  <h4>Список арендаторов:</h4>
-<ul>
-  {% for tenant in page_object.object_list %}
-      <li><a href="{% url 'tenants:view_tenant' tenant.username %}">{{ tenant.name }}</a></li>
-{#      (<a href="{% url 'tenants:edit_tenant' tenant.username %}">изменить</a>)#}
-  {% endfor %}
-</ul>
-   {% endif %}
-             </div>
+      {% if page_object.object_list %}
+      <h4>Список арендаторов:</h4>
+    <ul>
+      {% for tenant in page_object.object_list %}
+          <li><a href="{% url 'tenants:view_tenant' tenant.username %}">{{ tenant.name }}</a></li>
+    {#      (<a href="{% url 'tenants:edit_tenant' tenant.username %}">изменить</a>)#}
+      {% endfor %}
+    </ul>
+       {% endif %}
+                 </div>
 
-             <div class="col-lg-6">
-{% if acts %}
-    <h4>Заканчивается срок аренды:</h4>
-<ul>
-  {% for act in acts %}
-      <li> <a href="{% url 'tenants:view_act' act.act_number %}">Акт №{{ act.act_number }}</a>
-          - полка {{ act.shelf }} ({{ act.rents.tenants.name }}, {{ act.term_left.days }} дней осталось)</li>
-  {% endfor %}
-</ul>
+              <div class="col-lg-6">
+    {% if acts %}
+        <h4>Заканчивается срок аренды:</h4>
+    <ul>
+      {% for act in acts %}
+          <li> <a href="{% url 'tenants:view_act' act.act_number %}">Акт №{{ act.act_number }}</a>
+              - полка {{ act.shelf }} ({{ act.rents.tenants.name }}, {{ act.term_left.days }} дней осталось)</li>
+      {% endfor %}
+    </ul>
 {% endif %}
              </div>
         </div>

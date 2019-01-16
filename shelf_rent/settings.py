@@ -26,7 +26,7 @@ SECRET_KEY = 'qegvan-=f!f_p@#t(e@jqq)@i6a7_e05$^(6qd_rd69qx@hyf='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.0.45', '127.0.0.1', '127.0.0.1:80', 'localhost:8080', 'http://rangot.pythonanywhere.com/']
+ALLOWED_HOSTS = ['192.168.0.45', '127.0.0.1', '127.0.0.1:80', 'localhost:8080']
 
 
 # Application definition
@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # autocomplete:
     'dal',
     'dal_select2',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
