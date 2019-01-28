@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" filepath="$PROJECT_DIR$/../blogengine/.idea/blogengine.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/shelf_rent.iml" filepath="$PROJECT_DIR$/.idea/shelf_rent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webim_auth/.idea/webim_auth.iml" filepath="$PROJECT_DIR$/../webim_auth/.idea/webim_auth.iml" />
     </modules>
   </component>
 </project>

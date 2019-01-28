@@ -16,6 +16,7 @@
     <orderEntry type="jdk" jdkName="Python 3.6.5 virtualenv at C:\Users\Тёма\Envs\shelf_rent" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="blogengine" />
+    <orderEntry type="module" module-name="webim_auth" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

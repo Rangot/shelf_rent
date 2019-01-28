@@ -285,43 +285,6 @@ def restart_rent(request, rents_id):
     }))
 
 
-# export_to_pdf for windows
-
-def export_to_pdf_rent(request, rents_id):
-    rent = Rents.objects.filter(rents_id=rents_id).first()
-    acts = Act.objects.filter(rents=rent)
-    context = {'rent': rent, 'acts': acts}
-    content = ''
-    if len(acts) == 1:
-        return render_to_response('tenants_app/contract_pdf_rent.html', context)
-        # content = render_to_string('tenants_app/contract_pdf_rent.html', context)
-    if len(acts) > 1:
-        return render_to_response('tenants_app/contract_pdf_rent_many.html', context)
-        # content = render_to_string('tenants_app/contract_pdf_rent_many.html', context)
-    # pdf = pdfkit.PDFKit(content, 'string').to_pdf()
-    #
-    # response = HttpResponse(pdf)
-    # response['Content-Type'] = 'application/pdf'
-    # 'attachment' instead 'inline' to print
-    # response['Content-disposition'] = 'inline; filename="print_rent.pdf"'
-    # return response
-
-'''
-# export_to_pdf for linux/python any where
-def export_to_pdf_rent(request, rents_id):
-    rent = Rents.objects.filter(rents_id=rents_id).first()
-    acts = Act.objects.filter(rents=rent).filter(is_active=True)
-    context = {'rent': rent, 'acts': acts}
-    template = get_template('tenants_app/contract_pdf_rent.html')
-    html = template.render(context)
-    result = StringIO()
-
-    pdf = pisa.pisaDocument(StringIO(html.encode("UTF-8")), result)
-    if not pdf.err:
-        return HttpResponse(result.getvalue(), content_type='application/pdf')
-'''
-
-
 def create_act(request, rents_id):
     if request.method == 'GET':
         instance = Rents.objects.get(pk=rents_id)
@@ -437,41 +400,6 @@ def delete_act_shelf(request, act_number):
     return redirect(reverse('tenants:view_act', kwargs={
         'act_number': act.pk
     }))
-
-# export_to_pdf for windows
-
-def export_to_pdf_act(request, act_number):
-    act = Act.objects.filter(act_number=act_number).first()
-    orders = Orders.objects.filter(act=act)
-    context = {'orders': orders, 'act': act}
-    return render_to_response('tenants_app/contract_pdf_act.html', context)
-
-    # content = render_to_string('tenants_app/contract_pdf_act.html', context)
-    # pdf = pdfkit.PDFKit(content, 'string').to_pdf()
-    #
-    # response = HttpResponse(pdf)
-    # response['Content-Type'] = 'application/pdf'
-    # # 'attachment' instead 'inline' to print
-    # response['Content-disposition'] = 'inline; filename="print_act.pdf"'
-    # return response
-
-'''
-# export_to_pdf for linux/python any where
-def export_to_pdf_act(request, act_number):
-    act = Act.objects.filter(act_number=act_number).first()
-    orders = Orders.objects.filter(act=act)
-    context = {'orders': orders, 'act': act}
-
-    html_string = render_to_string('tenants_app/contract_pdf_act.html', context)
-    html = HTML(string=html_string)
-    main_doc = html.render()
-    result = main_doc.write_pdf()
-
-    response = HttpResponse(result, content_type='application/pdf')
-    # 'attachment' instead 'inline' to print
-    response['Content-disposition'] = 'inline; filename="print.pdf"'
-    return response
-'''
 
 
 def create_order(request, act_number):
